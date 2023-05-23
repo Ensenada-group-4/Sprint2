@@ -5,7 +5,7 @@ export const ButtonDefault = ({ content, id, type }) => {
         <button
             type={type}
             className="btn btn-warning btn-block"
-            id={id}
+            id="register-form-buttons"
         >
             {content}
         </button>

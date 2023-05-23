@@ -69,7 +69,7 @@ export default function Login() {
                                     <FormInput
                                         type="password"
                                         onChange={handleChange} value={loginInfo.password} name="password" placeholder="Contraseña" />
-                                    <ButtonDefault type="submit" content="Login" id="register-form-buttons" />
+                                    <ButtonDefault type="submit" content="Login" />
 
                                     <div className="row">
                                         <div className="col-12">
@@ -77,15 +77,7 @@ export default function Login() {
                                                 <div className="d-flex justify-content-center links">
                                                     Si no tienes cuenta
                                                     <a href="./formRegistration.html">Registrate</a>
-                                                </div>
-                                                {/* <div className="d-flex justify-content-center">
-                                                    <a href="./formResetPassword.html">
-                                                        ¿Olvidaste tu contraseña?
-                                                    </a>
-                                                </div> */}
-                                                {/* <div className="infinity-button" onclick="toggleGrayScale()">
-                                            <i className="fa fa-infinity icon" title="Blanco y Negro" />
-                                        </div> */}
+                                                </div>                                             
                                             </div>
                                         </div>
                                     </div>

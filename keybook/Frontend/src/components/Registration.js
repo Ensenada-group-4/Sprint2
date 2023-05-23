@@ -73,7 +73,7 @@ export default function Register() {
                 <FormInput label="Repita contraseña"
                     type="password"
                     onChange={handleChange} value={userInfo.repeatPassword} name="repeatPassword" />
-                <ButtonDefault type="submit" content="Enviar" id="register-form-buttons" />
+                <ButtonDefault type="submit" content="Enviar" />
             </form>
         </>
     );

@@ -7,6 +7,7 @@ import LoginView from './views/LoginView';
 import HomeView from './views/HomeView';
 import ProfileView from './views/ProfileView';
 import UsersView from './views/UsersView';
+import EditProfileView from './views/EditProfileView';
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
             <Route path="/login" element={<LoginView />} />
             <Route path="/home" element={<HomeView />} />
             <Route path="/profile" element={<ProfileView />} />
-            <Route path="/users" element={<UsersView />} />            
+            <Route path="/users" element={<UsersView />} /> 
+            <Route path="/edit" element={<EditProfileView />} /> 
+            <Route path="/" element={<LoginView />} />
             <Route path='*' element={<Navigate to='/' />} /> {/* Si la ruta no existe lleva a página vacía (hasta que hagamos el componente error) */}
           </Routes>
         </BrowserRouter>
