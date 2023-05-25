@@ -19,6 +19,19 @@ router.get("/", async function (req, res) {
   }
 });
 
+//GET user by id
+router.get("/user/:id", async (req, res) => {
+  const userId = req.params.id;
+  const result = await sequelize.query(
+    `SELECT * FROM user WHERE id = ${userId}`
+  );
+  if (result[0].length) {
+    res.status(200).send(result[0][0]);
+  } else {
+    res.status(404).send({ error: "Usuario no encontrado" });
+  }
+});
+
 //POST create new user
 router.post("/register", async function (req, res) {
   try {
@@ -62,7 +75,7 @@ router.post("/register", async function (req, res) {
         }
       );
       res.status(200).send({
-        id: newUser[0]                
+        id: newUser[0]
       });
       console.log("Usuario creado con éxito");
     }
@@ -100,15 +113,18 @@ router.post("/auth", async (req, res) => {
   }
 });
 
-router.get("/user/:id", async (req, res) => {
+//PATCH languages
+router.patch("/:id", async (req, res) => {
   const userId = req.params.id;
-  const result = await sequelize.query(
-    `SELECT * FROM user WHERE id = ${userId}`
-  );
-  if (result[0].length) {
-    res.status(200).send(result[0][0]);
-  } else {
-    res.status(404).send({ error: "Usuario no encontrado" });
+  const { name, lastName, dob, city, country, phone, email, password, linkedin, education, tools, languages, hobbies } = req.body;
+  try {
+    await sequelize.query(
+      `UPDATE user SET (name, last_name, email, password, date_of_birth, profile_picture, city, country, phone, studies_course, tools_name, language_name, hobby_name, linkedin) WHERE id = ${userId}`
+    );
+    res.status(200).send({ message: "Datos de usuario actualizados correctamente" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: "Error al actualizar datos de usuario" });
   }
 });
 
