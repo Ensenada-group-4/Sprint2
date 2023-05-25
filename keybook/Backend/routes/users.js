@@ -25,6 +25,10 @@ router.post("/register", async function (req, res) {
     const { name, lastName, dob, city, country, phone, email, password } =
       req.body;
     const blankPhoto = "https://i.postimg.cc/SNk2LBzX/blank-Avatar.png";
+    const education = "Añada formación"
+    const tools = "Añada herramientas"
+    const language = "Añada idiomas"
+    const hobby = "Añada  hobbies"
 
     const hashPassword = await bcrypt.hash(password, salt);
 
@@ -36,7 +40,7 @@ router.post("/register", async function (req, res) {
       return res.status(400).json({ error: "El email ya está registrado" });
     } else {
       const newUser = await sequelize.query(
-        `INSERT INTO user (name, last_name, email, password, date_of_birth, profile_picture, city, country, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO user (name, last_name, email, password, date_of_birth, profile_picture, city, country, phone, _, _, _, _) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         {
           type: sequelize.QueryTypes.INSERT,
           replacements: [
@@ -49,14 +53,15 @@ router.post("/register", async function (req, res) {
             city,
             country,
             phone,
+            education,
+            tools,
+            language,
+            hobby
           ],
         }
       );
       res.status(200).send({
-        id: newUser[0],
-        name,
-        email,
-        hashPassword,
+        id: newUser[0]                
       });
       console.log("Usuario creado con éxito");
     }
