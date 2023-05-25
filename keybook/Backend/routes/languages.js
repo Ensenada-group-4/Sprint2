@@ -28,4 +28,41 @@ router.get("/:language_user_id", async function (req, res) {
     }
 });
 
+//POST languages
+router.post("/:id", async (req, res) => {
+    const userId = req.params.id;
+    const language = req.body.language;
+    try {
+
+
+        await sequelize.query(
+            `INSERT INTO languages (language_name, language_user_id) VALUE(?,?)`,
+            {
+                type: sequelize.QueryTypes.INSERT,
+                replacements: [language, userId
+                ],
+            }
+        );
+        res.status(200).send({ message: "Idioma actualizado correctamente" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: "Error al actualizar el Teléfono" });
+    }
+});
+
+//PUT languages
+router.put("/:id", async (req, res) => {
+    const userId = req.params.id;
+    const language = req.body.language;
+    try {
+        await sequelize.query(
+            `UPDATE languages SET language_name = '${language}' WHERE language_user_id = ${userId}`
+        );
+        res.status(200).send({ message: "Idioma actualizado correctamente" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: "Error al actualizar el Teléfono" });
+    }
+});
+
 module.exports = router;
