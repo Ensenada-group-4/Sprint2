@@ -5,7 +5,7 @@ import { ButtonDefault } from "../ButtonDefault";
 import { TextArea } from "./TextArea";
 
 export default function EditProfile() {
-    const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", email: "", password: "", repeatPassword: "" });
+    const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", linkedin: "", email: "", password: "", repeatPassword: "" });
     const [error, setError] = useState(false);
 
     function handleChange(e) {
@@ -16,13 +16,13 @@ export default function EditProfile() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const { name, lastName, dob, city, country, phone, email, password, repeatPassword } = userInfo
+        const { name, lastName, dob, city, country, phone, linkedin, email, password, repeatPassword, education, tools, hobbies, languages } = userInfo
 
         try {
             const response = await request({
-                method: "POST",
+                method: "PUT",
                 endpoint: "users/register",
-                body: { name, lastName, dob, city, country, phone, email, password },
+                body: { name, lastName, dob, city, country, phone, linkedin, email, password, education, tools, hobbies, languages },
             });
 
             if (response.id) {
@@ -47,37 +47,34 @@ export default function EditProfile() {
                         La cuenta de correo ya está registrada
                     </div>
                 )}
-                <FormInput label="Nombre"
-                    type="text"
+                <FormInput label="Nombre" type="text"
                     onChange={handleChange} value={userInfo.name} name="name" />
-                <FormInput label="Apellidos"
-                    type="text"
+                <FormInput label="Apellidos" type="text"
                     onChange={handleChange} value={userInfo.lastName} name="lastName" />
-                <FormInput label="Año de nacimiento"
-                    type="text"
+                <FormInput label="Año de nacimiento" type="text"
                     onChange={handleChange} value={userInfo.dob} name="dob" />
-                <FormInput label="Ciudad"
-                    type="text"
+                <FormInput label="Ciudad" type="text"
                     onChange={handleChange} value={userInfo.city} name="city" />
-                <FormInput label="País"
-                    type="text"
+                <FormInput label="País" type="text"
                     onChange={handleChange} value={userInfo.country} name="country" />
-                <FormInput label="Teléfono"
-                    type="text"
+                <FormInput label="Teléfono" type="text"
                     onChange={handleChange} value={userInfo.phone} name="phone" />
-                <FormInput label="Correo electrónico"
-                    type="email"
+                <FormInput label="linkedin" type="text"
+                    onChange={handleChange} value={userInfo.linkedin} name="linkedin" />
+                <FormInput label="Correo electrónico" type="email"
                     onChange={handleChange} value={userInfo.email} name="email" />
-                <FormInput label="Contraseña"
-                    type="password"
+                <FormInput label="Contraseña" type="password"
                     onChange={handleChange} value={userInfo.password} name="password" />
-                <FormInput label="Repita contraseña"
-                    type="password"
+                <FormInput label="Repita contraseña" type="password"
                     onChange={handleChange} value={userInfo.repeatPassword} name="repeatPassword" />
-                <TextArea title="Formación" onChange={handleChange} value={userInfo.education} name="education" placeholder="Curso - Fecha (Fullstack Bootcamp - 2023)" />
-                <TextArea title="Herramientas" onChange={handleChange} value={userInfo.tools} name="tools" placeholder="Herramienta - Nivel (CSS - Experto)" />
-                <TextArea title="Idiomas" onChange={handleChange} value={userInfo.languages} name="languages" placeholder="Idioma - Nivel (Inglés - B2)" />
-                <TextArea title="Hobbies" onChange={handleChange} value={userInfo.hobbies} name="hobbies" placeholder="Intereses (Cocinar, deporte...)" />
+                <TextArea title="Formación" placeholder="Curso - Fecha (Fullstack Bootcamp - 2023)"
+                    onChange={handleChange} value={userInfo.education} name="education" />
+                <TextArea title="Herramientas" placeholder="Herramienta - Nivel (CSS - Experto)"
+                    onChange={handleChange} value={userInfo.tools} name="tools" />
+                <TextArea title="Idiomas" placeholder="Idioma - Nivel (Inglés - B2)"
+                    onChange={handleChange} value={userInfo.languages} name="languages" />
+                <TextArea title="Hobbies" placeholder="Intereses (Cocinar, deporte...)"
+                    onChange={handleChange} value={userInfo.hobbies} name="hobbies" />
                 <ButtonDefault type="submit" content="Enviar" />
             </form>
         </>
