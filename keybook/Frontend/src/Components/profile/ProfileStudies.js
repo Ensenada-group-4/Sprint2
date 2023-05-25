@@ -7,7 +7,7 @@ function ProfileStudies() {
         const fetchStudie = async () => {
             try {
                 const userId = localStorage.getItem('userId');
-                const response = await fetch(`http://localhost:3000/studies/${userId}`);
+                const response = await fetch(`http://localhost:3000/users/user/${userId}`);
                 const data = await response.json();
                 setStudie(data);
                 console.log(data);

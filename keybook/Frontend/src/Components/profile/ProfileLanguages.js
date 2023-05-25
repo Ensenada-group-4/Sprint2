@@ -7,7 +7,7 @@ function ProfileLanguajes() {
         const fetchLanguages = async () => {
             try {
                 const userId = localStorage.getItem('userId');
-                const response = await fetch(`http://localhost:3000/languages/${userId}`);
+                const response = await fetch(`http://localhost:3000/users/user/${userId}`);
                 const data = await response.json();
                 setLanguages(data);
                 console.log(data);

@@ -7,7 +7,7 @@ function ProfileHobbies() {
         const fetchHobby = async () => {
             try {
                 const userId = localStorage.getItem('userId');
-                const response = await fetch(`http://localhost:3000/hobbies/${userId}`);
+                const response = await fetch(`http://localhost:3000/users/user/${userId}`);
                 const data = await response.json();
                 setHobby(data);
                 console.log(data);

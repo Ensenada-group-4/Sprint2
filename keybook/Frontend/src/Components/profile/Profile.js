@@ -10,8 +10,8 @@ function Profile() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const id = 1;
-      const response = await fetch(`http://localhost:3000/users/user/${id}`);
+      const userId = localStorage.getItem('userId');
+      const response = await fetch(`http://localhost:3000/users/user/${userId}`);
       const data = await response.json();
       setUser(data);
     };
