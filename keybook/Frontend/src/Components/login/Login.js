@@ -1,8 +1,8 @@
 import { useState } from "react";
-import request from "../utils/url";
-import logo from '../imgs/logo.png';
-import { FormInput } from "./FormInput";
-import { ButtonDefault } from "./ButtonDefault";
+import request from "../../utils/url";
+import logo from '../../imgs/logo.png';
+import { FormInput } from "../FormInput";
+import { ButtonDefault } from "../ButtonDefault";
 function MyLogo() {
     return (
         <img src={logo} alt="Keybook logo" id="main-logo" />
