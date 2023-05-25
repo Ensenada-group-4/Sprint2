@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const FormInput = ({ label, type, id, name, onChange, value, placeholder }) => {
+export const FormInput = ({ label, type, name, onChange, value, placeholder }) => {
     return (
         <div className="row justify-content-center">
             <div className="col-md-10">

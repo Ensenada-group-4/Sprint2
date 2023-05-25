@@ -37,7 +37,7 @@ export const EditProfileForm = ({ title, inputArray = [{ component }] }) => {
                     className="default-card" style={{ textAlign: "center" }}
                 >
                     <h3>{title}</h3>
-                    {inputArray}
+                    {personalDetails}
                     <ButtonDefault type="submit" content="Actualizar" />
                 </form>
             </div>
