@@ -22,7 +22,7 @@ router.get("/:language_user_id", async function (req, res) {
         `SELECT * FROM languages WHERE language_user_id = ${userId}`
     );
     if (result[0].length) {
-        res.status(200).send(result[0][0]);
+        res.status(200).send(result[0]);
     } else {
         res.status(404).send({ error: "Usuario no encontrado" });
     }
@@ -33,8 +33,6 @@ router.post("/:id", async (req, res) => {
     const userId = req.params.id;
     const language = req.body.language;
     try {
-
-
         await sequelize.query(
             `INSERT INTO languages (language_name, language_user_id) VALUE(?,?)`,
             {

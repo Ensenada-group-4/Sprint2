@@ -13,30 +13,30 @@ export default function EditLanguage() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const id = 20;
+        const id = 6;
         // const id = localStorage.getItem('userId');
         try {
             const response = await fetch(`http://localhost:3000/languages/${id}`)
             const existingLanguage = await response.json()
             if (existingLanguage.length > 0) {
-                const nextTime = await request({
+                const updateLanguage = await request({
                     method: "PUT",
                     endpoint: `languages/${id}`,
                     body: { language },
                 });
-                if (nextTime.message) {
+                if (updateLanguage.message) {
                     alert("Idioma agregado con éxito")
                 } else {
                     alert("Error")
                 }
 
             } else {
-                const firstTime = await request({
+                const setLanguage = await request({
                     method: "POST",
                     endpoint: `languages/${id}`,
                     body: { language },
                 });
-                if (firstTime.message) {
+                if (setLanguage.message) {
                     alert("Idioma agregado con éxito")
                 } else {
                     alert("Error")
@@ -52,8 +52,7 @@ export default function EditLanguage() {
             <EditProfileForm
                 onSubmit={handleSubmit}
                 onChange={handleChange}
-                value={language}
-                // name="language"
+                value={language}             
                 title="Idiomas"
                 placeholder="Idioma - Nivel (Inglés - B2)"
             // error="Ocurrió un error. Vuelva a intentarlo"

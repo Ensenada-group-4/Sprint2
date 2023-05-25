@@ -1,6 +1,6 @@
 import { ButtonDefault } from "../ButtonDefault";
 
-export const EditProfileForm = ({ title, onSubmit, error, onChange, value, name, placeholder }) => {
+export const EditProfileForm = ({ title, onSubmit, error, onChange, value, placeholder }) => {
     return (
         <>
             <div class="col-sm-5 col-md-4 col-lg-3">
@@ -9,7 +9,7 @@ export const EditProfileForm = ({ title, onSubmit, error, onChange, value, name,
                     onSubmit={onSubmit}
                 >
                     <h3>{title}</h3>
-                    <textarea onChange={onChange}  value={value} name={name} placeholder={placeholder} rows="5"></textarea>
+                    <textarea onChange={onChange}  value={value} placeholder={placeholder} rows="5"></textarea>
                     {error && (
                         <div className="error form-control ">
                             {error}
