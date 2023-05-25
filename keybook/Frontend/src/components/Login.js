@@ -32,8 +32,8 @@ export default function Login() {
 
         if (response.id) {
             alert("Usuario logueado con éxito. Redireccionando a home")
-            localStorage.setItem("userData", JSON.stringify("userId", response.id))
-            localStorage.setItem("token", JSON.stringify("token", response.token))
+            localStorage.setItem('userId', response.id);
+            localStorage.setItem("token", response.token);
             window.location.href = "/home";
 
         } else {
@@ -77,7 +77,7 @@ export default function Login() {
                                                 <div className="d-flex justify-content-center links">
                                                     Si no tienes cuenta
                                                     <a href="./formRegistration.html">Registrate</a>
-                                                </div>                                             
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
