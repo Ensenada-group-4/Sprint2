@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Router , Navigate} from "react-router-dom"
+import { BrowserRouter, Routes, Route, Router, Navigate } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import RegisterView from './views/RegisterView';
