@@ -447,7 +447,7 @@ textarea {
   font-weight: bold;
   text-align: center;
   border-color: red;
-  background-color: red;
+  background-color: rgb(196, 47, 47);
  }
 
 .new-user-registration {

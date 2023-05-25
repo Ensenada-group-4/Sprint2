@@ -7,10 +7,9 @@ export const FormInput = ({ label, type, id, name, onChange, value, placeholder 
                 <div className="form-group ">
                     <label htmlFor={name}>{label}</label>
                     <input
-                    value={value}
-                     onChange={onChange}
+                        value={value}
+                        onChange={onChange}
                         name={name}
-                        id={id}
                         type={type}
                         className="form-control "
                         placeholder={placeholder}

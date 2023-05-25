@@ -1,6 +1,6 @@
 import { useState } from "react";
 import request from "../../utils/url";
-import {FormInput} from "../FormInput";
+import {FormInput} from "./FormInput";
 import { ButtonDefault } from "../ButtonDefault";
 
 export default function Register() {

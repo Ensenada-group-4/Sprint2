@@ -1,7 +1,7 @@
 import { useState } from "react";
 import request from "../../utils/url";
 import logo from '../../imgs/logo.png';
-import { FormInput } from "../FormInput";
+import { FormInput } from "../registration/FormInput";
 import { ButtonDefault } from "../ButtonDefault";
 function MyLogo() {
     return (

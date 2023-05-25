@@ -1,15 +1,20 @@
-import { useState } from "react";
 import { ButtonDefault } from "../ButtonDefault";
 
-export const EditProfileForm = ({ title, inputArray = [{ component }] }) => {
+export const EditProfileForm = ({ title, onSubmit, error, onChange, value, name, placeholder }) => {
     return (
         <>
             <div class="col-sm-5 col-md-4 col-lg-3">
                 <form
                     className="default-card" style={{ textAlign: "center" }}
+                    onSubmit={onSubmit}
                 >
                     <h3>{title}</h3>
-                    {inputArray}
+                    <textarea onChange={onChange}  value={value} name={name} placeholder={placeholder} rows="5"></textarea>
+                    {error && (
+                        <div className="error form-control ">
+                            {error}
+                        </div>
+                    )}
                     <ButtonDefault type="submit" content="Actualizar" />
                 </form>
             </div>
