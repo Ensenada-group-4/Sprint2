@@ -7,20 +7,16 @@ import DeleteAccount from "./DeleteAccount";
 
 export default function EditProfile() {
     const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", linkedin: "", email: "", password: "", repeatPassword: "", education: "", tools: "", hobbies: "", languages: "" });
-    const [error, setError] = useState(false);
-
+ 
     function handleChange(e) {
         const { name, value } = e.target;
         setUserInfo({ ...userInfo, [name]: value });
-        // setError(false);
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
         const { name, lastName, dob, city, country, phone, linkedin, email, password, repeatPassword, education, tools, hobbies, languages } = userInfo
-        const id = 13
-
-        console.log(userInfo)
+        const id = localStorage.getItem('userId');     
 
         try {
             const response = await request({
@@ -31,9 +27,6 @@ export default function EditProfile() {
 
             if (response.message) {
                 alert("Usuario actualizado con éxito")
-            } else {
-                alert("FALLA ALGO")
-                // setError(true);
             }
         } catch {
             alert("Ocurrió un error. Vuelva a intentarlo")
@@ -45,12 +38,7 @@ export default function EditProfile() {
             <form onSubmit={handleSubmit}
                 className="p-3 mb-5 default-card "
                 id="form-register">
-                <h1 className="new-user-registration">Editar perfil</h1>
-                {/* {error && (
-                    <div className="error form-control ">
-                        La cuenta de correo ya está registrada
-                    </div>
-                )} */}
+                <h1 className="new-user-registration">Editar perfil</h1>            
                 <h3 className="space">Datos personales</h3>
                 <FormInput label="Nombre" type="text"
                     onChange={handleChange} value={userInfo.name} name="name" />
@@ -86,7 +74,7 @@ export default function EditProfile() {
 
                 <h3 className="space">Borrar cuenta</h3>
                 <p>Si desea eliminar su cuenta de forma permanente pulse en el sigueinte botón:</p>
-                <DeleteAccount/>
+                <DeleteAccount />
             </form>
         </>
     );

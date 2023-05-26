@@ -2,9 +2,8 @@ import request from "../../utils/url";
 
 export default function DeleteAccount() {
     async function handleDelete(e) {
-        e.preventDefault();
-        const id = 6
-        // const id = localStorage.getItem('userId');
+        e.preventDefault();        
+        const id = localStorage.getItem('userId');
 
         if (confirm('¿Estás seguro de que deseas eliminar tu cuenta?')) {
             try {
