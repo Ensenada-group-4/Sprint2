@@ -113,30 +113,35 @@ router.post("/auth", async (req, res) => {
   }
 });
 
-//PATCH languages
+//PUT user by id
 router.put("/:id", async (req, res) => {
   const userId = req.params.id;
-  const { name, lastName } = req.body;
-  // , dob, city, country, phone, email, password, linkedin, education, tools, languages, hobbies } = req.body;
+  const { name, lastName, dob, city, country, phone, password, linkedin, education, tools, languages, hobbies } = req.body;
+  const email = ""  
+  const hashPassword = await bcrypt.hash(password, salt);
   try {
     await sequelize.query(
-      `UPDATE user SET (name = ${name}, last_name = ${lastName}) WHERE id = ${userId}  WHERE id = ${userId}`,  
-
-      {
-        type: sequelize.QueryTypes.UPDATE,
-        replacements: [
-          name,
-          lastName         
-        ],
-      }
-
-      // , email = ${email}, password = ${password}, date_of_birth = ${dob}, city = ${city}, country= ${country}, phone = ${phone}, studies_course = ${education}, tools_name = ${tools}, language_name = ${languages}, hobby_name = ${hobbies}, linkedin = ${linkedin} WHERE id = ${userId}`
+      `UPDATE user SET 
+      name =  IF('${name}' = "", name, '${name}'),
+      last_name = IF('${lastName}' = "", last_name, '${lastName}'),       
+      email = IF('${email}' = "", email, '${email}'),
+      password = IF('${hashPassword}' = "", password, '${hashPassword}'),
+      date_of_birth = IF('${dob}' = "", date_of_birth, '${dob}'),
+      city = IF('${city}' = "", city, '${city}'),
+      country= IF( '${country}' = "", country, '${country}'),
+      phone = IF( '${phone}' = "", phone, '${phone}'),
+      studies_course = IF('${education}' =  "", studies_course, '${education}'),
+      tools_name = IF('${tools}' = "", tools_name, '${tools}'),
+      language_name = IF('${languages}' = "", language_name, '${languages}'),
+      hobby_name = IF('${hobbies}' = "", hobby_name, '${hobbies}'),
+      linkedin = IF('${linkedin}' = "", linkedin, '${linkedin}')
+      WHERE id = ${userId}`
     );
-res.status(200).send({ message: "Datos de usuario actualizados correctamente" });
+    res.status(200).send({ message: "Datos de usuario actualizados correctamente" });
   } catch (error) {
-  console.error(error);
-  res.status(500).send({ error: "Error al actualizar datos de usuario" });
-}
+    console.error(error);
+    res.status(500).send({ error: "Error al actualizar datos de usuario" });
+  }
 });
 
 // DELETE user by ID

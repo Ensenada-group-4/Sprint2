@@ -450,6 +450,10 @@ textarea {
   background-color: rgb(196, 47, 47);
  }
 
+ .space{
+  margin-top: 2%;
+ }
+
 .new-user-registration {
   text-align: center;
   margin-top: 3%;

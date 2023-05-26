@@ -1,6 +1,6 @@
 import { useState } from "react";
 import request from "../../utils/url";
-import {FormInput} from "./FormInput";
+import { FormInput } from "./FormInput";
 import { ButtonDefault } from "../ButtonDefault";
 
 export default function Register() {
@@ -48,31 +48,31 @@ export default function Register() {
                 )}
                 <FormInput label="Nombre"
                     type="text"
-                    onChange={handleChange} value={userInfo.name} name="name" />
+                    onChange={handleChange} value={userInfo.name} name="name" className={"form-control"} required />
                 <FormInput label="Apellidos"
                     type="text"
-                    onChange={handleChange} value={userInfo.lastName} name="lastName" />
+                    onChange={handleChange} value={userInfo.lastName} name="lastName" className={"form-control"} required />
                 <FormInput label="Año de nacimiento"
                     type="text"
-                    onChange={handleChange} value={userInfo.dob} name="dob" />
+                    onChange={handleChange} value={userInfo.dob} name="dob" className={"form-control"} required />
                 <FormInput label="Ciudad"
                     type="text"
-                    onChange={handleChange} value={userInfo.city} name="city" />
+                    onChange={handleChange} value={userInfo.city} name="city" className={"form-control"} required />
                 <FormInput label="País"
                     type="text"
-                    onChange={handleChange} value={userInfo.country} name="country" />
+                    onChange={handleChange} value={userInfo.country} name="country" className={"form-control"} required />
                 <FormInput label="Teléfono"
                     type="text"
-                    onChange={handleChange} value={userInfo.phone} name="phone" />
+                    onChange={handleChange} value={userInfo.phone} name="phone" required />
                 <FormInput label="Correo electrónico"
                     type="email"
-                    onChange={handleChange} value={userInfo.email} name="email" />
+                    onChange={handleChange} value={userInfo.email} name="email" required />
                 <FormInput label="Contraseña"
                     type="password"
-                    onChange={handleChange} value={userInfo.password} name="password" />
+                    onChange={handleChange} value={userInfo.password} name="password" required />
                 <FormInput label="Repita contraseña"
                     type="password"
-                    onChange={handleChange} value={userInfo.repeatPassword} name="repeatPassword" />
+                    onChange={handleChange} value={userInfo.repeatPassword} name="repeatPassword" required />
                 <ButtonDefault type="submit" content="Enviar" />
             </form>
         </>
