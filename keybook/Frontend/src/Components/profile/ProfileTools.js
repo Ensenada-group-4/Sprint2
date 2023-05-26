@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
 
-function ProfileTools() {
-    const [Tools, setTools] = useState(null);
+function ProfileTools(props) {
+    // const [Tools, setTools] = useState(null);
+    const { user } = props;
 
-    useEffect(() => {
-        const fetchTools = async () => {
-            try {
-                const userId = localStorage.getItem('userId');
-                const response = await fetch(`http://localhost:3000/users/user/${userId}`);
-                const data = await response.json();
-                setTools(data);
-                console.log(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchTools = async () => {
+    //         try {
+    //             // const userId = localStorage.getItem('userId');
+    //             const response = await fetch(`http://localhost:3000/users/user/${userId}`);
+    //             const data = await response.json();
+    //             setTools(data);
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     };
 
-        fetchTools();
-    }, []);
+    //     fetchTools();
+    // }, [userId]);
 
     return (
         <>
-            {Tools && (
+            {user && (
                 <div class="default-card">
                     <h4>
                         <i class="fa-solid fa-computer icon" title="Técnicas"></i>
@@ -29,7 +29,7 @@ function ProfileTools() {
                     </h4>
                     <ul class="profile-data">
                         <li>Listado de habilidades</li>
-                        <p>{Tools.tools_name}</p>
+                        <p>{user.tools_name}</p>
                     </ul>
                 </div>
             )}

@@ -1,23 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-function ProfileCard() {
-    const [user, setUser] = useState(null);
+function ProfileCard(props) {
+    const { user } = props;
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const userId = localStorage.getItem('userId');
-                const response = await fetch(`http://localhost:3000/users/user/${userId}`);
-                const data = await response.json();
-                setUser(data);
-                console.log(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchUser();
-    }, []);
     return (
         <>
             {user && (
@@ -40,17 +26,11 @@ function ProfileCard() {
                         </div>
                         <div>
                             <h5 id="profile-location">Ciudad</h5>
-                            <p>
-                                {user.city}
-                            </p>
+                            <p>{user.city}</p>
                             <h5 id="profile-loc-country">País</h5>
-                            <p>
-                                {user.country}
-                            </p>
+                            <p>{user.country}</p>
                             <h5 id="profile-birthDate">Año de nacimiento:</h5>
-                            <p>
-                                {user.date_of_birth}
-                            </p>
+                            <p>{user.date_of_birth}</p>
                         </div>
                     </div>
                 </div>
@@ -60,3 +40,4 @@ function ProfileCard() {
 }
 
 export default ProfileCard;
+

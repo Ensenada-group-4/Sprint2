@@ -1,27 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-function ProfileLanguajes() {
-    const [languages, setLanguages] = useState(null);
-
-    useEffect(() => {
-        const fetchLanguages = async () => {
-            try {
-                const userId = localStorage.getItem('userId');
-                const response = await fetch(`http://localhost:3000/users/user/${userId}`);
-                const data = await response.json();
-                setLanguages(data);
-                console.log(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchLanguages();
-    }, []);
+function ProfileLanguajes(props) {
+    const { user } = props;
 
     return (
         <>
-            {languages && (
+            {user && (
                 <div class="default-card">
                     <h4>
                         IDIOMAS
@@ -29,7 +13,7 @@ function ProfileLanguajes() {
                     <ul class="profile-data">
                         <a>
                             Idioma
-                            <p>{languages.language_name}</p>
+                            <p>{user.language_name}</p>
                         </a>
                     </ul>
                 </div>
