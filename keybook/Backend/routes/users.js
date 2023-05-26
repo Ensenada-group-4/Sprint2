@@ -114,18 +114,29 @@ router.post("/auth", async (req, res) => {
 });
 
 //PATCH languages
-router.patch("/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   const userId = req.params.id;
-  const { name, lastName, dob, city, country, phone, email, password, linkedin, education, tools, languages, hobbies } = req.body;
+  const { name, lastName } = req.body;
+  // , dob, city, country, phone, email, password, linkedin, education, tools, languages, hobbies } = req.body;
   try {
     await sequelize.query(
-      `UPDATE user SET (name, last_name, email, password, date_of_birth, profile_picture, city, country, phone, studies_course, tools_name, language_name, hobby_name, linkedin) WHERE id = ${userId}`
+      `UPDATE user SET (name = ${name}, last_name = ${lastName}) WHERE id = ${userId}  WHERE id = ${userId}`,  
+
+      {
+        type: sequelize.QueryTypes.UPDATE,
+        replacements: [
+          name,
+          lastName         
+        ],
+      }
+
+      // , email = ${email}, password = ${password}, date_of_birth = ${dob}, city = ${city}, country= ${country}, phone = ${phone}, studies_course = ${education}, tools_name = ${tools}, language_name = ${languages}, hobby_name = ${hobbies}, linkedin = ${linkedin} WHERE id = ${userId}`
     );
-    res.status(200).send({ message: "Datos de usuario actualizados correctamente" });
+res.status(200).send({ message: "Datos de usuario actualizados correctamente" });
   } catch (error) {
-    console.error(error);
-    res.status(500).send({ error: "Error al actualizar datos de usuario" });
-  }
+  console.error(error);
+  res.status(500).send({ error: "Error al actualizar datos de usuario" });
+}
 });
 
 // DELETE user by ID
