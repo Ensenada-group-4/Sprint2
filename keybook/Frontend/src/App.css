@@ -2,25 +2,24 @@ html {
   overflow-y: scroll;
   box-sizing: border-box;
   height: 100%;
-  
 }
-*,* ::before, *::after{
+*,
+* ::before,
+*::after {
   box-sizing: inherit;
-  
 }
 
-
-html, body {
-   color: rgb(44, 58, 129);
+html,
+body {
+  color: rgb(44, 58, 129);
   background-image: url("https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
   background-position: center;
-  
+
   background-size: auto;
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
   height: 100%;
   color: aliceblue;
   font-family: Arial, Helvetica, sans-serif;
- 
 }
 
 input {
@@ -35,11 +34,10 @@ input {
   align-items: center;
   height: auto;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1;/*no tocarmas*/
+  z-index: 1; /*no tocarmas*/
 }
 
 .keybook-logo {
-
   width: 60px;
   border-radius: 30%;
   position: fixed;
@@ -47,10 +45,9 @@ input {
   top: 32px;
   transform: translate(-50%, -50%);
   display: flex;
- 
+
   left: 30px;
 }
-
 
 @media (max-width: 480px) {
   .keybook-logo {
@@ -60,19 +57,18 @@ input {
     max-width: 12%;
     right: 91%;
     top: 2%;
-    transform: none;/*no tocarmas*/
-    
+    transform: none; /*no tocarmas*/
   }
 }
 
 .search-bar {
   padding: 0 20%;
-  margin-top: 1.5%;/*no tocarmas*/
+  margin-top: 1.5%; /*no tocarmas*/
   margin-bottom: 0.5%;
 }
 
 #basic-addon1 {
-   margin-top: 1.5%;/*no tocarmas*/
+  margin-top: 1.5%; /*no tocarmas*/
   border-radius: 10px;
   border: 2px solid #b17aa2;
   background-color: aliceblue;
@@ -91,53 +87,50 @@ input {
 .nav-icons {
   position: fixed;
   left: 78%;
-  top:8px;
+  top: 8px;
   /*no tocarmas*/
-} 
+}
 
 .icon {
   font-size: 25px;
   padding: 0 10px;
   color: #ffc312;
-  }
+}
 
 .search-icon {
-  color: #b17aa2;/*no tocarmas*/
+  color: #b17aa2; /*no tocarmas*/
 }
 
 .icon:hover {
-  color: lightskyblue;/*no tocarmas*/
+  color: lightskyblue; /*no tocarmas*/
 }
 
+.nav-icon {
+  display: flex;
+  padding: 0;
+}
+.nav-icon li {
+  padding: 0 40px;
+  list-style-type: none;
+  transition: 0.3s;
+}
 
-.nav-icon{
-    display:flex;
-    padding:0;
+.nav-icon li a {
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #ffc312;
+  font-weight: 600;
 }
-.nav-icon li{
-    padding: 0 40px;
-    list-style-type: none;
-    transition: 0.3s;
-}
-
-.nav-icon li a{
-    text-decoration:none;
-    font-size: 1.8rem;
-    color:#ffc312;
-    font-weight:600;
-}
-.nav-icon li:hover{
-    background-color:rgb(62, 130, 197);
+.nav-icon li:hover {
+  background-color: rgb(62, 130, 197);
 }
 
 /* DISPOSITIVOS MOVILES */
 
 @media (max-width: 992px) {
-  
-   body {
+  body {
     overflow: hidden;
     overflow-y: scroll;
-  
   }
 
   .nav-body {
@@ -145,30 +138,29 @@ input {
     position: fixed;
     width: 100%;
     align-items: center;
-    height:115px;
+    height: 115px;
     background-color: rgba(0, 0, 0, 0.8);
-    z-index: 1;/*no tocarmas*/
-
+    z-index: 1; /*no tocarmas*/
   }
-  .navbar-toggler span{
+  .navbar-toggler span {
     position: relative;
-      background-color: #ffc312;
-      display:block;
-      height:3px;
-      width: 28px;
-      margin:8px auto;
-      border-radius:2px;    
-     /*no tocarmas*/
+    background-color: #ffc312;
+    display: block;
+    height: 3px;
+    width: 28px;
+    margin: 8px auto;
+    border-radius: 2px;
+    /*no tocarmas*/
   }
   .navbar-toggler {
-     display: block;
+    display: block;
     cursor: pointer;
-    position:fixed;
-    top:5px;
+    position: fixed;
+    top: 5px;
     right: 40px;
     transition: 0.2s 0.1s;
-    margin-top:3px;
-    background-color:transparent;
+    margin-top: 3px;
+    background-color: transparent;
   }
 
   nav {
@@ -198,7 +190,6 @@ input {
     opacity: 0;
     transition: opacity 5s ease-out;
     width: 100%;
-  
   }
 
   .nav-icons {
@@ -236,26 +227,28 @@ input {
     padding: 0 10%;
     box-sizing: border-box;
     top: 30%;
-    right:45% ;
-  
+    right: 45%;
   }
-  
 }
 
 /* Animaciones */
 
 @keyframes muestraMenu {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.nav-icons .activado{
-    display:flex; 
-    animation: muestraMenu 350ms ease-in-out both;
+.nav-icons .activado {
+  display: flex;
+  animation: muestraMenu 350ms ease-in-out both;
 }
 
-.navbar-toggler.girar:hover{
-   transform:rotate(360deg);
+.navbar-toggler.girar:hover {
+  transform: rotate(360deg);
 }
 .navbar-toggler.girar {
   transform: rotate(180deg);
@@ -276,8 +269,6 @@ input {
   transform: translateY(-11px) rotate(-45deg);
   transition: transform 0.3s ease-in-out;
 }
-
-
 
 /* DEFAULT CARDS */
 
@@ -375,7 +366,6 @@ textarea {
   font-weight: 400;
 }
 
-
 /*FRIENDS PAGE*/
 .search-friends {
   position: fixed;
@@ -416,7 +406,6 @@ textarea {
   margin: auto;
 }
 
-
 .friend-box {
   text-align: center;
   display: flex;
@@ -436,7 +425,7 @@ textarea {
 }
 
 .page-link:visited {
-  background-color: rgba(0, 0, 0, 0.8); 
+  background-color: rgba(0, 0, 0, 0.8);
   text-decoration: none;
 }
 
@@ -448,11 +437,15 @@ textarea {
   text-align: center;
   border-color: red;
   background-color: rgb(196, 47, 47);
- }
+}
 
- .space{
+.space {
   margin-top: 2%;
- }
+}
+
+.form-control {
+  background-color: aliceblue;
+}
 
 .new-user-registration {
   text-align: center;
@@ -476,6 +469,7 @@ textarea {
 
 /* CHAT */
 
+/* 
 #chat-open {
   display: none;
 }
@@ -499,7 +493,7 @@ textarea {
   border-radius: 10px;
   margin: 0 0 10px;
   padding: 2%;
-}
+} */
 
 /* FOOTER */
 footer {

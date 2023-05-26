@@ -3,6 +3,7 @@ import request from "../../utils/url";
 import { FormInput } from "../registration/FormInput";
 import { ButtonDefault } from "../ButtonDefault";
 import { TextArea } from "./TextArea";
+import DeleteAccount from "./DeleteAccount";
 
 export default function EditProfile() {
     const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", linkedin: "", email: "", password: "", repeatPassword: "", education: "", tools: "", hobbies: "", languages: "" });
@@ -33,7 +34,6 @@ export default function EditProfile() {
             } else {
                 alert("FALLA ALGO")
                 // setError(true);
-
             }
         } catch {
             alert("Ocurrió un error. Vuelva a intentarlo")
@@ -44,8 +44,7 @@ export default function EditProfile() {
         <>
             <form onSubmit={handleSubmit}
                 className="p-3 mb-5 default-card "
-                id="form-register"
-            >
+                id="form-register">
                 <h1 className="new-user-registration">Editar perfil</h1>
                 {/* {error && (
                     <div className="error form-control ">
@@ -84,6 +83,10 @@ export default function EditProfile() {
                 <FormInput label="Repita contraseña" type="password"
                     onChange={handleChange} value={userInfo.repeatPassword} name="repeatPassword" />
                 <ButtonDefault type="submit" content="Enviar" />
+
+                <h3 className="space">Borrar cuenta</h3>
+                <p>Si desea eliminar su cuenta de forma permanente pulse en el sigueinte botón:</p>
+                <DeleteAccount/>
             </form>
         </>
     );

@@ -145,7 +145,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // DELETE user by ID
-router.delete("/:id/delete", async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
   const userId = req.params.id;
   try {
     await sequelize.query(`DELETE FROM user WHERE id = ${userId}`);
