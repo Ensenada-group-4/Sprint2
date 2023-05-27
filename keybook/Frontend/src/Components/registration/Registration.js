@@ -1,7 +1,14 @@
 import { useState } from "react";
+import logo from '../../imgs/logo.png';
 import request from "../../utils/url";
 import { FormInput } from "./FormInput";
 import { ButtonDefault } from "../ButtonDefault";
+
+function MyLogo() {
+    return (
+        <img src={logo} alt="Keybook logo" style={{ borderRadius: "20%", width: "20%" }} />
+    );
+}
 
 export default function Register() {
     const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", email: "", password: "", repeatPassword: "" });
@@ -30,7 +37,7 @@ export default function Register() {
                 setError(true);
             }
         } catch {
-            alert("Ocurrió un error. Vuelva a intentarlo")
+            alert("Error del servidor. Vuelva a intentarlo")
         }
     }
 
@@ -39,39 +46,32 @@ export default function Register() {
             <form onSubmit={handleSubmit}
                 className="p-3 mb-5 default-card"
                 id="form-register"
-            >
+            >{MyLogo()}
                 <h1 className="new-user-registration">Registrar Nuevo Usuario</h1>
                 {error && (
                     <div className="error form-control ">
                         La cuenta de correo ya está registrada
                     </div>
                 )}
-                <FormInput label="Nombre"
-                    type="text"
-                    onChange={handleChange} value={userInfo.name} name="name" className={"form-control"} required />
-                <FormInput label="Apellidos"
-                    type="text"
-                    onChange={handleChange} value={userInfo.lastName} name="lastName" className={"form-control"} required />
-                <FormInput label="Año de nacimiento"
-                    type="text"
-                    onChange={handleChange} value={userInfo.dob} name="dob" className={"form-control"} required />
-                <FormInput label="Ciudad"
-                    type="text"
-                    onChange={handleChange} value={userInfo.city} name="city" className={"form-control"} required />
-                <FormInput label="País"
-                    type="text"
-                    onChange={handleChange} value={userInfo.country} name="country" className={"form-control"} required />
-                <FormInput label="Teléfono"
-                    type="text"
+                <FormInput label="Nombre" type="text"
+                    onChange={handleChange} value={userInfo.name} name="name" required />
+                <FormInput label="Apellidos" type="text"
+                    onChange={handleChange} value={userInfo.lastName} name="lastName" required />
+                <FormInput label="Año de nacimiento" type="text"
+                    onChange={handleChange} value={userInfo.dob} name="dob" required />
+                <FormInput label="Ciudad" type="text"
+                    onChange={handleChange} value={userInfo.city} name="city" required />
+                <FormInput label="País" type="text"
+                    onChange={handleChange} value={userInfo.country} name="country" required />
+                <FormInput label="Teléfono" type="text"
                     onChange={handleChange} value={userInfo.phone} name="phone" required />
-                <FormInput label="Correo electrónico"
-                    type="email"
+                <FormInput label="Linkedin" type="text"
+                    onChange={handleChange} value={userInfo.linkedin} name="linkedin" />
+                <FormInput label="Correo electrónico" type="email"
                     onChange={handleChange} value={userInfo.email} name="email" required />
-                <FormInput label="Contraseña"
-                    type="password"
+                <FormInput label="Contraseña" type="password"
                     onChange={handleChange} value={userInfo.password} name="password" required />
-                <FormInput label="Repita contraseña"
-                    type="password"
+                <FormInput label="Repita contraseña" type="password"
                     onChange={handleChange} value={userInfo.repeatPassword} name="repeatPassword" required />
                 <ButtonDefault type="submit" content="Enviar" />
             </form>
