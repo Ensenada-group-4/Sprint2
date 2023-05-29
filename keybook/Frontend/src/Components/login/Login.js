@@ -3,11 +3,7 @@ import request from "../../utils/url";
 import { Logo } from "../logo/Logo";
 import { FormInput } from "../registration/FormInput";
 import { ButtonDefault } from "../ButtonDefault";
-// function MyLogo() {
-//     return (
-//         <img src={logo} alt="Keybook logo" id="main-logo" />
-//     );
-// }
+
 export default function Login() {
     const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
     const [error, setError] = useState(false);
@@ -65,9 +61,9 @@ export default function Login() {
                                 <FormInput
                                     type="password"
                                     onChange={handleChange} value={loginInfo.password} name="password" placeholder="Contraseña" />
-                                <ButtonDefault type="submit" content="Login" id="register-form-buttons" />
+                                <ButtonDefault type="submit" content="Login" id="register-form-buttons" className="btn-lg"/>
 
-                                <div className="d-flex justify-content-center links">
+                                <div className="d-flex justify-content-center">
                                     <p className="slogan-container">Si no tienes cuenta <a href="./formRegistration.html">Registrate</a></p>
 
                                 </div>

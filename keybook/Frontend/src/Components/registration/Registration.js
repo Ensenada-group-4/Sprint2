@@ -5,7 +5,7 @@ import { FormInput } from "./FormInput";
 import { ButtonDefault } from "../ButtonDefault";
 
 export default function Register() {
-    const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", email: "", password: "", repeatPassword: "" });
+    const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", linkedin: "", email: "", password: "", repeatPassword: "" });
     const [error, setError] = useState(false);
 
     function handleChange(e) {
@@ -16,7 +16,7 @@ export default function Register() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const { name, lastName, dob, city, country, phone, email, password, repeatPassword } = userInfo
+        const { name, lastName, dob, city, country, phone, linkedin, email, password, repeatPassword } = userInfo
 
         try {
             const response = await request({
