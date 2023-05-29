@@ -6,11 +6,11 @@ function ProfileStudies(props) {
     return (
         <>
             {user && (
-                <div class="default-card">
+                <div className="default-card">
                     <h4>
                         FORMACION
                     </h4>
-                    <ul class="profile-data">
+                    <ul className="profile-data">
                         <a id="formacion">
                             <p>Títulación</p>
                             <p>{user.studies_course}</p>

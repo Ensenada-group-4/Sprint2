@@ -6,11 +6,11 @@ function ProfileLanguajes(props) {
     return (
         <>
             {user && (
-                <div class="default-card">
+                <div className="default-card">
                     <h4>
                         IDIOMAS
                     </h4>
-                    <ul class="profile-data">
+                    <ul className="profile-data">
                         <a>
                             Idioma
                             <p>{user.language_name}</p>

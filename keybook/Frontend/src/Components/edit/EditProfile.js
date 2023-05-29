@@ -70,7 +70,7 @@ export default function EditProfile() {
                     onChange={handleChange} value={userInfo.password} name="password" />
                 <FormInput label="Repita contraseña" type="password"
                     onChange={handleChange} value={userInfo.repeatPassword} name="repeatPassword" />
-                <ButtonDefault type="submit" content="Enviar" />
+                <ButtonDefault type="submit" content="Actualizar" />
 
                 <h3 className="space">Borrar cuenta</h3>
                 <p>Si desea eliminar su cuenta de forma permanente pulse en el sigueinte botón:</p>

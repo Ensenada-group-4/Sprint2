@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { Logo } from "../logo/Logo";
 import request from "../../utils/url";
 import { FormInput } from "./FormInput";
 import { ButtonDefault } from "../ButtonDefault";
 
 export default function Register() {
-    const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", email: "", password: "", repeatPassword: "" });
+    const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", linkedin: "", email: "", password: "", repeatPassword: "" });
     const [error, setError] = useState(false);
 
     function handleChange(e) {
@@ -15,22 +16,23 @@ export default function Register() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const { name, lastName, dob, city, country, phone, email, password, repeatPassword } = userInfo
+        const { name, lastName, dob, city, country, phone, linkedin, email, password, repeatPassword } = userInfo
 
         try {
             const response = await request({
                 method: "POST",
                 endpoint: "users/register",
-                body: { name, lastName, dob, city, country, phone, email, password },
+                body: { name, lastName, dob, city, country, phone, linkedin, email, password },
             });
 
             if (response.id) {
-                alert("Usuario creado con éxito")
+                alert("Usuario creado con éxito. Redireccionando a login")
+                window.location.href = "/login"
             } else {
                 setError(true);
             }
         } catch {
-            alert("Ocurrió un error. Vuelva a intentarlo")
+            alert("Error del servidor. Vuelva a intentarlo")
         }
     }
 
@@ -40,40 +42,34 @@ export default function Register() {
                 className="p-3 mb-5 default-card"
                 id="form-register"
             >
+            <Logo className="form-logo" />
                 <h1 className="new-user-registration">Registrar Nuevo Usuario</h1>
                 {error && (
                     <div className="error form-control ">
-                        La cuenta de correo ya está registrada
+                        Email ya registrado
                     </div>
                 )}
-                <FormInput label="Nombre"
-                    type="text"
-                    onChange={handleChange} value={userInfo.name} name="name" className={"form-control"} required />
-                <FormInput label="Apellidos"
-                    type="text"
-                    onChange={handleChange} value={userInfo.lastName} name="lastName" className={"form-control"} required />
-                <FormInput label="Año de nacimiento"
-                    type="text"
-                    onChange={handleChange} value={userInfo.dob} name="dob" className={"form-control"} required />
-                <FormInput label="Ciudad"
-                    type="text"
-                    onChange={handleChange} value={userInfo.city} name="city" className={"form-control"} required />
-                <FormInput label="País"
-                    type="text"
-                    onChange={handleChange} value={userInfo.country} name="country" className={"form-control"} required />
-                <FormInput label="Teléfono"
-                    type="text"
+                <FormInput label="Nombre" type="text"
+                    onChange={handleChange} value={userInfo.name} name="name" required />
+                <FormInput label="Apellidos" type="text"
+                    onChange={handleChange} value={userInfo.lastName} name="lastName" required />
+                <FormInput label="Año de nacimiento" type="text"
+                    onChange={handleChange} value={userInfo.dob} name="dob" required />
+                <FormInput label="Ciudad" type="text"
+                    onChange={handleChange} value={userInfo.city} name="city" required />
+                <FormInput label="País" type="text"
+                    onChange={handleChange} value={userInfo.country} name="country" required />
+                <FormInput label="Teléfono" type="text"
                     onChange={handleChange} value={userInfo.phone} name="phone" required />
-                <FormInput label="Correo electrónico"
-                    type="email"
+                <FormInput label="Linkedin" type="text"
+                    onChange={handleChange} value={userInfo.linkedin} name="linkedin" />
+                <FormInput label="Correo electrónico" type="email"
                     onChange={handleChange} value={userInfo.email} name="email" required />
-                <FormInput label="Contraseña"
-                    type="password"
+                <FormInput label="Contraseña" type="password"
                     onChange={handleChange} value={userInfo.password} name="password" required />
-                <FormInput label="Repita contraseña"
-                    type="password"
+                <FormInput label="Repita contraseña" type="password"
                     onChange={handleChange} value={userInfo.repeatPassword} name="repeatPassword" required />
-                <ButtonDefault type="submit" content="Enviar" />
+                <ButtonDefault type="submit" content="Enviar" className="btn-lg"/>
             </form>
         </>
     );

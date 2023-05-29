@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/";
+export const url = "http://localhost:3000/";
 
 export default async function request({ method, endpoint, body }) {
     let response = await fetch(url + endpoint, {

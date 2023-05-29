@@ -6,11 +6,11 @@ function ProfileHobbies(props) {
     return (
         <>
             {user && (
-                <div class="default-card">
+                <div className="default-card">
                     <h4>
                         INTERESES y HOBBIS
                     </h4>
-                    <ul class="profile-data">
+                    <ul className="profile-data">
                         <li>Listado de intereses</li>
                         <p>{user.hobby_name}</p>
                     </ul>

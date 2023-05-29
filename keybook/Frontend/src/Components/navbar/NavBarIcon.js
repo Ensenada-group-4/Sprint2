@@ -1,12 +1,19 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function NavIcon({ link, icon, title }) {
+function NavBarIcon({ link, icon, title }) {
   return (
     <li className="nav-item">
       <a className="dropdown-item active" href={link} title={title}>
-        <FontAwesomeIcon icon={icon} className="icon" />
+        <FontAwesomeIcon
+          link={link}
+          icon={icon}
+          title={title}
+          className="icon"
+        />
       </a>
     </li>
   );
 }
+
+export default NavBarIcon;

@@ -6,18 +6,18 @@ const jwt = require("jsonwebtoken");
 
 const salt = 10;
 
-/* GET users listing. */
-router.get("/", async function (req, res) {
-  try {
-    const usersList = await sequelize.query("SELECT * FROM user", {
-      type: sequelize.QueryTypes.SELECT,
-    });
-    res.status(200).send(usersList);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Error interno del servidor");
-  }
-});
+// /* GET users listing. */
+// router.get("/", async function (req, res) {
+//   try {
+//     const usersList = await sequelize.query("SELECT * FROM user", {
+//       type: sequelize.QueryTypes.SELECT,
+//     });
+//     res.status(200).send(usersList);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send("Error interno del servidor");
+//   }
+// });
 
 //GET user by id
 router.get("/user/:id", async (req, res) => {
@@ -35,7 +35,7 @@ router.get("/user/:id", async (req, res) => {
 //POST create new user
 router.post("/register", async function (req, res) {
   try {
-    const { name, lastName, dob, city, country, phone, email, password, linkedin } =
+    const { name, lastName, dob, city, country, phone, linkedin, email, password } =
       req.body;
     const blankPhoto = "https://i.postimg.cc/SNk2LBzX/blank-Avatar.png";
     const education = "Añada formación"
@@ -99,8 +99,10 @@ router.post("/auth", async (req, res) => {
         result[0][0].password
       );
       if (validPassword) {
-        const token = jwt.sign({ id: result[0][0].id }, process.env.JWT_KEY, { expiresIn: "2h" });
-        res.status(200).send({ id: result[0][0].id, token: token })
+        const token = jwt.sign({ id: result[0][0].id }, process.env.JWT_KEY, {
+          expiresIn: "2h",
+        });
+        res.status(200).send({ id: result[0][0].id, token: token });
       } else {
         res.status(400).send({ error: "Contraseña incorrecta" });
       }
@@ -117,7 +119,7 @@ router.post("/auth", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const userId = req.params.id;
   const { name, lastName, dob, city, country, phone, password, linkedin, education, tools, languages, hobbies } = req.body;
-  const email = ""  
+  const email = ""
   const hashPassword = await bcrypt.hash(password, salt);
   try {
     await sequelize.query(
@@ -156,23 +158,14 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
-// Funcion que hace debugg
-global.debug = function () {
-  debugger;
-};
 // //GET user by name or email (based on input)
-//para ver que funcona en postman se debe colocar en params key :searchKey y en value el nombre a buscar ej:adrian
-/* en body pegar este json {
-  "loggedInUserId": 1
-} que seria el id del usuario logeado para que no lo muestre en el grid de amigos
-la url sera http://localhost:3000/users/user?searchKey=adrian y metodo get*/
 
 router.get("/user", async function (req, res) {
   const { searchKey } = req.query;
-  const { loggedInUserId } = req.body; // obtener el ID del usuario logueado del cuerpo de la solicitud
+  const { loggedInUserId } = req.body;
 
   try {
-    const personas = searchKey
+    const people = searchKey
       ? await sequelize.query(
         `SELECT * FROM user WHERE (name = :searchKey OR email = :searchKey) AND id != :loggedInUserId`,
         {
@@ -188,9 +181,7 @@ router.get("/user", async function (req, res) {
         }
       );
 
-    global.debug(); // Detener la ejecución y examinar el objeto "personas"
-    console.log(personas);
-    res.send(personas);
+    res.send(people);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal server error");
@@ -198,3 +189,32 @@ router.get("/user", async function (req, res) {
 });
 
 module.exports = router;
+// //GET user not follow
+router.get("/", async function (req, res) {
+  const notFriendsWith = req.query.not_friends_with;
+  const page = req.query.page || 1;
+  const limit = req.query.limit || 10;
+  const offset = (page - 1) * limit;
+
+  try {
+    const usersList = await sequelize.query(
+      `
+      SELECT * FROM user
+      WHERE id != "${notFriendsWith}" AND id NOT IN (
+        SELECT user_friend2_id FROM friend
+        WHERE user_friend1_id = "${notFriendsWith}" AND status = 1
+      )
+      ORDER BY id DESC
+      LIMIT ${limit}
+      OFFSET ${offset}
+    `,
+      {
+        type: sequelize.QueryTypes.SELECT,
+      }
+    );
+    res.status(200).send(usersList);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error interno del servidor");
+  }
+});
