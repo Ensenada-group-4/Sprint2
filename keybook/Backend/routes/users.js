@@ -35,7 +35,7 @@ router.get("/user/:id", async (req, res) => {
 //POST create new user
 router.post("/register", async function (req, res) {
   try {
-    const { name, lastName, dob, city, country, phone, email, password, linkedin } =
+    const { name, lastName, dob, city, country, phone, linkedin, email, password } =
       req.body;
     const blankPhoto = "https://i.postimg.cc/SNk2LBzX/blank-Avatar.png";
     const education = "Añada formación"
@@ -119,7 +119,7 @@ router.post("/auth", async (req, res) => {
 router.put("/:id", async (req, res) => {
   const userId = req.params.id;
   const { name, lastName, dob, city, country, phone, password, linkedin, education, tools, languages, hobbies } = req.body;
-  const email = ""  
+  const email = ""
   const hashPassword = await bcrypt.hash(password, salt);
   try {
     await sequelize.query(
@@ -167,19 +167,19 @@ router.get("/user", async function (req, res) {
   try {
     const people = searchKey
       ? await sequelize.query(
-          `SELECT * FROM user WHERE (name = :searchKey OR email = :searchKey) AND id != :loggedInUserId`,
-          {
-            replacements: { searchKey, loggedInUserId },
-            type: sequelize.QueryTypes.SELECT,
-          }
-        )
+        `SELECT * FROM user WHERE (name = :searchKey OR email = :searchKey) AND id != :loggedInUserId`,
+        {
+          replacements: { searchKey, loggedInUserId },
+          type: sequelize.QueryTypes.SELECT,
+        }
+      )
       : await sequelize.query(
-          "SELECT * FROM user WHERE id != :loggedInUserId",
-          {
-            replacements: { loggedInUserId },
-            type: sequelize.QueryTypes.SELECT,
-          }
-        );
+        "SELECT * FROM user WHERE id != :loggedInUserId",
+        {
+          replacements: { loggedInUserId },
+          type: sequelize.QueryTypes.SELECT,
+        }
+      );
 
     res.send(people);
   } catch (error) {

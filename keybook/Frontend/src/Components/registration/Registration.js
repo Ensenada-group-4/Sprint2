@@ -22,11 +22,12 @@ export default function Register() {
             const response = await request({
                 method: "POST",
                 endpoint: "users/register",
-                body: { name, lastName, dob, city, country, phone, email, password },
+                body: { name, lastName, dob, city, country, phone, linkedin, email, password },
             });
 
             if (response.id) {
-                alert("Usuario creado con éxito")
+                alert("Usuario creado con éxito. Redireccionando a login")
+                window.location.href = "/login"
             } else {
                 setError(true);
             }
@@ -45,7 +46,7 @@ export default function Register() {
                 <h1 className="new-user-registration">Registrar Nuevo Usuario</h1>
                 {error && (
                     <div className="error form-control ">
-                        La cuenta de correo ya está registrada
+                        Email ya registrado
                     </div>
                 )}
                 <FormInput label="Nombre" type="text"
