@@ -15,18 +15,8 @@ function Profile() {
   useEffect(() => {
     const fetchUser = async () => {
       const userLog = localStorage.getItem('userId')
-      //   const selectedUserId = localStorage.getItem('selectedUserId');
-      //   console.log('ID del usuario seleccionado:', selectedUserId);
-
-      //   let selectedUser;
-
-      //   if (selectedUserId) {
       const response = await fetch(`http://localhost:3000/users/user/${userId || userLog}`);
       const data = await response.json();
-      // selectedUser = data;
-      // } else {
-      //   const loggedInUserId = localStorage.getItem('userId');
-      // selectedUser = { id: userId || loggedInUserId };
       setUser(data);
       console.log({ userId });
       console.log(data);

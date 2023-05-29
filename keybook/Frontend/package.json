@@ -40,5 +40,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.1",
+    "@babel/preset-env": "^7.22.2",
+    "@babel/preset-react": "^7.22.3",
+    "@babel/register": "^7.21.0",
+    "chai": "^4.3.7",
+    "chai-dom": "^1.11.0",
+    "enzyme": "^3.11.0",
+    "jsdom": "^22.1.0",
+    "mocha": "^10.2.0"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",  
+  "author": "",
+  "license": "ISC"
 }

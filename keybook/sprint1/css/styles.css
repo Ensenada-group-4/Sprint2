@@ -1,15 +1,15 @@
-
 html {
-
   box-sizing: border-box;
   height: 100%;
 }
-*,* ::before, *::after{
+*,
+* ::before,
+*::after {
   box-sizing: inherit;
 }
 
-
-html, body {
+html,
+body {
   overflow-y: auto;
   color: rgb(44, 58, 129);
   background-image: url("https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
@@ -37,7 +37,7 @@ input {
   align-items: center;
   height: 20%;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1;/*no tocarmas*/
+  z-index: 1; /*no tocarmas*/
 }
 
 .keybook-logo {
@@ -57,12 +57,12 @@ input {
     max-width: 12%;
     right: 91%;
     top: 2%;
-    transform: none;/*no tocarmas*/
+    transform: none; /*no tocarmas*/
   }
 }
 .search-bar {
   padding: 0 20%;
-  margin-top: 4.5%;/*no tocarmas*/
+  margin-top: 4.5%; /*no tocarmas*/
 }
 
 #basic-addon1 {
@@ -84,161 +84,150 @@ input {
 .nav-icons {
   position: absolute;
   left: 75%;
-  top:58px;
+  top: 58px;
   /*no tocarmas*/
-
-
-} 
+}
 
 .icon {
   font-size: 25px;
   padding: 0 10px;
   color: #ffc312;
-  
-     
-  
 }
 
 .search-icon {
-  color: #b17aa2;/*no tocarmas*/
+  color: #b17aa2; /*no tocarmas*/
 }
 
 .icon:hover {
-  color: lightskyblue;/*no tocarmas*/
+  color: lightskyblue; /*no tocarmas*/
 }
 
-
-.navbar-toggler{
-  display:none;
-  background-color:transparent;
+.navbar-toggler {
+  display: none;
+  background-color: transparent;
   cursor: pointer;
-  border:none;
-  margin:0;
-  padding:0;
-  margin-top:35px;
-  }/*no tocarmas*/
+  border: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 35px;
+} /*no tocarmas*/
 
-  .navbar-toggler span{
-      background-color: #ffc312;
-      display:block;
-      height:3px;
-      width: 28px;
-      margin:10px auto;
-      border-radius:2px;    
-     /*no tocarmas*/
-  }
-.nav-icon{
-    display:flex;
-    padding:0;
+.navbar-toggler span {
+  background-color: #ffc312;
+  display: block;
+  height: 3px;
+  width: 28px;
+  margin: 10px auto;
+  border-radius: 2px;
+  /*no tocarmas*/
 }
-.nav-icon li{
-    padding: 0 40px;
-    list-style-type: none;
-    transition: 0.3s;
+.nav-icon {
+  display: flex;
+  padding: 0;
 }
-
-.nav-icon li a{
-    text-decoration:none;
-    font-size: 1.8rem;
-    color:#ffc312;
-    font-weight:600;
-}
-.nav-icon li:hover{
-    background-color:rgb(62, 130, 197);
+.nav-icon li {
+  padding: 0 40px;
+  list-style-type: none;
+  transition: 0.3s;
 }
 
+.nav-icon li a {
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #ffc312;
+  font-weight: 600;
+}
+.nav-icon li:hover {
+  background-color: rgb(62, 130, 197);
+}
 
 /* DISPOSITIVOS MOVILES */
 
-@media (max-width:992px) {
-  body{
-    overflow:hidden;
+@media (max-width: 992px) {
+  body {
+    overflow: hidden;
   }
-  .navbar-toggler{
-        display:block;
-        cursor:pointer;
-        position: absolute; 
-        top:15px;
-        right:25px;
-        transition: 0.2s  0.1s; 
-
-    }
-
-
-    nav{
-        flex-direction:column;
-        align-items: flex-start;
-        padding-top: 25px;
-        padding-bottom: 25px;
-    }
-
-    .keybook-logo{
-      padding-left:25px;
-      left:30px;
-
-    }
-    .search-bar {
-      padding: 0 20%;
-      margin-top: 7%;
-    }
-    .nav-icon {
-
-        flex-direction:column;
-        justify-content: space-around;
-        align-items:center;
-        height: 82vh;         
-        margin:0;
-        padding:0; 
-        display:none;
-        opacity:0;
-        transition: opacity 5s ease-out;
-        width:100%;
-        margin-top:80px;
-
-    }
-    
-    .nav-icons {
-      position: fixed;
-      top:35%;
-      left: 85%;
-      transform: translate(-90%, -55%);/*no tocarmas*/
-    }
-    .nav-icon li{
-      text-align:center;
-      width:100%;
-      padding:0px;    
+  .navbar-toggler {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    transition: 0.2s 0.1s;
   }
 
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
+  .keybook-logo {
+    padding-left: 25px;
+    left: 30px;
+  }
+  .search-bar {
+    padding: 0 20%;
+    margin-top: 7%;
+  }
+  .nav-icon {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 82vh;
+    margin: 0;
+    padding: 0;
+    display: none;
+    opacity: 0;
+    transition: opacity 5s ease-out;
+    width: 100%;
+    margin-top: 80px;
+  }
+
+  .nav-icons {
+    position: fixed;
+    top: 35%;
+    left: 85%;
+    transform: translate(-90%, -55%); /*no tocarmas*/
+  }
+  .nav-icon li {
+    text-align: center;
+    width: 100%;
+    padding: 0px;
+  }
 }
 
 /* Animaciones */
 
 @keyframes muestraMenu {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.nav-icons .activado{
-    display:flex; 
-    animation: muestraMenu 350ms ease-in-out both;
+.nav-icons .activado {
+  display: flex;
+  animation: muestraMenu 350ms ease-in-out both;
 }
 
-.br-1.animado{
+.br-1.animado {
   transform: rotate(-45deg) translate(-10px, 8px);
 }
 
-.br-2.animado{
+.br-2.animado {
   opacity: 0;
 }
-.br-3.animado{
+.br-3.animado {
   transform: rotate(45deg) translate(-10px, -8px);
 }
 
-.navbar-toggler.girar:hover{
-   transform:rotate(360deg);
+.navbar-toggler.girar:hover {
+  transform: rotate(360deg);
 }
-
-
 
 /* DEFAULT CARDS */
 
@@ -286,8 +275,10 @@ li {
 }
 
 .avatar-perfil {
-  box-sizing: content-box;
-  width: 30%;
+  box-sizing: content-box; 
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;  
 }
 
 .logo {
@@ -336,7 +327,6 @@ textarea {
   font-weight: 400;
 }
 
-
 /*FRIENDS PAGE*/
 .search-friends {
   position: fixed;
@@ -377,7 +367,6 @@ textarea {
   margin: auto;
 }
 
-
 .friend-box {
   text-align: center;
   display: flex;
@@ -397,7 +386,7 @@ textarea {
 }
 
 .page-link:visited {
-  background-color: rgba(0, 0, 0, 0.8); 
+  background-color: rgba(0, 0, 0, 0.8);
   text-decoration: none;
 }
 

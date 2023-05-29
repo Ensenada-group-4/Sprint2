@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHome,
-  faAddressBook,
-  faUser,
-  faCog,
-  faInfinity,
-} from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import GrayScaleButton from "./GrayScaleButton";
 import SearchBar from "./SearchBar";
-import NavBarIcon from "./NavBarIcon";
+import { CogIcon, UsersGrid, HomeIcon, Profile } from "./fontawesome";
 import Logout from "./Logout";
-import Logo from "./Logo";
-import UsersGrid from "./UsersGrid";
-import HomeIcon from "./HomeIcon";
-import UserIcon from "./UserIcon";
-import CogIcon from "./CogIcon";
+import { Logo } from "../logo/Logo";
+import NavBarIcon from "./NavBarIcon";
+import {
+  faAddressBook,
+  faHome,
+  faUser,
+  faCog,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,6 +27,14 @@ export default function NavBar() {
       navIcons.classList.remove("activado");
     }
   };
+  function getUserId() {
+    return localStorage.getItem(userId);
+  }
+
+  function handleProfileClick() {
+    const userId = getUserId();
+    window.location.href = `/profile/${userId}`;
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -52,7 +56,8 @@ export default function NavBar() {
       link: "/profile",
       icon: faUser,
       title: "Mi Perfil",
-      component: <UserIcon />,
+      component: <Profile />,
+      onClick: handleProfileClick,
     },
     {
       link: "/users",
@@ -74,8 +79,11 @@ export default function NavBar() {
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <div className="row nav-body">
-            <Logo />
-
+            <div className="col">
+              <a className="navbar-brand" href="/home">
+                <Logo className="keybook-logo d-block" />
+              </a>
+            </div>
             <div className="d-none d-lg-block">
               <SearchBar />
             </div>
@@ -122,21 +130,11 @@ export default function NavBar() {
 
                 {/* Funcionalidad blanco y negro */}
                 <li className="nav-item">
-                  <GrayScaleButton className="dropdown-item active">
-                    <FontAwesomeIcon
-                      icon={faInfinity}
-                      className="icon"
-                      title="Blanco y Negro"
-                    />
-                  </GrayScaleButton>
+                  <GrayScaleButton className="dropdown-item active"></GrayScaleButton>
                 </li>
                 {/*Logout*/}
                 <li className="nav-item">
-                  <Logout
-                    className="dropdown-item active"
-                    id="logout"
-                    href="#"
-                  ></Logout>
+                  <Logout className="dropdown-item active" id="logout"></Logout>
                 </li>
                 <li className="nav-item search-bar-dropdown d-lg-none  mx-auto">
                   <SearchBar />

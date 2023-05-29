@@ -22,12 +22,12 @@ function ProfileTools(props) {
     return (
         <>
             {user && (
-                <div class="default-card">
+                <div className="default-card">
                     <h4>
-                        <i class="fa-solid fa-computer icon" title="Técnicas"></i>
+                        <i className="fa-solid fa-computer icon" title="Técnicas"></i>
                         HERRAMIENTAS
                     </h4>
-                    <ul class="profile-data">
+                    <ul className="profile-data">
                         <li>Listado de habilidades</li>
                         <p>{user.tools_name}</p>
                     </ul>
