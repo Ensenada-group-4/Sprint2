@@ -1,14 +1,8 @@
 import { useState } from "react";
-import logo from '../../imgs/logo.png';
+import { Logo } from "../logo/Logo";
 import request from "../../utils/url";
 import { FormInput } from "./FormInput";
 import { ButtonDefault } from "../ButtonDefault";
-
-function MyLogo() {
-    return (
-        <img src={logo} alt="Keybook logo" style={{ borderRadius: "20%", width: "20%" }} />
-    );
-}
 
 export default function Register() {
     const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", email: "", password: "", repeatPassword: "" });
@@ -46,7 +40,8 @@ export default function Register() {
             <form onSubmit={handleSubmit}
                 className="p-3 mb-5 default-card"
                 id="form-register"
-            >{MyLogo()}
+            >
+            <Logo className="form-logo" />
                 <h1 className="new-user-registration">Registrar Nuevo Usuario</h1>
                 {error && (
                     <div className="error form-control ">
@@ -73,7 +68,7 @@ export default function Register() {
                     onChange={handleChange} value={userInfo.password} name="password" required />
                 <FormInput label="Repita contraseña" type="password"
                     onChange={handleChange} value={userInfo.repeatPassword} name="repeatPassword" required />
-                <ButtonDefault type="submit" content="Enviar" />
+                <ButtonDefault type="submit" content="Enviar" className="btn-lg"/>
             </form>
         </>
     );

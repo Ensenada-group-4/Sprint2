@@ -1,7 +1,7 @@
 import logo from "./logo.png";
 
-export const Logo = ({ id, className, style }) => {
+export const Logo = ({ className}) => {
   return (
-    <img src={logo} alt="Keybook logo" style={{ style }} id={id} className={className} />
+    <img src={logo} alt="Keybook logo" className={className} />
   );
 };
