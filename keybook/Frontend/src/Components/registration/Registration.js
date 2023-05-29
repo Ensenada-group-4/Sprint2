@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Logo } from "../logo/Logo";
 import request from "../../utils/url";
 import { FormInput } from "./FormInput";
-import { ButtonDefault } from "../ButtonDefault";
+import { ButtonDefault } from "../buttons/ButtonDefault";
 
 export default function Register() {
     const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", linkedin: "", email: "", password: "", repeatPassword: "" });

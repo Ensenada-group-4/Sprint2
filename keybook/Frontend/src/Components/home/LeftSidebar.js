@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
-import SubmitButton from "../ButtonStyle";
+
 function LeftSidebar() {
   const [users, setUsers] = useState([]);
   const [clickedUserId, setClickedUserId] = useState(null);

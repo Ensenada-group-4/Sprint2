@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonDefault } from "./ButtonDefault";
+import { ButtonDefault } from "./buttons/ButtonDefault";
 
 function Pagination({ currentPage, totalPages, onNext, onPrevious, setPage }) {
   function handlePreviousPage() {
