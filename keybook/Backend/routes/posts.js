@@ -44,7 +44,7 @@ router.get("/feed", async function (req, res) {
     const posts = await sequelize.query(
       `SELECT * FROM user
         JOIN post ON user.id = post.post_id_user
-        WHERE user.id;`,
+        WHERE user.id`,
       { type: sequelize.QueryTypes.SELECT }
     );
     res.send(posts);

@@ -33,6 +33,7 @@ export default function Register() {
             }
         } catch {
             alert("Error del servidor. Vuelva a intentarlo")
+            console.error(error);
         }
     }
 

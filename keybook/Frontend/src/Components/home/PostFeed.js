@@ -26,9 +26,10 @@ function PostFeed() {
                 <PostCard
                     key={post.post_id}
                     // href={`profile/${post.post_id_user}`}
-                    // src={`${post.profile_picture}`}
-                    // href={post.post_id_user}
+                      // href={post.post_id_user}
+                    // src={`${post.profile_picture}`}                  
                     // src={post.profile_picture}
+                    // src={"https://i.postimg.cc/05TysNgK/lucia.png"}
                     name={post.name}               
                     lastName={post.last_name}
                     content={post.post_content}

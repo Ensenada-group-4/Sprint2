@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
 // import SubmitButton from "../ButtonStyle";
-import Pagination from "../pagination";
+
 function RightSidebar({ loggedUserId }) {
   const [requests, setRequests] = useState([]);
   const [friends, setFriends] = useState([]);
@@ -64,19 +64,18 @@ function RightSidebar({ loggedUserId }) {
                 />
               </li>
               <li>{user.name}</li>
-              <li>
+              {/* <li>
                 <SubmitButton
                   type="submit"
                   content="Seguir"
                   id="register-form-buttons"
                   onClick={() => handleFollowUser(user)}
                 />
-              </li>
+              </li> */}
             </a>
           </li>
         ))}
-      </ul>
-      <Pagination />
+      </ul>   
     </div>
   );
 }

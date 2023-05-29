@@ -50,7 +50,7 @@ router.post("/:id", async function (req, res) {
       .json({ error: "Usuario ya seguido. No se puede volver a seguir" });
   } else {
     try {
-      await sequelize.query(
+      const result = await sequelize.query(
         "INSERT INTO friend (status, user_friend1_id, user_friend2_id) VALUES (?, ?, ?)",
         {
           type: sequelize.QueryTypes.INSERT,
@@ -58,6 +58,7 @@ router.post("/:id", async function (req, res) {
         }
       );
       res.status(200).send({
+        friendship_id: result[0],
         message: `Usuario ${loggedId} ahora sigue a usuario ${followId}`,
       });
     } catch (error) {
