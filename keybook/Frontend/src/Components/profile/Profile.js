@@ -5,6 +5,8 @@ import ProfileHobbies from './ProfileHobbies';
 import ProfileStudies from './ProfileStudies';
 import ProfileLanguages from './ProfileLanguages';
 import ProfileTools from './ProfileTools';
+import Feedback from './Feedback';
+import NewFeedBack from './NewFeedBack';
 
 function Profile() {
   const [user, setUser] = useState({});
@@ -36,6 +38,8 @@ function Profile() {
           </div>
           <div className="col-sm-7 col-md-7 col-lg-6">
             {user && <ProfileCard user={user} />}
+            <NewFeedBack />
+            <Feedback />
           </div>
           <div className="col-sm-5 col-md-4 col-lg-3">
             {user && <ProfileHobbies user={user} />}
