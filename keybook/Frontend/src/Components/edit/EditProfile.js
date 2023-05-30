@@ -7,7 +7,7 @@ import DeleteAccount from "./DeleteAccount";
 
 export default function EditProfile() {
     const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", linkedin: "", email: "", password: "", repeatPassword: "", education: "", tools: "", hobbies: "", languages: "" });
- 
+
     function handleChange(e) {
         const { name, value } = e.target;
         setUserInfo({ ...userInfo, [name]: value });
@@ -16,7 +16,7 @@ export default function EditProfile() {
     async function handleSubmit(e) {
         e.preventDefault();
         const { name, lastName, dob, city, country, phone, linkedin, email, password, repeatPassword, education, tools, hobbies, languages } = userInfo
-        const id = localStorage.getItem('userId');     
+        const id = localStorage.getItem('userId');
 
         try {
             const response = await request({
@@ -38,7 +38,7 @@ export default function EditProfile() {
             <form onSubmit={handleSubmit}
                 className="p-3 mb-5 default-card "
                 id="form-register">
-                <h1 className="new-user-registration">Editar perfil</h1>            
+                <h1 className="new-user-registration">Editar perfil</h1>
                 <h3 className="space">Datos personales</h3>
                 <FormInput label="Nombre" type="text"
                     onChange={handleChange} value={userInfo.name} name="name" />

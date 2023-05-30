@@ -32,7 +32,6 @@ function Feedback({ user }) {
                     content={feedbackItem.content}
                 />
             ))}
-            <NewFeedBack user={user} />
         </>
     );
 }
