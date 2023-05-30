@@ -62,7 +62,7 @@ export default function Login() {
                                 <FormInput
                                     type="password"
                                     onChange={handleChange} value={loginInfo.password} name="password" placeholder="Contraseña" />
-                                <ButtonDefault type="submit" content="Login" id="register-form-buttons"/>
+                                <ButtonDefault type="submit" content="Login" id="register-form-buttons" className="btn-lg"/>
 
                                 <div className="d-flex justify-content-center">
                                     <p className="slogan-container">Si no tienes cuenta <a href="./formRegistration.html">Registrate</a></p>

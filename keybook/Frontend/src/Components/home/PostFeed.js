@@ -10,28 +10,24 @@ function PostFeed() {
         const fetchPosts = async () => {
             try {
                 const response = await fetch(url + `posts/feed/${loggedId}`)
-                const data = await response.json();              
-                setPosts(data)                                       
+                const data = await response.json();
+                setPosts(data)
             } catch (error) {
                 alert("Error de servidor")
                 console.log(error)
             }
         }
         fetchPosts()
-    }, []); 
+    }, []);
 
     return (
         <>
-            {/* .slice(0, 5) */}
-            {posts.map((post) => (                
+            {posts.map((post) => (
                 <PostCard
                     key={post.post_id}
-                    // href={`profile/${post.post_id_user}`}
-                      // href={post.post_id_user}
-                    // src={`${post.profile_picture}`}                  
-                    // src={post.profile_picture}
-                    // src={"https://i.postimg.cc/05TysNgK/lucia.png"}
-                    name={post.name}              
+                    linkId={post.post_id_user}
+                    avatar={`${post.profile_picture}`}
+                    name={post.name}
                     lastName={post.last_name}
                     content={post.post_content}
                 />

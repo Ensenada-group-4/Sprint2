@@ -67,7 +67,9 @@ function NewPost() {
           <div >
             <ButtonDefault
               type="submit"
-              content="Publicar" />
+              content="Publicar"
+              className="btn-lg"
+            />
           </div>
         </div>
       </form>
