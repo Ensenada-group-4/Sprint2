@@ -41,7 +41,7 @@ export default function Login() {
                 <div className="row">
                     <div className="col-sm-5 col-md-6 col-lg-6">
                         <div className="default-card welcome-card">
-                            <Logo className="main-logo"/>
+                            <Logo className="main-logo" />
                             <div className="slogan-container">
                                 <h2>Keybook: donde los programadores comparten sus claves</h2>
                             </div>
@@ -62,15 +62,13 @@ export default function Login() {
                                 <FormInput
                                     type="password"
                                     onChange={handleChange} value={loginInfo.password} name="password" placeholder="Contraseña" />
-                                <ButtonDefault type="submit" content="Login" id="register-form-buttons" className="btn-lg"/>
+                                <ButtonDefault type="submit" content="Login" id="register-form-buttons" className="btn-lg" />
 
                                 <div className="d-flex justify-content-center">
                                     <p className="slogan-container">Si no tienes cuenta <a href="./formRegistration.html">Registrate</a></p>
-
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>
