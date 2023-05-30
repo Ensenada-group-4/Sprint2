@@ -8,7 +8,8 @@ import { useParams } from 'react-router-dom';
 function NewFeedBack(props) {
     const [feedbackContent, setFeedBackContent] = useState("");
     const [success, setSuccess] = useState(false);
-    const { user } = props;
+    const { user, userId } = props;
+    console.log("UserId", userId);
 
     function handleInputChange(event) {
         setFeedBackContent(event.target.value);
@@ -17,8 +18,8 @@ function NewFeedBack(props) {
     async function handleSubmit(event) {
         event.preventDefault();
         const userFrom = localStorage.getItem("userId");
-        const userTo = user.user_id;
-        console.log("userTo", userTo);
+        const userTo = userId;
+        // console.log("userTo", userTo);
         const data = {
             user_id_from: userFrom,
             user_id_to: userTo,

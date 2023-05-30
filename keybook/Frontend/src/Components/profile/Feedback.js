@@ -4,7 +4,7 @@ import { url } from "../../utils/url";
 import { FeedBackCard } from "./FeedBackCard";
 import NewFeedBack from './NewFeedBack';
 
-function Feedback({ user }) {
+function Feedback({ user, userId }) {
     const [feedback, setFeedback] = useState([]);
 
     useEffect(() => {
@@ -13,7 +13,8 @@ function Feedback({ user }) {
                 const response = await fetch(url + "feedback/feed");
                 const data = await response.json();
                 setFeedback(data);
-                console.log("data", data);
+                // console.log("data", data);
+                console.log("UserId", userId);
             } catch (error) {
                 alert("Error de servidor");
                 console.log(error);
@@ -24,6 +25,7 @@ function Feedback({ user }) {
 
     return (
         <>
+            <NewFeedBack userId={userId} user={user} />
             {feedback.map((feedbackItem) => (
                 <FeedBackCard
                     key={feedbackItem.feedback_id}
@@ -32,6 +34,7 @@ function Feedback({ user }) {
                     content={feedbackItem.content}
                 />
             ))}
+
         </>
     );
 }
