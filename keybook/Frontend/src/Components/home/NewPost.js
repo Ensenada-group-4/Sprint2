@@ -9,7 +9,7 @@ function NewPost() {
   const [success, setSuccess] = useState(false);
 
   function handleInputChange(event) {
-    setPostContent(event.target.value);   
+    setPostContent(event.target.value);
   }
 
   async function handleSubmit(event) {
@@ -25,7 +25,7 @@ function NewPost() {
         method: "POST",
         endpoint: "posts",
         body: data,
-    });     
+      });
       if (response) {
         setSuccess(true);
         setPostContent("")
@@ -67,8 +67,7 @@ function NewPost() {
           <div >
             <ButtonDefault
               type="submit"
-              content="Publicar"
-              className="btn-lg" />
+              content="Publicar" />
           </div>
         </div>
       </form>

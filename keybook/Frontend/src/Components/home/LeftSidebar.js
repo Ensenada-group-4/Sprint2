@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
+import Unfollow from "../buttons/UnfollowButton";
 
 function LeftSidebar() {
   const [users, setUsers] = useState([]);
@@ -17,31 +18,26 @@ function LeftSidebar() {
     } catch (error) {
       console.error(error);
     }
-  }
-  function handleUserClick(userId) {
-    setClickedUserId(userId);
-  }
+  } 
   useEffect(() => {
     fetchUsers();
   }, []);
+  
   return (
     <div className="default-card-left ">
-      <h4>AMIGOS</h4>
+      <h2>SIGUIENDO</h2>
       {users.map((user) => (
         <li key={user.id}>
-          <img src={user.profile_picture} alt="Avatar" className="avatar" />
-          <li>{user.name} </li>
-          <li>
-            {" "}
-            <SubmitButton
-              href={`/users/${user.id}`}
-              onClick={() => handleLikeClick(`/users/${user.id}`)}
-              content="Ver"
-            />
+        <a  title={`Perfil ${user.name}`} href={`/profile/${user.id}`}>
+          <img src={user.profile_picture} alt="Avatar" className="avatar" /></a>
+          <li><h4>{user.name} {user.last_name}</h4></li>
+          <li>           
+           <Unfollow id={user.id}/>            
           </li>
         </li>
       ))}
     </div>
   );
 }
+
 export default LeftSidebar;

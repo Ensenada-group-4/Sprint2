@@ -1,9 +1,13 @@
 import React from "react";
 import Follow from "../buttons/FollowButton";
+import Unfollow from "../buttons/UnfollowButton";
 
-export const Prueba = () => {   
-    
+export const Prueba = () => {
+
   return (
-    <Follow id={13} />    
+    <div className="row">
+      <Follow id={13} /> ,
+      <Unfollow id={13} />
+    </div>
   );
 };
