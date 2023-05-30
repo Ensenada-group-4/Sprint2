@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Logo } from "../logo/Logo";
 import request from "../../utils/url";
 import { FormInput } from "./FormInput";
-import { ButtonDefault } from "../ButtonDefault";
+import { ButtonDefault } from "../buttons/ButtonDefault";
 
 export default function Register() {
     const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", linkedin: "", email: "", password: "", repeatPassword: "" });
@@ -33,6 +33,7 @@ export default function Register() {
             }
         } catch {
             alert("Error del servidor. Vuelva a intentarlo")
+            console.error(error);
         }
     }
 
@@ -69,7 +70,7 @@ export default function Register() {
                     onChange={handleChange} value={userInfo.password} name="password" required />
                 <FormInput label="Repita contraseña" type="password"
                     onChange={handleChange} value={userInfo.repeatPassword} name="repeatPassword" required />
-                <ButtonDefault type="submit" content="Enviar" className="btn-lg"/>
+                <ButtonDefault type="submit" content="Enviar"/>
             </form>
         </>
     );

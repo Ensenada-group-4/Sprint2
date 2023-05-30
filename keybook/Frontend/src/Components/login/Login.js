@@ -2,7 +2,7 @@ import { useState } from "react";
 import request from "../../utils/url";
 import { Logo } from "../logo/Logo";
 import { FormInput } from "../registration/FormInput";
-import { ButtonDefault } from "../ButtonDefault";
+import { ButtonDefault } from "../buttons/ButtonDefault";
 
 export default function Login() {
     const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
@@ -32,13 +32,14 @@ export default function Login() {
             }
         } catch {
             alert("Error del servidor. Vuelva a intentarlo")
+            console.error(error);
         }
     }
     return (
         <>
-            <div class="container-fluid main-structure">
-                <div class="row">
-                    <div class="col-sm-5 col-md-6 col-lg-6">
+            <div className="container-fluid main-structure">
+                <div className="row">
+                    <div className="col-sm-5 col-md-6 col-lg-6">
                         <div className="default-card welcome-card">
                             <Logo className="main-logo"/>
                             <div className="slogan-container">
@@ -46,7 +47,7 @@ export default function Login() {
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-5 col-md-6 col-lg-6">
+                    <div className="col-sm-5 col-md-6 col-lg-6">
                         <div className="default-card welcome-card ">
                             <h1>Inicio de Sesión</h1>
                             {error && (
@@ -61,7 +62,7 @@ export default function Login() {
                                 <FormInput
                                     type="password"
                                     onChange={handleChange} value={loginInfo.password} name="password" placeholder="Contraseña" />
-                                <ButtonDefault type="submit" content="Login" id="register-form-buttons" className="btn-lg"/>
+                                <ButtonDefault type="submit" content="Login" id="register-form-buttons"/>
 
                                 <div className="d-flex justify-content-center">
                                     <p className="slogan-container">Si no tienes cuenta <a href="./formRegistration.html">Registrate</a></p>
