@@ -12,18 +12,15 @@ function Profile() {
   const [user, setUser] = useState({});
   const { userId } = useParams();
 
-
-
   useEffect(() => {
     const fetchUser = async () => {
-      const userLog = localStorage.getItem('userId')
+      const userLog = localStorage.getItem('userId');
       const response = await fetch(`http://localhost:3000/users/user/${userId || userLog}`);
       const data = await response.json();
       setUser(data);
       console.log({ userId });
       console.log(data);
-    }
-
+    };
 
     fetchUser();
   }, [userId]);
@@ -38,8 +35,8 @@ function Profile() {
           </div>
           <div className="col-sm-7 col-md-7 col-lg-6">
             {user && <ProfileCard user={user} />}
-            <NewFeedBack />
-            <Feedback />
+            <NewFeedBack user={user} />
+            <Feedback user={user} />
           </div>
           <div className="col-sm-5 col-md-4 col-lg-3">
             {user && <ProfileHobbies user={user} />}
@@ -50,5 +47,6 @@ function Profile() {
     </div>
   );
 }
+
 export default Profile;
 

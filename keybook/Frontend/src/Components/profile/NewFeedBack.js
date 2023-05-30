@@ -3,10 +3,12 @@ import { faPenNib } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ButtonDefault } from "../ButtonDefault";
 import request from "../../utils/url";
+import { useParams } from 'react-router-dom';
 
-function NewFeedBack() {
+function NewFeedBack(props) {
     const [feedbackContent, setFeedBackContent] = useState("");
     const [success, setSuccess] = useState(false);
+    const { user } = props;
 
     function handleInputChange(event) {
         setFeedBackContent(event.target.value);
@@ -14,9 +16,12 @@ function NewFeedBack() {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const userId = localStorage.getItem("userId");
+        const userFrom = localStorage.getItem("userId");
+        const userTo = user.user_id;
+        console.log(userTo);
         const data = {
-            user_id_from: userId,
+            user_id_from: userFrom,
+            user_id_to: userTo,
             content: feedbackContent,
         };
 

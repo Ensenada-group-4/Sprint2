@@ -4,41 +4,37 @@ import { url } from "../../utils/url";
 import { FeedBackCard } from "./FeedBackCard";
 import NewFeedBack from './NewFeedBack';
 
-function Feedback() {
-    const [feedback, setfeedback] = useState([]);
+function Feedback({ user }) {
+    const [feedback, setFeedback] = useState([]);
 
     useEffect(() => {
-        const fetchfeedback = async () => {
+        const fetchFeedback = async () => {
             try {
-                const response = await fetch(url + "feedback/feed")
+                const response = await fetch(url + "feedback/feed");
                 const data = await response.json();
-                setfeedback(data)
+                setFeedback(data);
+                console.log("data", data);
             } catch (error) {
-                alert("Error de servidor")
-                console.log(error)
+                alert("Error de servidor");
+                console.log(error);
             }
-        }
-        fetchfeedback()
+        };
+        fetchFeedback();
     }, []);
 
     return (
         <>
-            {/* .slice(0, 5) */}
-            {feedback.map((feedback) => (
+            {feedback.map((feedbackItem) => (
                 <FeedBackCard
-                    key={feedback.feedback_id}
-                    href={`profile/${feedback.user_id_from}`}
-                    src={`${feedback.profile_picture}`}
-                    href={feedback.post_id_user}
-                    src={feedback.profile_picture}
-                    name={feedback.name}
-                    last_name={feedback.last_name}
-                    content={feedback.content}
+                    key={feedbackItem.feedback_id}
+                    name={feedbackItem.name}
+                    last_name={feedbackItem.last_name}
+                    content={feedbackItem.content}
                 />
             ))}
+            <NewFeedBack user={user} />
         </>
     );
 }
-
 
 export default Feedback;
