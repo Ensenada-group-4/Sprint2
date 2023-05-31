@@ -3,7 +3,7 @@ import Unfollow from "../buttons/UnfollowButton";
 
 function LeftSidebar() {
   const [users, setUsers] = useState([]);
-  const userId = localStorage.getItem('userId');
+  const userId = localStorage.getItem("userId");
 
   async function fetchUsers() {
     try {
@@ -20,15 +20,26 @@ function LeftSidebar() {
     fetchUsers();
   }, []);
 
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      fetchUsers();
+    }, 2000);
+
+    return () => clearInterval(intervalId);
+  }, [users]);
+
   return (
     <div className="default-card-left ">
       <h2>SIGUIENDO</h2>
       {users.map((user) => (
         <div key={user.id}>
           <a title={`Perfil ${user.name}`} href={`/profile/${user.id}`}>
-            <img src={user.profile_picture} alt="Avatar" className="avatar" /></a>
-         <h4>{user.name} {user.last_name}</h4>         
-            <Unfollow id={user.id} />          
+            <img src={user.profile_picture} alt="Avatar" className="avatar" />
+          </a>
+          <h4>
+            {user.name} {user.last_name}
+          </h4>
+          <Unfollow id={user.id} setUsers={setUsers} />
         </div>
       ))}
     </div>

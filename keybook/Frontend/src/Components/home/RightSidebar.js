@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../../App.css";
-import Follow from "../buttons/FollowButton";
+import FollowButton from "../buttons/FollowButton";
 
 function RightSidebar() {
   const [requests, setRequests] = useState([]);
@@ -25,6 +25,40 @@ function RightSidebar() {
     fetchRequests();
   }, [page, loggedUserId]);
 
+  async function sendFollowRequest(userId) {
+    try {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          followerId: localStorage.getItem("userId"),
+          followingId: userId,
+        }),
+      };
+      const response = await fetch(
+        "http://localhost:3000/follow",
+        requestOptions
+      );
+      const data = await response.json();
+      console.log(data);
+      setRequests(requests.filter((user) => user.id !== userId));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      fetchRequests();
+    }, 2000);
+
+    return () => clearInterval(intervalId);
+  }, [requests]);
+
+  function handleFollow(userId) {
+    sendFollowRequest(userId);
+  }
+
   return (
     <div className="default-card-right">
       <h2>SUGERENCIAS</h2>
@@ -40,7 +74,11 @@ function RightSidebar() {
               </h4>
             </li>
             <li>
-              <Follow id={user.id} />
+              <FollowButton
+                id={user.id}
+                onClick={handleFollow}
+                setRequests={setRequests} // Nueva prop para actualizar la lista de sugerencias
+              />
             </li>
           </li>
         ))}

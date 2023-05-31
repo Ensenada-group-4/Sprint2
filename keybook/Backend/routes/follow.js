@@ -96,10 +96,10 @@ WHERE id NOT IN (
     ELSE user_friend1_id
   END AS friend_id
   FROM friend
-  WHERE (user_friend1_id = "${loggedId}" OR user_friend2_id = "${loggedId}")
-        AND (user_friend1_id <> "${loggedId}" OR user_friend2_id <> "${loggedId}")
+  WHERE user_friend1_id = "${loggedId}" OR user_friend2_id = "${loggedId}"
 ) AND id <> "${loggedId}"
-`,
+
+      `,
       {
         type: sequelize.QueryTypes.SELECT,
         replacements: [loggedId, loggedId],
