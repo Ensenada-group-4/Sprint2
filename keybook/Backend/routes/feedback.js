@@ -20,26 +20,40 @@ router.get('/', async function (req, res) {
 //Feedback posts
 router.post("/", async function (req, res) {
     try {
-        const { user_id_from, user_id_to, content } = req.body;
-        console.log(user_id_from);
-        const newFeedback = await sequelize.query(
-            `INSERT INTO feedback (user_id_from, user_id_to, content) VALUES (?, ?, ?)`,
-            {
-                type: sequelize.QueryTypes.INSERT,
-                replacements: [user_id_from, user_id_to, content],
-            }
+        const loggedId = req.body.user_id_from;
+        const followId = req.body.user_id_to;
+        const content = req.body.content;
+        const hasSentFeedback = await sequelize.query(
+            "SELECT * FROM feedback WHERE user_id_from = ? AND user_id_to = ?",
+            { type: sequelize.QueryTypes.SELECT, replacements: [loggedId, followId] }
         );
-        res.status(200).send({
-            feedback_id: newFeedback[0],
-            user_id_from,
-            user_id_to,
-            content,
-        });
+
+        if (hasSentFeedback.length > 0) {
+            return res
+                .status(400)
+                .json({ error: "Ya has enviado un feedback a este usuario" });
+        } else {
+            const newFeedback = await sequelize.query(
+                "INSERT INTO feedback (user_id_from, user_id_to, content) VALUES (?, ?, ?)",
+                {
+                    type: sequelize.QueryTypes.INSERT,
+                    replacements: [loggedId, followId, content],
+                }
+            );
+
+            res.status(200).send({
+                feedback_id: newFeedback[0],
+                user_id_from: loggedId,
+                user_id_to: followId,
+                content,
+            });
+        }
     } catch (e) {
         console.log(e);
-        res.status(400).send({ error: e.message });
+        res.status(500).send({ error: "Error interno del servidor" });
     }
 });
+
 
 //Feedback put
 router.put("/:feedback_id", async function (req, res) {
@@ -80,9 +94,5 @@ router.get("/feed", async function (req, res) {
         res.status(400).send({ error: e.message });
     }
 });
-
-
-
-
 
 module.exports = router;

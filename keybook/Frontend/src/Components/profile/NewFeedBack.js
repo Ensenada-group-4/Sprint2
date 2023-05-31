@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 function NewFeedBack(props) {
     const [feedbackContent, setFeedBackContent] = useState("");
     const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
     const { user, userId } = props;
     console.log("UserId", userId);
 
@@ -19,7 +20,7 @@ function NewFeedBack(props) {
         event.preventDefault();
         const userFrom = localStorage.getItem("userId");
         const userTo = userId;
-        // console.log("userTo", userTo);
+
         const data = {
             user_id_from: userFrom,
             user_id_to: userTo,
@@ -32,15 +33,15 @@ function NewFeedBack(props) {
                 endpoint: "feedback",
                 body: data,
             });
-            if (response) {
+            if (response.feedback_id) {
                 setSuccess(true);
-                setFeedBackContent("")
+                setFeedBackContent("");
+                setError(false);
             } else {
-                const errorText = await response.text();
-                console.log(errorText);
+                setError(true);
             }
         } catch (error) {
-            alert("Error del servidor. Vuelva a intentarlo")
+            setError(true);
             console.error(error);
         }
     }
@@ -66,15 +67,22 @@ function NewFeedBack(props) {
                     className="new-feed"
                 />
                 {success && (
-                    <div className="success ">
+                    <div className="success">
                         Publicado con éxito ✔
-                    </div>)}
+                    </div>
+                )}
+                {error && (
+                    <div className="error">
+                        No puedes publicar más de una recomendación &#10060;
+                    </div>
+                )}
                 <div className="insert">
-                    <div >
+                    <div>
                         <ButtonDefault
                             type="submit"
                             content="Publicar"
-                            className="btn-lg" />
+                            className="btn-lg"
+                        />
                     </div>
                 </div>
             </form>
