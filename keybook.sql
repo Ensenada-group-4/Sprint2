@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2023 a las 19:49:43
+-- Tiempo de generación: 31-05-2023 a las 11:19:15
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `keybook`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `feedback_id` bigint(20) NOT NULL,
+  `user_id_from` bigint(20) NOT NULL,
+  `user_id_to` bigint(20) NOT NULL,
+  `content` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `feedback`
+--
+
+INSERT INTO `feedback` (`feedback_id`, `user_id_from`, `user_id_to`, `content`) VALUES
+(1, 2, 13, 'Hoy he escrito mucho codigo, yupiii!'),
+(2, 1, 2, 'Holaaa'),
+(4, 1, 2, 'hola amigo'),
+(5, 3, 2, 'Hoy he escrito mucho codigo, yupiii!'),
+(15, 5, 6, 'aaaa'),
+(18, 13, 7, 'pepin');
 
 -- --------------------------------------------------------
 
@@ -68,7 +93,9 @@ INSERT INTO `post` (`post_id`, `post_id_user`, `post_content`) VALUES
 (4, 2, 'Hola amigos de keybook'),
 (11, 3, 'ayayai esto es un  lio!'),
 (28, 1, 'Hola soy lucia y esto fue una prueba de posicionamiento'),
-(41, 2, 'soy adrian y esto es una prueba');
+(41, 2, 'soy adrian y esto es una prueba'),
+(49, 13, 'eyyy'),
+(50, 13, 'aaaa');
 
 -- --------------------------------------------------------
 
@@ -113,6 +140,14 @@ INSERT INTO `user` (`id`, `name`, `last_name`, `email`, `password`, `date_of_bir
 --
 
 --
+-- Indices de la tabla `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`feedback_id`),
+  ADD KEY `user_id_from` (`user_id_from`),
+  ADD KEY `user_id_to` (`user_id_to`);
+
+--
 -- Indices de la tabla `friend`
 --
 ALTER TABLE `friend`
@@ -139,6 +174,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `feedback_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT de la tabla `friend`
 --
 ALTER TABLE `friend`
@@ -148,7 +189,7 @@ ALTER TABLE `friend`
 -- AUTO_INCREMENT de la tabla `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `post_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
@@ -159,6 +200,13 @@ ALTER TABLE `user`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `feedback`
+--
+ALTER TABLE `feedback`
+  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`user_id_from`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`user_id_to`) REFERENCES `user` (`id`);
 
 --
 -- Filtros para la tabla `friend`
