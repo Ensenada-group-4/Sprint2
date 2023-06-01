@@ -1,7 +1,7 @@
 import { useState } from "react";
 import request from "../../utils/url";
 import { Logo } from "../logo/Logo";
-import { FormInput } from "../registration/FormInput";
+import { FormInput } from "./FormInput";
 import { ButtonDefault } from "../buttons/ButtonDefault";
 
 export default function Login() {

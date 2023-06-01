@@ -7,6 +7,7 @@ import DeleteAccount from "./DeleteAccount";
 
 export default function EditProfile() {
     const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", linkedin: "", email: "", password: "", repeatPassword: "", education: "", tools: "", hobbies: "", languages: "" });
+    const [success, setSuccess] = useState(false);
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -26,10 +27,11 @@ export default function EditProfile() {
             });
 
             if (response.message) {
-                alert("Usuario actualizado con éxito")
+                setSuccess(true);
             }
         } catch {
-            alert("Ocurrió un error. Vuelva a intentarlo")
+            alert("Error del servidor. Vuelva a intentarlo")
+            console.error(error);
         }
     }
 
@@ -70,7 +72,8 @@ export default function EditProfile() {
                     onChange={handleChange} value={userInfo.password} name="password" />
                 <FormInput label="Repita contraseña" type="password"
                     onChange={handleChange} value={userInfo.repeatPassword} name="repeatPassword" />
-                <ButtonDefault type="submit" content="Actualizar" className="btn-lg"/>
+                {success && <div className="success col-md-8  form-control ">Datos actualizados con éxito ✔ </div>}
+                <ButtonDefault type="submit" content="Actualizar" className="btn-lg" />
 
                 <h3 className="space">Borrar cuenta</h3>
                 <p>Si desea eliminar su cuenta de forma permanente pulse en el sigueinte botón:</p>
