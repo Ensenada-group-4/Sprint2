@@ -23,15 +23,17 @@ router.post("/", async function (req, res) {
         const loggedId = req.body.user_id_from;
         const followId = req.body.user_id_to;
         const content = req.body.content;
+
+        if (loggedId === followId) {
+            return res.status(400).json({ error: "No puedes enviarte a ti mismo un feedback" });
+        }
         const hasSentFeedback = await sequelize.query(
             "SELECT * FROM feedback WHERE user_id_from = ? AND user_id_to = ?",
             { type: sequelize.QueryTypes.SELECT, replacements: [loggedId, followId] }
         );
 
         if (hasSentFeedback.length > 0) {
-            return res
-                .status(400)
-                .json({ error: "Ya has enviado un feedback a este usuario" });
+            return res.status(400).json({ error: "Ya has enviado un feedback a este usuario" });
         } else {
             const newFeedback = await sequelize.query(
                 "INSERT INTO feedback (user_id_from, user_id_to, content) VALUES (?, ?, ?)",
@@ -96,6 +98,5 @@ router.get("/feed/:id", async function (req, res) {
         res.status(400).send({ error: e.message });
     }
 });
-
 
 module.exports = router;
