@@ -15,8 +15,8 @@ export default function DeleteAccount() {
                     localStorage.removeItem('userId')
                     alert("Cuenta borrada. Te echaremos de menos 😔")
                     setTimeout(() => {
-                        window.location.href = "/login"                      
-                    }, 3000)
+                        window.location.href = "/"                      
+                    }, 2000)
                 } else {
                     alert("Se produjo un error.")                   
                 }

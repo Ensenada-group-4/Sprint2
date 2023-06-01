@@ -41,7 +41,7 @@ export default function Login() {
     }
     return (
         <>
-            <div className="container-fluid main-structure">
+            <div className="container-fluid main-structure min-vh-100">
                 <div className="row">
                     <div className="col-sm-5 col-md-6 col-lg-6">
                         <div className="default-card welcome-card">

@@ -448,6 +448,10 @@ textarea {
 
 /* CREATE ACCOUNT FORM */
 
+.error-card{
+  margin:5%;
+}
+
 .error {
   margin-top: 3%;
   color: aliceblue;

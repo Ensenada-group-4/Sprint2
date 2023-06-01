@@ -67,7 +67,7 @@ export default function NavBar() {
     },
 
     {
-      link: "#",
+      link: "/edit",
       icon: faCog,
       title: "Configuración",
       component: <CogIcon />,
