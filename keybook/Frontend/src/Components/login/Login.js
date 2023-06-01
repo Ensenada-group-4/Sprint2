@@ -65,7 +65,7 @@ export default function Login() {
                                 <ButtonDefault type="submit" content="Login" id="register-form-buttons" className="btn-lg" />
 
                                 <div className="d-flex justify-content-center">
-                                    <p className="slogan-container">Si no tienes cuenta <a href="./formRegistration.html">Registrate</a></p>
+                                    <p className="slogan-container">Si no tienes cuenta <a href="/register">Registrate</a></p>
                                 </div>
                             </form>
                         </div>
