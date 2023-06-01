@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SearchBarUsers from "./SearchBarUsers";
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import SearchBarUsers from "./SearchBarUsers";
 
 function UsersGrid() {
   const [userList, setUserList] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
-  const [searchKey, setSearchKey] = useState("");
-
   const [searchKey, setSearchKey] = useState("");
 
   useEffect(() => {
@@ -36,10 +31,6 @@ function UsersGrid() {
     if (event.target.value === "") {
       setFilteredResults(userList);
     }
-  };
-
-  const handleProfileClick = (userId) => {
-    localStorage.setItem("selectedUserId", userId);
   };
 
   const handleProfileClick = (userId) => {
