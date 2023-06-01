@@ -16,23 +16,11 @@ export default function validations() {
 
     if (!alphaRegex.test(keys.name)) {
         alert("Nombre sólo puede contener letras")
-    }
-
-    if (!alphaRegex.test(keys.lastName)) {
-        alert("Apellidos sólo pueden contener letras")
-    }
+    }  
 
     if (isNaN(keys.dob) || keys.dob.length != 4) {
         alert("Año de nacimiento debe ser una cifra de 4 letras")
-    }
-
-    if (!alphaRegex.test(keys.city)) {
-        alert("Ciudad sólo pueden contener letras")
-    }
-
-    if (!alphaRegex.test(keys.country)) {
-        alert("País sólo pueden contener letras")
-    }
+    }      
 
     if (isNaN(keys.phone)) {
         alert("Teléfono sólo puede contener números")

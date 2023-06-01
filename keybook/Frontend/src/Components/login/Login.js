@@ -58,10 +58,10 @@ export default function Login() {
                             <form onSubmit={handleSubmit}>
                                 <FormInput
                                     type="email"
-                                    onChange={handleChange} value={loginInfo.email} name="email" placeholder="Email" />
+                                    onChange={handleChange} value={loginInfo.email} name="email" placeholder="Email" required />
                                 <FormInput
                                     type="password"
-                                    onChange={handleChange} value={loginInfo.password} name="password" placeholder="Contraseña" />
+                                    onChange={handleChange} value={loginInfo.password} name="password" placeholder="Contraseña" required />
                                 <ButtonDefault type="submit" content="Login" id="register-form-buttons" className="btn-lg" />
 
                                 <div className="d-flex justify-content-center">
