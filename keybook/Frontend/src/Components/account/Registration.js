@@ -3,14 +3,15 @@ import { Logo } from "../logo/Logo";
 import request from "../../utils/url";
 import { FormInput } from "./FormInput";
 import { ButtonDefault } from "../buttons/ButtonDefault";
+import GrayScaleButton from "../navbar/GrayScaleButton";
 
 //Regex for password security
 const passwordRegex = /(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$/;
 
 export default function Register() {
     const [userInfo, setUserInfo] = useState({ name: "", lastName: "", dob: "", city: "", country: "", phone: "", linkedin: "", email: "", password: "", repeatPassword: "" });
-    const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -38,7 +39,7 @@ export default function Register() {
                 });
 
                 if (response.id) {
-                    setSuccess(true);                    
+                    setSuccess(true);
                     setTimeout(() => {
                         window.location.href = "/login"
                     }, 2000)
@@ -59,6 +60,7 @@ export default function Register() {
                 id="form-register">
                 <Logo className="form-logo" />
                 <h1 className="new-user-registration">Registrar Nuevo Usuario</h1>
+                <GrayScaleButton className="dropdown-item"/>
                 <FormInput label="Nombre" type="text"
                     onChange={handleChange} value={userInfo.name} name="name" required />
                 <FormInput label="Apellidos" type="text"

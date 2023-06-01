@@ -3,6 +3,7 @@ import request from "../../utils/url";
 import { Logo } from "../logo/Logo";
 import { FormInput } from "./FormInput";
 import { ButtonDefault } from "../buttons/ButtonDefault";
+import GrayScaleButton from "../navbar/GrayScaleButton";
 
 export default function Login() {
     const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
@@ -54,6 +55,7 @@ export default function Login() {
                     <div className="col-sm-5 col-md-6 col-lg-6">
                         <div className="default-card welcome-card ">
                             <h1>Inicio de Sesión</h1>
+                            <GrayScaleButton className="dropdown-item"/>
                             <form onSubmit={handleSubmit}>
                                 <FormInput
                                     type="email"

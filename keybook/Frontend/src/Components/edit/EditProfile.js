@@ -1,6 +1,6 @@
 import { useState } from "react";
 import request from "../../utils/url";
-import { FormInput } from "../registration/FormInput";
+import { FormInput } from "../account/FormInput";
 import { ButtonDefault } from "../buttons/ButtonDefault";
 import { TextArea } from "./TextArea";
 import DeleteAccount from "./DeleteAccount";
