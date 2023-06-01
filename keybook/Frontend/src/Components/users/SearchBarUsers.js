@@ -68,11 +68,3 @@ function SearchBarUsers({ onSearchResults }) {
 }
 
 export default SearchBarUsers;
-
-
-
-
-
-
-
-
