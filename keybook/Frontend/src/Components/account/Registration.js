@@ -41,7 +41,7 @@ export default function Register() {
                 if (response.id) {
                     setSuccess(true);
                     setTimeout(() => {
-                        window.location.href = "/login"
+                        window.location.href = "/"
                     }, 2000)
                 } else {
                     setError("Email ya registrado");

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2023 at 12:58 PM
+-- Generation Time: Jun 01, 2023 at 04:31 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -169,7 +169,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `last_name`, `email`, `password`, `date_of_birth`, `profile_picture`, `city`, `country`, `phone`, `tools_name`, `studies_course`, `language_name`, `hobby_name`, `linkedin`) VALUES
-(1, 'Lucia', 'Saenz', 'lucia@gmail.com', '$2b$10$CSidQ6OUrLWKbIlZRQMFXOUDYyZC06WJtn3qZmQsh3NO28ngGIl42', '1992', 'https://i.postimg.cc/05TysNgK/lucia.png', 'gijon', 'spain', '685432198', 'React, Node', 'Bootcamp Fullstack Tecla-2023', 'Inglés-C2', 'Ver videos de gatitos', '@lucia92'),
+(1, 'Lucia', 'Saenz', 'lucia@gmail.com', '$2b$10$fPFQCNmWRVcxrp6c587T4OFZpPmY07L6cob40zwzKpNwwQEbpI1Ei', '1992', 'https://i.postimg.cc/05TysNgK/lucia.png', 'gijon', 'spain', '685432198', 'React, Node', 'Bootcamp Fullstack Tecla-2023', 'Inglés-C2', 'Ver videos de gatitos', '@lucia92'),
 (2, 'Adrián', 'Page', 'pagemaster92@gmail.com', '$2b$10$w1CnLUff2HzryL1r5PfUDeMlgmWdSrJHDCvdoGC1pRxdcwrUEOGr6', '1992', 'https://i.postimg.cc/PJ89yhKB/adrian.png', 'Gijon', 'Spain', '98544444', 'React, Node', 'Bootcamp Fullstack Tecla-2023', 'Inglés-C2', 'Ver videos de gatitos', '@adrian92'),
 (3, 'Stella Maris', 'González Robert', 'Stella@hotmail.com', '$2b$10$j51amLhnbGuHnMPT8cd0O.yqnPfBDjDKmlifFu3cWFj.x7C8VevI6', '1990', 'https://i.postimg.cc/9M4C66JB/stella.png', 'Gijón', 'Spain', '61564462', 'React, Node', 'Bootcamp Fullstack Tecla-2023', 'Inglés-C2', 'Ver videos de gatitos', '@Stella'),
 (4, 'Rodrigo', 'Apellido', 'rodri@gmail.com', '$2b$10$.yJ1Np4CZYEC4bbMvRMaFuNTYBqkoxt0nerYabmlb12QoAqF9QLZG', '2023', 'https://i.postimg.cc/xTLTTSYx/rafael.png', 'Buenos Aires', 'Argentina', '5234534534', 'React, Node', 'Bootcamp Fullstack Tecla-2023', 'Inglés-C2', 'Ver videos de gatitos', '@rodri'),
@@ -250,7 +250,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id de usuario', AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id de usuario', AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
@@ -260,8 +260,8 @@ ALTER TABLE `user`
 -- Constraints for table `feedback`
 --
 ALTER TABLE `feedback`
-  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`user_id_from`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`user_id_to`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`user_id_from`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`user_id_to`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `friend`
