@@ -6,8 +6,7 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../../App.css";
+
 function ReplyBox({ onReply }) {
   const [replyText, setReplyText] = useState("");
   const [isOpen, setIsOpen] = useState(false);
