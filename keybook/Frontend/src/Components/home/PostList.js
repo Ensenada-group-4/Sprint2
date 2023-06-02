@@ -16,8 +16,7 @@ function PostList() {
     const fetchPosts = async () => {
       try {
         const response = await fetch(url + `posts/feed/${loggedId}`);
-        const data = await response.json();
-        console.log(data);
+        const data = await response.json();        
         setPosts(data);
         setTotalItemsCount(data.length);
       } catch (error) {
@@ -28,8 +27,7 @@ function PostList() {
     fetchPosts();
   }, [postAdded]);
 
-  const handlePageChange = (pageNumber) => {
-    console.log(`active page is ${pageNumber}`);
+  const handlePageChange = (pageNumber) => {    
     setActivePage(pageNumber);
   };
 

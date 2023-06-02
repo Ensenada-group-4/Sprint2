@@ -96,8 +96,7 @@ router.post("/register", async function (req, res) {
       );
       res.status(200).send({
         id: newUser[0],
-      });
-      console.log("Usuario creado con éxito");
+      });      
     }
   } catch (e) {
     console.log(e);

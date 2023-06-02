@@ -15,8 +15,7 @@ function UsersGridUnfollow() {
         `http://localhost:3000/follow/not-following/${loggedUserId}`
       );
       const data = await response.json();
-      setRequests(data);
-      // console.log(data);
+      setRequests(data);    
     } catch (error) {
       console.error(error);
     }
@@ -40,8 +39,7 @@ function UsersGridUnfollow() {
         "http://localhost:3000/follow",
         requestOptions
       );
-      const data = await response.json();
-      console.log(data);
+      const data = await response.json();      
       setRequests(requests.filter((user) => user.id !== userId));
     } catch (error) {
       console.error(error);

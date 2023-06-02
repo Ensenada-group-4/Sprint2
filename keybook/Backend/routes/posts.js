@@ -25,16 +25,14 @@ router.get("/feed/:id", async function (req, res) {
 //POST posts
 router.post("/", async function (req, res) {
   try {
-    const { post_id_user, post_content } = req.body;
-    console.log(post_id_user);
+    const { post_id_user, post_content } = req.body;   
     const newPost = await sequelize.query(
       `INSERT INTO post (post_id_user, post_content) VALUES (?, ?)`,
       {
         type: sequelize.QueryTypes.INSERT,
         replacements: [post_id_user, post_content],
       }
-    );
-    console.log(newPost);
+    );   
     res.status(200).json({
       post_id: newPost[0],
       post_id_user,

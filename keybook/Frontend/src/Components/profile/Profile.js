@@ -18,9 +18,7 @@ function Profile() {
       const userLog = localStorage.getItem('userId');
       const response = await fetch(`http://localhost:3000/users/user/${userId || userLog}`);
       const data = await response.json();
-      setUser(data);
-      // console.log({ userId });
-      // console.log(data);
+      setUser(data);   
     };
 
     fetchUser();

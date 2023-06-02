@@ -19,8 +19,7 @@ function SubmitResponse({ postId }) {
       }),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then((data) => {        
         setResponse("");
       })
       .catch((error) => {
