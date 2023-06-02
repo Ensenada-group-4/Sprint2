@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2023 at 04:31 PM
+-- Generation Time: Jun 02, 2023 at 11:55 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -169,7 +169,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `last_name`, `email`, `password`, `date_of_birth`, `profile_picture`, `city`, `country`, `phone`, `tools_name`, `studies_course`, `language_name`, `hobby_name`, `linkedin`) VALUES
-(1, 'Lucia', 'Saenz', 'lucia@gmail.com', '$2b$10$fPFQCNmWRVcxrp6c587T4OFZpPmY07L6cob40zwzKpNwwQEbpI1Ei', '1992', 'https://i.postimg.cc/05TysNgK/lucia.png', 'gijon', 'spain', '685432198', 'React, Node', 'Bootcamp Fullstack Tecla-2023', 'Inglés-C2', 'Ver videos de gatitos', '@lucia92'),
+(1, 'Lucia', 'Saenz', 'lucia@gmail.com', '$2b$10$GzyUys9FhUurKV2GPu9Pwep/KG2fxSReGemFYKog3Huwpt7.edmu.', '1992', 'https://i.postimg.cc/05TysNgK/lucia.png', 'gijon', 'spain', '685432198', 'React, Node', 'Bootcamp Fullstack Tecla-2023', 'Inglés-C2', 'Ver videos de gatitos', '@lucia92'),
 (2, 'Adrián', 'Page', 'pagemaster92@gmail.com', '$2b$10$w1CnLUff2HzryL1r5PfUDeMlgmWdSrJHDCvdoGC1pRxdcwrUEOGr6', '1992', 'https://i.postimg.cc/PJ89yhKB/adrian.png', 'Gijon', 'Spain', '98544444', 'React, Node', 'Bootcamp Fullstack Tecla-2023', 'Inglés-C2', 'Ver videos de gatitos', '@adrian92'),
 (3, 'Stella Maris', 'González Robert', 'Stella@hotmail.com', '$2b$10$j51amLhnbGuHnMPT8cd0O.yqnPfBDjDKmlifFu3cWFj.x7C8VevI6', '1990', 'https://i.postimg.cc/9M4C66JB/stella.png', 'Gijón', 'Spain', '61564462', 'React, Node', 'Bootcamp Fullstack Tecla-2023', 'Inglés-C2', 'Ver videos de gatitos', '@Stella'),
 (4, 'Rodrigo', 'Apellido', 'rodri@gmail.com', '$2b$10$.yJ1Np4CZYEC4bbMvRMaFuNTYBqkoxt0nerYabmlb12QoAqF9QLZG', '2023', 'https://i.postimg.cc/xTLTTSYx/rafael.png', 'Buenos Aires', 'Argentina', '5234534534', 'React, Node', 'Bootcamp Fullstack Tecla-2023', 'Inglés-C2', 'Ver videos de gatitos', '@rodri'),
@@ -179,14 +179,14 @@ INSERT INTO `user` (`id`, `name`, `last_name`, `email`, `password`, `date_of_bir
 (13, 'Iván', 'Ramos', 'ivan@gmail.com', '$2b$10$qEiCJ8iyiMGKhda16y58..PBVOLDQlqJBDPSK1H8yUsZwhlyVkDtq', '1997', 'https://i.postimg.cc/SNk2LBzX/blank-Avatar.png', 'Gijon', 'España', '987847463', 'HTML, CSS', 'Bootcamp Fullstack Tecla', 'Inglés', 'Leer sobre patos', '@ivan'),
 (16, 'Emilio', 'Delgado', 'emilio@mail.com', '$2b$10$iphZDTNrru5GfKwDFnb4C.p84sSlJcdr0k0FvT6WdvbIcK2QxM4Z.', '1977', 'https://i.postimg.cc/xTLTTSYx/rafael.png', 'Cordoba', 'Españita', '666123123', 'HTML, CSS', 'Fullstack Bootcamp 2020', 'Portugues A2, Español -Nativo', 'Montar en moto, tomar el sol', '@emilio'),
 (17, 'Belen', 'Lopez', 'belen@mail.com', '$2b$10$yG0d/H4Ukip9iQCKtIJTJ.hN6V9tGxecxe6mycEVscTSeeNrv7mZK', '1977', 'https://i.postimg.cc/rzXbYbPz/alicia.png', 'Madrid', 'Españita', '666123123', 'HTML, CSS', 'Fullstack Bootcamp 2020', 'Español -Nativo', 'Montar en moto', '@belen77'),
-(18, 'Lucia', 'Alvarez', 'alvazer@mail.com', '$2b$10$AcJDxFEQOSPFGAqR3lkgIOmZn7PQ11V6MQlk7IDMSJ4OIrtUQZ9wi', '1977', 'https://i.postimg.cc/HLvTPY4x/lupita.png', 'Madrid', 'España', '666123123', 'GIT, Node', 'Android Bootcamp 2022', 'Inglés - C2, Italiano - B1', 'Jugar a videojuegos', '@lucia77'),
+(18, 'Lucia', 'Alvarez', 'alvazer@mail.com', '$2b$10$AcJDxFEQOSPFGAqR3lkgIOmZn7PQ11V6MQlk7IDMSJ4OIrtUQZ9wi', '1977', 'https://i.postimg.cc/rzXbYbPz/alicia.png', 'Madrid', 'España', '666123123', 'GIT, Node', 'Android Bootcamp 2022', 'Inglés - C2, Italiano - B1', 'Jugar a videojuegos', '@lucia77'),
 (19, 'Natalia', 'Cuesta', 'natalia@mail.com', '$2b$10$XVJ.0dEScx/SQgl0BGndg.YyTbSWn891pHdF4QvMeVOYbeg8bnksC', '1985', 'https://i.postimg.cc/rzXbYbPz/alicia.png', 'Madrid', 'España', '666123123', 'HTML, CSS', 'Fullstack Bootcamp 2020', 'Español -Nativo', 'Montar en moto', '@natalia85'),
-(20, 'Alicia', 'Sanz', 'alvazer@mail.com', '$2b$10$xOsyta42nn9YCkfXlOkn2OBeJo6aovpsOnqAvRyn70W0OGEMnqllS', '1980', 'https://i.postimg.cc/HLvTPY4x/lupita.png', 'Madrid', 'España', '666123123', 'GIT, Node', 'Android Bootcamp 2022', 'Inglés - C2, Italiano - B1', 'Jugar a videojuegos', '@alicia80'),
+(20, 'Alicia', 'Sanz', 'alvazer@mail.com', '$2b$10$xOsyta42nn9YCkfXlOkn2OBeJo6aovpsOnqAvRyn70W0OGEMnqllS', '1980', 'https://i.postimg.cc/rzXbYbPz/alicia.png', 'Madrid', 'España', '666123123', 'GIT, Node', 'Android Bootcamp 2022', 'Inglés - C2, Italiano - B1', 'Jugar a videojuegos', '@alicia80'),
 (21, 'Rafael', 'Alvarez', 'rafita@mail.com', '$2b$10$RLOyhpwqqHZxuJdXH1lPb.tPVwe7/PYZi6jwxtyj61RLcjGJHxV2i', '1970', 'https://i.postimg.cc/xTLTTSYx/rafael.png', 'Madrid', 'España', '666123123', 'Javascript, Vue', 'IOS APPS Bootcamp 2023', 'Alemán - B1, Inglés - B2', 'Salir a correr', '@rafita70'),
 (22, 'Mauricio', 'Hidalgo', 'mauri@mail.com', '$2b$10$tDG1jte7vG1gMF2neA0LSedUZKOYcuJUwtcEtm2w/tLUlc6IuevXy', '1975', 'https://i.postimg.cc/xTLTTSYx/rafael.png', 'Madrid', 'España', '666123123', 'Javascript, Vue', 'IOS APPS Bootcamp 2023', 'Alemán - B1, Inglés - B2', 'Salir a correr', '@mauri75'),
 (23, 'Marisa', 'Benito', 'marisa@mail.com', '$2b$10$jws8AjJuif.L1x7AClJH4.o/JhR/SKUDFm.SVQXa2I.lnZ4aWgXb2', '1960', 'https://i.postimg.cc/rzXbYbPz/alicia.png', 'Madrid', 'España', '666123123', 'HTML, CSS', 'Fullstack Bootcamp 2020', 'Español -Nativo', 'Montar en moto', '@marisa60'),
 (24, 'Juan', 'Cuesta', 'juanito@mail.com', '$2b$10$mm4YFc1txgapDoKuljiy9u8BmTLV44VLRKdNUJl8v8cQaUsEbIVcq', '1970', 'https://i.postimg.cc/xTLTTSYx/rafael.png', 'Madrid', 'España', '666123123', 'Javascript, Vue', 'IOS APPS Bootcamp 2023', 'Alemán - B1, Inglés - B2', 'Salir a correr', '@juanito70'),
-(25, 'Vicenta', 'Benito', 'alvazer@mail.com', '$2b$10$DDMHi5S.jP66nvkrkOydRuBxK.I8B5QqiN0TNf14alNOTBI15k6NW', '1963', 'https://i.postimg.cc/HLvTPY4x/lupita.png', 'Madrid', 'España', '666123123', 'GIT, Node', 'Android Bootcamp 2022', 'Inglés - C2, Italiano - B1', 'Jugar a videojuegos', '@marisa63'),
+(25, 'Vicenta', 'Benito', 'alvazer@mail.com', '$2b$10$DDMHi5S.jP66nvkrkOydRuBxK.I8B5QqiN0TNf14alNOTBI15k6NW', '1963', 'https://i.postimg.cc/rzXbYbPz/alicia.png', 'Madrid', 'España', '666123123', 'GIT, Node', 'Android Bootcamp 2022', 'Inglés - C2, Italiano - B1', 'Jugar a videojuegos', '@marisa63'),
 (26, 'Mariano', 'Delgado', 'mariano@mail.com', '$2b$10$.kdfa0UmBNnkGfyniQxK0uxBXr83tv/f7fzYOcTXJPeHaayVhU3/O', '1968', 'https://i.postimg.cc/xTLTTSYx/rafael.png', 'Madrid', 'España', '666123123', 'Javascript, Vue', 'IOS APPS Bootcamp 2023', 'Alemán - B1, Inglés - B2', 'Salir a correr', '@mariano68'),
 (27, 'Bea', 'Villarejo', 'natalia@mail.com', '$2b$10$U8drfmfaQSaKMlKJXiuefe0kJBDYNiqe2wtqFONmUviSr1U93fFMq', '1985', 'https://i.postimg.cc/rzXbYbPz/alicia.png', 'Madrid', 'España', '666123123', 'HTML, CSS', 'Fullstack Bootcamp 2020', 'Español -Nativo', 'Montar en moto', '@bea85');
 
