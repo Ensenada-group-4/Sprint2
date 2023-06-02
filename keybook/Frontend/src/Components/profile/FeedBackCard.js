@@ -1,3 +1,5 @@
+//Reusable feedback card
+
 export const FeedBackCard = ({ feedback_id, user_id_from, user_id_to, content, name, last_name, linkId, avatar, }) => {
 
     return (

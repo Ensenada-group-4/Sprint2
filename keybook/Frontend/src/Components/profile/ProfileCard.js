@@ -10,8 +10,7 @@ function ProfileCard(props) {
                 <div className="default-card">
                     <div className="profile-details">
                         <div className="profile-info">
-                            <h2 id="profile-fullName">{user.name}</h2>
-                            <h2> {user.last_name}</h2>
+                            <h2 >{user.name} {user.last_name}</h2>                           
                             <div className="user-bio profile-data">
                                 <img
                                     id="profile-avatar"
@@ -20,17 +19,20 @@ function ProfileCard(props) {
                                     className="avatar"
                                 />
                             </div>
+                            <h5>Correo electrónico</h5>
                             <p>{user.email}</p>
                             <h5>TELÉFONO DE CONTACTO</h5>
                             <p>{user.phone}</p>
                         </div>
                         <div>
-                            <h5 id="profile-location">Ciudad</h5>
+                            <h5 >Ciudad</h5>
                             <p>{user.city}</p>
-                            <h5 id="profile-loc-country">País</h5>
+                            <h5>País</h5>
                             <p>{user.country}</p>
-                            <h5 id="profile-birthDate">Año de nacimiento:</h5>
+                            <h5 >Año de nacimiento:</h5>
                             <p>{user.date_of_birth}</p>
+                            <h5>Linkedin</h5>
+                            <p>{user.linkedin}</p>
                         </div>
                     </div>
                 </div>

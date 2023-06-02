@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Unfollow from "../buttons/UnfollowButton";
 import { ButtonDefault } from "../buttons/ButtonDefault";
+import { url } from "../../utils/url";
+
+
 function LeftSidebar() {
   const [users, setUsers] = useState([]);
   const userId = localStorage.getItem("userId");
   const [renderedUsers, setRenderedUsers] = useState(0);
+
   async function fetchUsers() {
     try {
-      const response = await fetch(
-        `http://localhost:3000/follow/following/${userId}`
-      );
+      const response = await fetch(url + `follow/following/${userId}`)      
       const data = await response.json();
       setUsers(data);
     } catch (error) {
@@ -20,6 +22,7 @@ function LeftSidebar() {
     fetchUsers();
   }, []);
 
+  //Set interval to check frequently for changes in DB 
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchUsers();

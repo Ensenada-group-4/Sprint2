@@ -1,4 +1,5 @@
 import request from "../../utils/url";
+import { ButtonDefault } from "../buttons/ButtonDefault";
 
 export default function DeleteAccount() {
     async function handleDelete(e) {
@@ -13,6 +14,7 @@ export default function DeleteAccount() {
                 })
                 if (response.message) {
                     localStorage.removeItem('userId')
+                    localStorage.removeItem('token')
                     alert("Cuenta borrada. Te echaremos de menos 😔")
                     setTimeout(() => {
                         window.location.href = "/"
@@ -28,6 +30,6 @@ export default function DeleteAccount() {
     }
 
     return (
-        <btn onClick={handleDelete} type="submit" className="btn btn-danger">Borrar cuenta</btn>
+        <ButtonDefault onClick={handleDelete} type="submit" className="btn btn-danger" content="Borrar cuenta"/>        
     )
 }

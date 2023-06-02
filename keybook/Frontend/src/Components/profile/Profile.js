@@ -6,7 +6,7 @@ import ProfileStudies from './ProfileStudies';
 import ProfileLanguages from './ProfileLanguages';
 import ProfileTools from './ProfileTools';
 import Feedback from './Feedback';
-import NewFeedBack from './NewFeedBack';
+import { url } from '../../utils/url';
 
 function Profile() {
   const [user, setUser] = useState({});
@@ -16,7 +16,7 @@ function Profile() {
   useEffect(() => {
     const fetchUser = async () => {
       const userLog = localStorage.getItem('userId');
-      const response = await fetch(`http://localhost:3000/users/user/${userId || userLog}`);
+      const response = await fetch(url + `users/user/${userId || userLog}`);
       const data = await response.json();
       setUser(data);   
     };
@@ -33,8 +33,7 @@ function Profile() {
             {user && <ProfileTools user={user} />}
           </div>
           <div className="col-sm-7 col-md-7 col-lg-6">
-            {user && <ProfileCard user={user} />}
-            {/* <NewFeedBack user={user} /> */}
+            {user && <ProfileCard user={user} />}           
             <Feedback userId={userId}
               user={user} />
           </div>

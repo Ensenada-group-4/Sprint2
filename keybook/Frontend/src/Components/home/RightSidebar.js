@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import FollowButton from "../buttons/FollowButton";
 import { ButtonDefault } from "../buttons/ButtonDefault";
 import { useNavigate } from "react-router-dom";
+import { url } from "../../utils/url";
 
 function RightSidebar() {
   const [requests, setRequests] = useState([]);
@@ -10,11 +11,9 @@ function RightSidebar() {
 
   async function fetchRequests() {
     try {
-      const response = await fetch(
-        `http://localhost:3000/follow/not-following/${loggedUserId}`
-      );
+      const response = await fetch(url + `follow/not-following/${loggedUserId}`);
       const data = await response.json();
-      setRequests(data);      
+      setRequests(data);
     } catch (error) {
       console.error(error);
     }
@@ -34,17 +33,16 @@ function RightSidebar() {
           followingId: userId,
         }),
       };
-      const response = await fetch(
-        "http://localhost:3000/follow",
-        requestOptions
-      );
-      const data = await response.json();      
+      const response = await fetch(url + "/follow", requestOptions);       
+      
+      const data = await response.json();
       setRequests(requests.filter((user) => user.id !== userId));
     } catch (error) {
       console.error(error);
     }
   }
 
+  //Set interval to check frequently for changes in DB 
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchRequests();
@@ -56,6 +54,8 @@ function RightSidebar() {
   function handleFollow(userId) {
     sendFollowRequest(userId);
   }
+
+  //Button show more - redirect to /users 
 
   function MyButton() {
     const navigate = useNavigate();

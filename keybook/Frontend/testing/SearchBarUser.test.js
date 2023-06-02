@@ -7,7 +7,7 @@ import { expect } from 'chai';
 import { render, unmountComponentAtNode } from 'react-dom';
 import React from 'react';
 import { fireEvent, getByText } from '@testing-library/react';
-import SearchBarUsers from '../users/SearchBarUsers';
+import SearchBarUsers from '../src/Components/users/SearchBarUsers';
 
 // Esto configura el entorno de DOM virtual JSDOM durante las pruebas
 const dom = new JSDOM('<!doctype html><html><body></body></html>');

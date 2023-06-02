@@ -31,6 +31,7 @@ export default function Register() {
         } else if (isNaN(dob) || dob.length != 4) {
             setError("Año de nacimiento debe ser un número de cuatro cifras")
         } else {
+            
             try {
                 const response = await request({
                     method: "POST",

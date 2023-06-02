@@ -27,6 +27,7 @@ function PostList() {
     fetchPosts();
   }, [postAdded]);
 
+  //Pagination and limits
   const handlePageChange = (pageNumber) => {    
     setActivePage(pageNumber);
   };

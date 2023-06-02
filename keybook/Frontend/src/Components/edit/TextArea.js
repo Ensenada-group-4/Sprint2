@@ -1,3 +1,5 @@
+//Reusable textarea component for edit form
+
 export const TextArea = ({ title, onChange, value, name, placeholder }) => {
     return (
         <>

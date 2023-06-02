@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import diacriticless from "diacriticless";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import GetUsers from "./GetUsers"; // Importa el componente GetUsers
+import GetUsers from "./GetUsers"; 
+import { url } from "../../utils/url";
 
 function SearchBarUsers({ onSearchResults }) {
   const [searchKey, setSearchKey] = useState("");
@@ -18,9 +19,7 @@ function SearchBarUsers({ onSearchResults }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch(
-      `http://localhost:3000/users/user?searchKey=${searchKey}`
-    );
+    const response = await fetch(url + `users/user?searchKey=${searchKey}`);
     const data = await response.json();
     setUserList(data);
     const filteredResults = data.filter((userData) => {
@@ -70,14 +69,14 @@ function SearchBarUsers({ onSearchResults }) {
             </span>
           </form>
         </div>
-        </div>
-        <div className="container main-structure-grid ">
-          <div className="row">
-            {filteredResults.length > 0 && (
-              <GetUsers users={filteredResults} />
-            )}</div>
-        </div>
-     
+      </div>
+      <div className="container main-structure-grid ">
+        <div className="row">
+          {filteredResults.length > 0 && (
+            <GetUsers users={filteredResults} />
+          )}</div>
+      </div>
+
 
 
     </>

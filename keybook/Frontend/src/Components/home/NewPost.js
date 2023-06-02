@@ -60,7 +60,7 @@ function NewPost(props) {
           onChange={handleInputChange}
           className="new-post"
         />
-        {success && <div className="success ">Publicado con éxito ✔</div>}
+        {success && <div >Publicado con éxito ✔</div>}
         <div className="insert">
           <div>
             <ButtonDefault

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Unfollow from "../buttons/UnfollowButton";
 import { Link } from "react-router-dom";
+import { url } from "../../utils/url";
 
 function UsersGridFollow({ }) {
   const [users, setUsers] = useState([]);
@@ -8,9 +9,7 @@ function UsersGridFollow({ }) {
 
   async function fetchUsers() {
     try {
-      const response = await fetch(
-        `http://localhost:3000/follow/following/${userId}`
-      );
+      const response = await fetch(url + `follow/following/${userId}`);
       const data = await response.json();
       setUsers(data);
     } catch (error) {
@@ -21,6 +20,7 @@ function UsersGridFollow({ }) {
     fetchUsers();
   }, []);
 
+  //Set interval to check frequently for changes in DB 
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchUsers();

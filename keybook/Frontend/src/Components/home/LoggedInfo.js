@@ -13,7 +13,7 @@ export default function LoggedInfo() {
                 setLogged(data)                
             } catch (error) {
                 alert("Error de servidor")
-                console.log(error)
+                console.error(error)
             }
         }
         getLoggedUser()

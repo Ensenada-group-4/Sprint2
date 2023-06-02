@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react';
-
 function ProfileLanguajes(props) {
     const { user } = props;
 
@@ -7,14 +5,11 @@ function ProfileLanguajes(props) {
         <>
             {user && (
                 <div className="default-card">
-                    <h4>
+                    <h3>
                         IDIOMAS
-                    </h4>
+                    </h3>
                     <ul className="profile-data">
-                        <a>
-                            Idioma
-                            <p>{user.language_name}</p>
-                        </a>
+                        <p>{user.language_name}</p>
                     </ul>
                 </div>
             )}

@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react';
-
 function ProfileStudies(props) {
     const { user } = props;
 
@@ -7,14 +5,11 @@ function ProfileStudies(props) {
         <>
             {user && (
                 <div className="default-card">
-                    <h4>
+                    <h3>
                         FORMACION
-                    </h4>
+                    </h3>
                     <ul className="profile-data">
-                        <a id="formacion">
-                            <p>Títulación</p>
-                            <p>{user.studies_course}</p>
-                        </a>
+                        <p>{user.studies_course}</p>
                     </ul>
                 </div>
             )}

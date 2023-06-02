@@ -5,6 +5,8 @@ import { ButtonDefault } from "../buttons/ButtonDefault";
 import request from "../../utils/url";
 import { useParams } from 'react-router-dom';
 
+//Limited one feedback per user to one other user
+
 function NewFeedBack(props) {
     const [feedbackContent, setFeedBackContent] = useState("");
     const [success, setSuccess] = useState(false);
@@ -63,7 +65,7 @@ function NewFeedBack(props) {
                             className="icon"
                         />
                     </a>
-                    NUEVA RECOMENDACIÓN
+                    RECOMENDAR USUARIO
                 </h2>
                 <textarea
                     cols="70"
@@ -75,14 +77,14 @@ function NewFeedBack(props) {
                     onChange={handleInputChange}
                     className="new-feedback"
                 />
-                {success && <div className="success ">Recomendación enviada ✔</div>}
+                {success && <div >Recomendación enviada ✔</div>}
                 {errorMultipleRecommendations && (
-                    <div className="error">
+                    <div className="error form-control">
                         Error: Ya has recomendado a este usuario &#10060;
                     </div>
                 )}
                 {errorSelfFeedback && (
-                    <div className="error">
+                    <div className="error form-control">
                         No puedes escribirte una recomendación a ti mismo &#10060;
                     </div>
                 )}

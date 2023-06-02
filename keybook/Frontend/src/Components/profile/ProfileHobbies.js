@@ -7,11 +7,10 @@ function ProfileHobbies(props) {
         <>
             {user && (
                 <div className="default-card">
-                    <h4>
+                    <h3>
                         INTERESES y HOBBIS
-                    </h4>
-                    <ul className="profile-data">
-                        <li>Listado de intereses</li>
+                    </h3>
+                    <ul className="profile-data">                        
                         <p>{user.hobby_name}</p>
                     </ul>
                 </div>

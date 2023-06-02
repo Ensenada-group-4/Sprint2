@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
-import "../../../src/App.css";
 import FollowButton from "../buttons/FollowButton";
+import { url } from "../../utils/url";
 
 function UsersGridUnfollow() {
   const [requests, setRequests] = useState([]);
@@ -11,11 +10,9 @@ function UsersGridUnfollow() {
 
   async function fetchRequests() {
     try {
-      const response = await fetch(
-        `http://localhost:3000/follow/not-following/${loggedUserId}`
-      );
+      const response = await fetch(url + `follow/not-following/${loggedUserId}`);
       const data = await response.json();
-      setRequests(data);    
+      setRequests(data);
     } catch (error) {
       console.error(error);
     }
@@ -35,17 +32,15 @@ function UsersGridUnfollow() {
           followingId: userId,
         }),
       };
-      const response = await fetch(
-        "http://localhost:3000/follow",
-        requestOptions
-      );
-      const data = await response.json();      
+      const response = await fetch(url + "/follow", requestOptions);
+      const data = await response.json();
       setRequests(requests.filter((user) => user.id !== userId));
     } catch (error) {
       console.error(error);
     }
   }
 
+  //Set interval to check frequently for changes in DB 
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchRequests();
@@ -65,7 +60,7 @@ function UsersGridUnfollow() {
           <div className="default-card friend-box">
             <Link to={`/profile/${user.id}`}>
               <img
-                className="friend-avatar"               
+                className="friend-avatar"
                 src={user.profile_picture}
                 alt={user.name}
               />

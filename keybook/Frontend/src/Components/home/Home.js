@@ -1,4 +1,3 @@
-import React from "react";
 import RightSidebar from "./RightSidebar";
 import LeftSidebar from "./LeftSidebar";
 import LoggedInfo from "./LoggedInfo";

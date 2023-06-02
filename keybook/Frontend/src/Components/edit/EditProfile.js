@@ -192,7 +192,7 @@ export default function EditProfile() {
 
         <h3 className="space">Borrar cuenta</h3>
         <p>
-          Si desea eliminar su cuenta de forma permanente pulse en el sigueinte
+          Si desea eliminar su cuenta de forma permanente pulse en el siguiente
           botón:
         </p>
         <DeleteAccount />

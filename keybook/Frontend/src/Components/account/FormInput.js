@@ -1,4 +1,4 @@
-import React from 'react';
+//Reusable input component for forms
 
 export const FormInput = ({ label, type, name, onChange, value, placeholder, required }) => {
     return (
