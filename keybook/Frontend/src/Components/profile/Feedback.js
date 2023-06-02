@@ -15,7 +15,7 @@ function Feedback({ user, userId }) {
                 setFeedback(data);
             } catch (error) {
                 alert("Error de servidor");
-                console.log(error);
+                console.error(error);
             }
         };
         fetchFeedback();

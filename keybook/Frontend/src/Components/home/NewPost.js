@@ -33,7 +33,7 @@ function NewPost(props) {
         setPostAdded(response);
       } else {
         const errorText = await response.text();
-        console.log(errorText);
+        console.error(errorText);
       }
     } catch (error) {
       alert("Error del servidor. Vuelva a intentarlo");

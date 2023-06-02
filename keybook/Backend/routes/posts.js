@@ -17,7 +17,7 @@ router.get("/feed/:id", async function (req, res) {
     );
     res.send(posts);
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(400).send({ error: e.message });
   }
 });
@@ -39,7 +39,7 @@ router.post("/", async function (req, res) {
       post_content,
     });
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(400).send({ error: e.message });
   }
 });

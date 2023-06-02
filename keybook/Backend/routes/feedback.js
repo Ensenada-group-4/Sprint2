@@ -16,7 +16,7 @@ router.get("/feed/:id", async function (req, res) {
     );
     res.send(feedProfile);
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(400).send({ error: e.message });
   }
 });
@@ -59,7 +59,7 @@ router.post("/", async function (req, res) {
       });
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(500).send({ error: "Error interno del servidor" });
   }
 });
@@ -82,7 +82,7 @@ router.put("/:feedback_id", async function (req, res) {
     }
     res.status(200).send({ success: true });
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(400).send({ error: e.message });
   }
 });

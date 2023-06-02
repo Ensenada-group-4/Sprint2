@@ -87,7 +87,7 @@ export default function NavBar() {
                 <h2>Donde los programadores comparten sus claves</h2>
               </div>
             </div>
-
+             {/*SearchBar hidden temporarily*/ }
             <div className="d-none d-lg-block">
               <SearchBar />
             </div>

@@ -99,7 +99,7 @@ router.post("/register", async function (req, res) {
       });      
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(400).send({ error: e.message });
   }
 });
@@ -129,7 +129,7 @@ router.post("/auth", async (req, res) => {
       res.status(400).send({ error: "Email no encontrado en base de datos" });
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(400).send({ error: e.message });
   }
 });
