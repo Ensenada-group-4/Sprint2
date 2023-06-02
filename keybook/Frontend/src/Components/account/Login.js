@@ -31,7 +31,7 @@ export default function Login() {
                 localStorage.setItem("token", response.token)
                 setTimeout(() => {
                     window.location.href = "/home"
-                }, 2000)
+                }, 1000)
             } else {
                 setError(true);
             }

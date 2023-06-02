@@ -42,7 +42,7 @@ export default function Register() {
                     setSuccess(true);
                     setTimeout(() => {
                         window.location.href = "/"
-                    }, 2000)
+                    }, 1000)
                 } else {
                     setError("Email ya registrado");
                 }

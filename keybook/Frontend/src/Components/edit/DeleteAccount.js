@@ -16,7 +16,7 @@ export default function DeleteAccount() {
                     alert("Cuenta borrada. Te echaremos de menos 😔")
                     setTimeout(() => {
                         window.location.href = "/"
-                    }, 2000)
+                    }, 1000)
                 } else {
                     alert("Se produjo un error. Vuelva a intentarlo")
                 }
