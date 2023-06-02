@@ -2,20 +2,26 @@ var express = require("express");
 const sequelize = require("../db/connection");
 var router = express.Router();
 
-/* GET feedback listing. */
-router.get("/", async function (req, res) {
+//GET feedback with user info
+router.get("/feed/:id", async function (req, res) {
+  const profileId = req.params.id;
+
   try {
-    const feedbackList = await sequelize.query("SELECT * FROM feedback", {
-      type: sequelize.QueryTypes.SELECT,
-    });
-    res.status(200).send(feedbackList);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Error interno del servidor");
+    const feedProfile = await sequelize.query(
+      `SELECT * FROM user 
+            JOIN feedback ON user.id = feedback.user_id_from
+            WHERE feedback.user_id_to = ${profileId}
+            ORDER BY feedback.feedback_id DESC;`,
+      { type: sequelize.QueryTypes.SELECT }
+    );
+    res.send(feedProfile);
+  } catch (e) {
+    console.log(e);
+    res.status(400).send({ error: e.message });
   }
 });
 
-//Feedback posts
+//POST feedback
 router.post("/", async function (req, res) {
   try {
     const loggedId = req.body.user_id_from;
@@ -58,7 +64,7 @@ router.post("/", async function (req, res) {
   }
 });
 
-//Feedback put
+//PUT feedback (For future use)
 router.put("/:feedback_id", async function (req, res) {
   try {
     const feedbackId = req.params.feedback_id;
@@ -75,25 +81,6 @@ router.put("/:feedback_id", async function (req, res) {
       return res.status(404).send({ error: "Feedback not found" });
     }
     res.status(200).send({ success: true });
-  } catch (e) {
-    console.log(e);
-    res.status(400).send({ error: e.message });
-  }
-});
-
-//GET feedback with user info
-router.get("/feed/:id", async function (req, res) {
-  const profileId = req.params.id;
-
-  try {
-    const feedProfile = await sequelize.query(
-      `SELECT * FROM user 
-            JOIN feedback ON user.id = feedback.user_id_from
-            WHERE feedback.user_id_to = ${profileId}
-            ORDER BY feedback.feedback_id DESC;`,
-      { type: sequelize.QueryTypes.SELECT }
-    );
-    res.send(feedProfile);
   } catch (e) {
     console.log(e);
     res.status(400).send({ error: e.message });
