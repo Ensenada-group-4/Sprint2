@@ -1,5 +1,5 @@
 import { useState } from "react";
-import request from "../../utils/url";
+import request from "../../utils/request";
 import { FormInput } from "../account/FormInput";
 import { ButtonDefault } from "../buttons/ButtonDefault";
 import { TextArea } from "./TextArea";

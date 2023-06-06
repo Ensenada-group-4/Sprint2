@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Logo } from "../logo/Logo";
-import request from "../../utils/url";
+import userRequest from "../../utils/userRequest";
 import { FormInput } from "./FormInput";
 import { ButtonDefault } from "../buttons/ButtonDefault";
 import GrayScaleButton from "../navbar/GrayScaleButton";
@@ -33,7 +33,7 @@ export default function Register() {
         } else {
             
             try {
-                const response = await request({
+                const response = await userRequest({
                     method: "POST",
                     endpoint: "users/register",
                     body: { name, lastName, dob, city, country, phone, linkedin, email, password },

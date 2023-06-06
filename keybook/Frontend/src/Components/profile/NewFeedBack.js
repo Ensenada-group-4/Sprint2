@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { faPenNib } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ButtonDefault } from "../buttons/ButtonDefault";
-import request from "../../utils/url";
+import request from "../../utils/request";
 import { useParams } from 'react-router-dom';
 
 //Limited one feedback per user to one other user
