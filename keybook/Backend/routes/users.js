@@ -3,11 +3,12 @@ const sequelize = require("../db/connection");
 var router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const authChecker = require('../utils/authChecker');
 
 const salt = 10;
 
 //GET user by id
-router.get("/user/:id", async (req, res) => {
+router.get("/user/:id", authChecker, async (req, res) => {
   const userId = req.params.id;
   const result = await sequelize.query(
     `SELECT * FROM user WHERE id = ${userId}`
@@ -20,7 +21,7 @@ router.get("/user/:id", async (req, res) => {
 });
 
 //GET user by name or email (based on input)
-router.get("/user", async function (req, res) {
+router.get("/user", authChecker, async function (req, res) {
   const { searchKey } = req.query;
 
   try {
@@ -135,7 +136,7 @@ router.post("/auth", async (req, res) => {
 });
 
 //PUT user by id
-router.put("/:id", async (req, res) => {
+router.put("/:id", authChecker, async (req, res) => {
   const userId = req.params.id;
   const {
     name,
@@ -181,7 +182,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // DELETE user by ID
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id", authChecker, async (req, res) => {
   const userId = req.params.id;
   try {
     await sequelize.query(`DELETE FROM user WHERE id = ${userId}`);

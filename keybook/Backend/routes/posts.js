@@ -1,9 +1,10 @@
 var express = require("express");
 const sequelize = require("../db/connection");
 var router = express.Router();
+const authChecker = require('../utils/authChecker');
 
 //GET posts with user info of following users
-router.get("/feed/:id", async function (req, res) {
+router.get("/feed/:id", authChecker, async function (req, res) {
   const loggedId = req.params.id;
 
   try {
@@ -23,7 +24,7 @@ router.get("/feed/:id", async function (req, res) {
 });
 
 //POST posts
-router.post("/", async function (req, res) {
+router.post("/", authChecker, async function (req, res) {
   try {
     const { post_id_user, post_content } = req.body;   
     const newPost = await sequelize.query(
