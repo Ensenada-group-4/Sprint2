@@ -145,7 +145,7 @@ router.put("/:id", authChecker, async (req, res) => {
     city,
     country,
     phone,
-    password,
+    // password,
     linkedin,
     education,
     tools,
@@ -153,14 +153,14 @@ router.put("/:id", authChecker, async (req, res) => {
     hobbies,
   } = req.body;
   const email = "";
-  const hashPassword = await bcrypt.hash(password, salt);
+  // const hashPassword = await bcrypt.hash(password, salt);
+
   try {
     await sequelize.query(
       `UPDATE user SET 
       name =  IF('${name}' = "", name, '${name}'),
       last_name = IF('${lastName}' = "", last_name, '${lastName}'),       
-      email = IF('${email}' = "", email, '${email}'),
-      password = IF('${hashPassword}' = "", password, '${hashPassword}'),
+      email = IF('${email}' = "", email, '${email}'),      
       date_of_birth = IF('${dob}' = "", date_of_birth, '${dob}'),
       city = IF('${city}' = "", city, '${city}'),
       country= IF( '${country}' = "", country, '${country}'),

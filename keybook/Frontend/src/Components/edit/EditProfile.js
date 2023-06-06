@@ -14,9 +14,7 @@ export default function EditProfile() {
     country: "",
     phone: "",
     linkedin: "",
-    email: "",
-    password: "",
-    repeatPassword: "",
+    email: "",    
     education: "",
     tools: "",
     hobbies: "",
@@ -39,9 +37,7 @@ export default function EditProfile() {
       country,
       phone,
       linkedin,
-      email,
-      password,
-      repeatPassword,
+      email,    
       education,
       tools,
       hobbies,
@@ -61,8 +57,7 @@ export default function EditProfile() {
           country,
           phone,
           linkedin,
-          email,
-          password,
+          email,         
           education,
           tools,
           hobbies,
@@ -166,23 +161,7 @@ export default function EditProfile() {
           onChange={handleChange}
           value={userInfo.hobbies}
           name="hobbies"
-        />
-
-        <h3 className="space">Actualizar contraseña</h3>
-        <FormInput
-          label="Contraseña"
-          type="password"
-          onChange={handleChange}
-          value={userInfo.password}
-          name="password"
-        />
-        <FormInput
-          label="Repita contraseña"
-          type="password"
-          onChange={handleChange}
-          value={userInfo.repeatPassword}
-          name="repeatPassword"
-        />
+        />  
         {success && (
           <div className="success col-md-8  form-control ">
             Datos actualizados con éxito ✔{" "}

@@ -5,7 +5,7 @@ export default async function request({ method, endpoint, body }) {
     let response = await fetch(url + endpoint, {
         method: method.toUpperCase(),
         headers: {
-            Authorization: token,
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify(body),
     });   
