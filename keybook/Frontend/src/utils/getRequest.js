@@ -1,17 +1,15 @@
 import { url } from "./url";
 
-export default async function request({ method, endpoint, body }) {
+export default async function getRequest({ endpoint }) {
     const token = localStorage.getItem("token");
     let response = await fetch(url + endpoint, {
-        method: method.toUpperCase(),
+        method: "GET",
         headers: {
             "content-type": "application/json",
             "Authorization": "Bearer " + token
-        },
-        body: JSON.stringify(body),
+        }
     });
     response = await response.json();
 
     return response
 }
-
