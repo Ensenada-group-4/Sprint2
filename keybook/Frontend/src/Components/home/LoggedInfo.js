@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { url } from "../../utils/url";
+import getRequest from '../../utils/getRequest';
 
 export default function LoggedInfo() {
     const [logged, setLogged] = useState({});
@@ -7,10 +7,11 @@ export default function LoggedInfo() {
     useEffect(() => {
         const getLoggedUser = async () => {
             const userId = localStorage.getItem("userId");
-            try {
-                const response = await fetch(url + `users/user/${userId}`)
-                const data = await response.json();
-                setLogged(data)                
+            try {               
+                const response = await getRequest({
+                    endpoint: `users/user/${userId}`
+                  })                   
+                setLogged(response)                
             } catch (error) {
                 alert("Error de servidor")
                 console.error(error)

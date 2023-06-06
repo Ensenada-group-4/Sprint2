@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Unfollow from "../buttons/UnfollowButton";
 import { ButtonDefault } from "../buttons/ButtonDefault";
-import { url } from "../../utils/url";
+import getRequest from '../../utils/getRequest';
 
 
 function LeftSidebar() {
@@ -10,10 +10,11 @@ function LeftSidebar() {
   const [renderedUsers, setRenderedUsers] = useState(0);
 
   async function fetchUsers() {
-    try {
-      const response = await fetch(url + `follow/following/${userId}`)      
-      const data = await response.json();
-      setUsers(data);
+    try { 
+      const response = await getRequest({
+        endpoint: `follow/following/${userId}`
+      })            
+      setUsers(response);
     } catch (error) {
       console.error(error);
     }

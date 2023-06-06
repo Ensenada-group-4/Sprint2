@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import FollowButton from "../buttons/FollowButton";
 import { ButtonDefault } from "../buttons/ButtonDefault";
 import { useNavigate } from "react-router-dom";
-import { url } from "../../utils/url";
+import getRequest from '../../utils/getRequest';
 
 function RightSidebar() {
   const [requests, setRequests] = useState([]);
@@ -11,9 +11,10 @@ function RightSidebar() {
 
   async function fetchRequests() {
     try {
-      const response = await fetch(url + `follow/not-following/${loggedUserId}`);
-      const data = await response.json();
-      setRequests(data);
+      const response = await getRequest({
+        endpoint: `follow/not-following/${loggedUserId}`
+      })
+      setRequests(response);
     } catch (error) {
       console.error(error);
     }
@@ -33,8 +34,8 @@ function RightSidebar() {
           followingId: userId,
         }),
       };
-      const response = await fetch(url + "/follow", requestOptions);       
-      
+      const response = await fetch(url + "/follow", requestOptions);
+
       const data = await response.json();
       setRequests(requests.filter((user) => user.id !== userId));
     } catch (error) {

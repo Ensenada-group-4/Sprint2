@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import NewPost from "./NewPost";
 import PostFeed from "./PostFeed";
-import { url } from "../../utils/url";
 import Pagination from "react-js-pagination";
+import getRequest from '../../utils/getRequest';
+
 
 //Post lists showing own posts and posts of users we follow
 
@@ -16,11 +17,12 @@ function PostList() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      try {
-        const response = await fetch(url + `posts/feed/${loggedId}`);
-        const data = await response.json();        
-        setPosts(data);
-        setTotalItemsCount(data.length);
+      try {      
+        const response = await getRequest({
+          endpoint: `posts/feed/${loggedId}`
+        })             
+        setPosts(response);
+        setTotalItemsCount(response.length);
       } catch (error) {
         alert("Error de servidor");
         console.error(error);
