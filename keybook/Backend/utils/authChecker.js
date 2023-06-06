@@ -10,6 +10,7 @@ function authChecker(req, res, next) {
       const payload = jwt.verify(token, process.env.JWT_KEY);
       req.user = payload;
       console.log(req.user);
+      console.log(req.headers.authorization);
 
     } catch (err) {
       return res.status(401).json({ error: "token is not valid" });

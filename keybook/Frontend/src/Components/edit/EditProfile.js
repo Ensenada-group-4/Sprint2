@@ -14,7 +14,9 @@ export default function EditProfile() {
     country: "",
     phone: "",
     linkedin: "",
-    email: "",    
+    email: "",
+    password: "",
+    repeatPassword: "",
     education: "",
     tools: "",
     hobbies: "",
@@ -57,7 +59,7 @@ export default function EditProfile() {
           country,
           phone,
           linkedin,
-          email,         
+          email,          
           education,
           tools,
           hobbies,
@@ -161,7 +163,8 @@ export default function EditProfile() {
           onChange={handleChange}
           value={userInfo.hobbies}
           name="hobbies"
-        />  
+        />
+     
         {success && (
           <div className="success col-md-8  form-control ">
             Datos actualizados con éxito ✔{" "}

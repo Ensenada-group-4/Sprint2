@@ -144,8 +144,7 @@ router.put("/:id", authChecker, async (req, res) => {
     dob,
     city,
     country,
-    phone,
-    // password,
+    phone, 
     linkedin,
     education,
     tools,
@@ -153,8 +152,8 @@ router.put("/:id", authChecker, async (req, res) => {
     hobbies,
   } = req.body;
   const email = "";
-  // const hashPassword = await bcrypt.hash(password, salt);
-
+  
+  
   try {
     await sequelize.query(
       `UPDATE user SET 
