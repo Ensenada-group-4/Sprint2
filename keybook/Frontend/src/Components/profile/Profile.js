@@ -6,7 +6,7 @@ import ProfileStudies from './ProfileStudies';
 import ProfileLanguages from './ProfileLanguages';
 import ProfileTools from './ProfileTools';
 import Feedback from './Feedback';
-import { url } from '../../utils/url';
+// import { url } from '../../utils/url';
 import getRequest from '../../utils/getRequest';
 
 function Profile() {
