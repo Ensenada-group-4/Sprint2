@@ -2,49 +2,59 @@ import React, { useState, useEffect } from "react";
 import diacriticless from "diacriticless";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import GetUsers from "./GetUsers"; 
+import GetUsers from "./GetUsers";
 import { url } from "../../utils/url";
 
 function SearchBarUsers({ onSearchResults }) {
   const [searchKey, setSearchKey] = useState("");
-  const [userList, setUserList] = useState([]);
+  const [users, setUsers] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [noResults, setNoResults] = useState(false);
 
   useEffect(() => {
     if (searchKey === "") {
-      setFilteredResults(userList);
+      setFilteredResults([]);
+    } else {
+      filterResults();
     }
-  }, [searchKey, userList]);
+  }, [searchKey, users]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const response = await fetch(url + `users/user?searchKey=${searchKey}`);
-    const data = await response.json();
-    setUserList(data);
-    const filteredResults = data.filter((userData) => {
-      const { name, email } = userData;
-      const searchQuery = diacriticless(searchKey.toLowerCase());
+  const filterResults = () => {
+    const searchQuery = diacriticless(searchKey.toLowerCase());
+    const filteredResults = users.filter((userData) => {
+      const { name, email, last_name } = userData;
       const normalizedName = diacriticless(name.toLowerCase());
+      const normalizedEmail = diacriticless(email.toLowerCase());
+      const normalizedlast_name = diacriticless(last_name.toLowerCase());
       return (
-        normalizedName.includes(searchQuery) ||
-        email.toLowerCase().includes(searchQuery)
+        normalizedName.startsWith(searchQuery) ||
+        normalizedEmail.startsWith(searchQuery) ||
+        normalizedlast_name.startsWith(searchQuery)
       );
     });
     setFilteredResults(filteredResults);
-    if (filteredResults.length === 0) {
-      setNoResults(true);
-    } else {
-      setNoResults(false);
-    }
+    setNoResults(filteredResults.length === 0);
     onSearchResults(filteredResults);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (searchKey.trim() === "") {
+      setFilteredResults([]);
+      setNoResults(false);
+      onSearchResults([]);
+      return;
+    }
+    const response = await fetch(url + `users/user?searchKey=${searchKey}`);
+    const data = await response.json();
+    setUsers(data);
+    filterResults();
   };
 
   return (
     <>
-      <div className="container ">
+      <div className="container">
         <div className="search-friends default-card">
-          <h4>COMUNIDAD</h4>
           <form id="find-user-form" className="d-flex" onSubmit={handleSubmit}>
             <span className="input-group-text" id="basic-addon1">
               <input
@@ -70,15 +80,13 @@ function SearchBarUsers({ onSearchResults }) {
           </form>
         </div>
       </div>
-      <div className="container main-structure-grid ">
+      <div className="container main-structure-grid">
         <div className="row">
-          {filteredResults.length > 0 && (
+          {searchKey.trim() !== "" && filteredResults.length > 0 && (
             <GetUsers users={filteredResults} />
-          )}</div>
+          )}
+        </div>
       </div>
-
-
-
     </>
   );
 }

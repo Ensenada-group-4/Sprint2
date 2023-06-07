@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import GrayScaleButton from "./GrayScaleButton";
 import SearchBar from "./SearchBar";
 import { CogIcon, UsersGrid, HomeIcon, Profile } from "./fontawesome";
 import Logout from "./Logout";
 import { Logo } from "../logo/Logo";
 import NavBarIcon from "./NavBarIcon";
+
 import {
   faAddressBook,
   faHome,
@@ -17,7 +18,7 @@ import {
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
-
+  const location = useLocation();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     const navIcons = document.querySelector(".nav-icons");
@@ -45,12 +46,17 @@ export default function NavBar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  function isActive(pathname) {
+    return location.pathname === pathname;
+  }
+
   const navIcons = [
     {
       link: "/home",
       icon: faHome,
       title: "Inicio",
       component: <HomeIcon />,
+      activeColor: "lightskyblue",
     },
     {
       link: `/profile/${getUserId()}`,
@@ -58,12 +64,14 @@ export default function NavBar() {
       title: "Mi Perfil",
       component: <Profile />,
       onClick: handleProfileClick,
+      activeColor: "lightskyblue",
     },
     {
       link: "/users",
       icon: faAddressBook,
       title: "Amigos",
       component: <UsersGrid />,
+      activeColor: "lightskyblue",
     },
 
     {
@@ -71,6 +79,8 @@ export default function NavBar() {
       icon: faCog,
       title: "Configuración",
       component: <CogIcon />,
+      onClick: handleProfileClick,
+      activeColor: "lightskyblue",
     },
   ];
 
@@ -87,7 +97,7 @@ export default function NavBar() {
                 <h2>Donde los programadores comparten sus claves</h2>
               </div>
             </div>
-             {/*SearchBar hidden temporarily*/ }
+
             <div className="d-none d-lg-block">
               <SearchBar />
             </div>
@@ -121,11 +131,13 @@ export default function NavBar() {
                     icon={icon.icon}
                     title={icon.title}
                     component={icon.component}
+                    isActive={() => isActive(icon.link)}
+                    activeColor={icon.activeColor}
                   >
                     <NavLink
                       exact
                       to={icon.link}
-                      activeClassName="active-link"
+                      isActive={() => isActive(icon.link)}
                       onClick={toggleMenu}
                     >
                       {icon.component}

@@ -4,15 +4,15 @@ import FollowButton from "../buttons/FollowButton";
 import { url } from "../../utils/url";
 
 function UsersGridUnfollow() {
-  const [requests, setRequests] = useState([]);
+  const [users, setUsers] = useState([]);
   const loggedUserId = localStorage.getItem("userId");
-  const [page] = useState(1);
+  // const [page] = useState(1);
 
   async function fetchRequests() {
     try {
       const response = await fetch(url + `follow/not-following/${loggedUserId}`);
       const data = await response.json();
-      setRequests(data);
+      setUsers(data);
     } catch (error) {
       console.error(error);
     }
@@ -20,25 +20,7 @@ function UsersGridUnfollow() {
 
   useEffect(() => {
     fetchRequests();
-  }, [page, loggedUserId]);
-
-  async function sendFollowRequest(userId) {
-    try {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          followerId: localStorage.getItem("userId"),
-          followingId: userId,
-        }),
-      };
-      const response = await fetch(url + "/follow", requestOptions);
-      const data = await response.json();
-      setRequests(requests.filter((user) => user.id !== userId));
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  }, []);
 
   //Set interval to check frequently for changes in DB 
   useEffect(() => {
@@ -47,7 +29,7 @@ function UsersGridUnfollow() {
     }, 2000);
 
     return () => clearInterval(intervalId);
-  }, [requests]);
+  }, [users]);
 
   function handleFollow(userId) {
     sendFollowRequest(userId);
@@ -55,7 +37,7 @@ function UsersGridUnfollow() {
 
   return (
     <>
-      {requests.map((user) => (
+      {users.map((user) => (
         <div className="col-sm-3" key={user.id}>
           <div className="default-card friend-box">
             <Link to={`/profile/${user.id}`}>
@@ -71,7 +53,7 @@ function UsersGridUnfollow() {
             <FollowButton
               id={user.id}
               onClick={() => handleFollow(user.id)}
-              setRequests={setRequests}
+              setUsers={setUsers}
             />
           </div>
         </div>

@@ -22,7 +22,10 @@ function GrayScaleButton(props) {
   }, [isGrayScale]);
 
   return (
-    <button className={props.className} onClick={toggleGrayScale}>
+    <button
+      className={`dropdown-item ${props.isActiveLink ? "active" : ""}`}
+      onClick={toggleGrayScale}
+    >
       <FontAwesomeIcon
         icon={faInfinity}
         className="icon"

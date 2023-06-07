@@ -8,7 +8,7 @@ function UserGrid() {
   const [following, setFollowing] = useState([]);
   const [users, setUsers] = useState([]);
 
-  const handleSearchResults = (results) => {    
+  const handleSearchResults = (results) => {
     setUsers(results)
   };
 
@@ -18,9 +18,11 @@ function UserGrid() {
       <div className="container friend-structure">
         <div className="row">
           <UsersGridFollow
-            users={users}
-            following={following}
-            setFollowing={setFollowing} />
+          // users={users}
+          // following={following}
+          // setFollowing={setFollowing} 
+
+          />
           <UsersGridUnfollow />
         </div>
       </div>

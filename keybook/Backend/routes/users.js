@@ -25,17 +25,24 @@ router.get("/user", authChecker, async function (req, res) {
   const { searchKey } = req.query;
 
   try {
-    const people = searchKey
-      ? await sequelize.query(
-        `SELECT * FROM user WHERE (name = :searchKey OR email = :searchKey)`,
-        {
-          replacements: { searchKey },
-          type: sequelize.QueryTypes.SELECT,
-        }
-      )
-      : await sequelize.query("SELECT * FROM user", {
-        type: sequelize.QueryTypes.SELECT,
-      });
+    let query = "SELECT * FROM user";
+    let replacements = {};
+
+    if (searchKey) {
+      query = `
+        SELECT *
+        FROM user
+        WHERE name LIKE :searchKeyPattern
+        OR email LIKE :searchKeyPattern
+        OR last_name LIKE :searchKeyPattern
+      `;
+      replacements = { searchKeyPattern: `%${searchKey}%` };
+    }
+
+    const people = await sequelize.query(query, {
+      replacements,
+      type: sequelize.QueryTypes.SELECT,
+    });
 
     res.send(people);
   } catch (error) {
@@ -97,7 +104,7 @@ router.post("/register", async function (req, res) {
       );
       res.status(200).send({
         id: newUser[0],
-      });      
+      });
     }
   } catch (e) {
     console.error(e);
