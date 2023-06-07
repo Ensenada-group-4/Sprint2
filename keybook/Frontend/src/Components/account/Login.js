@@ -1,5 +1,5 @@
 import { useState } from "react";
-import request from "../../utils/url";
+import userRequest from "../../utils/userRequest";
 import { Logo } from "../logo/Logo";
 import { FormInput } from "./FormInput";
 import { ButtonDefault } from "../buttons/ButtonDefault";
@@ -20,7 +20,7 @@ export default function Login() {
         const { email, password } = loginInfo;
 
         try {
-            const response = await request({
+            const response = await userRequest({
                 method: "POST",
                 endpoint: "users/auth",
                 body: { email, password },

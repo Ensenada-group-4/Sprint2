@@ -58,7 +58,6 @@ input {
     right: 91%;
     top: 2%;
     transform: none; /*no tocarmas*/
-    
   }
 }
 
@@ -100,9 +99,8 @@ input {
 }
 
 .icon.active {
-  color:aliceblue;;
+  color: aliceblue;
 }
-
 
 .search-icon {
   color: #b17aa2; /*no tocarmas*/
@@ -155,13 +153,13 @@ input {
 
 /* DISPOSITIVOS MOVILES */
 
-@media (max-width:1270px){
+@media (max-width: 1270px) {
   .slogan-container-nav h2 {
     font-size: 185%;
     display: flex;
   }
 }
-@media (max-width:1170px){
+@media (max-width: 1170px) {
   .slogan-container-nav h2 {
     font-size: 165%;
     display: flex;
@@ -453,24 +451,48 @@ textarea {
   top: 10%;
   left: 30%;
   right: 30%;
-  display: flex; 
-  padding: 1%;   
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1%;
 }
 
-
 .main-structure-grid {
-  margin-top: 10%;  
+  margin-top: 10%;
 }
 
 .search-input {
-  padding: 10px ;
+  padding: 10px;
   border-radius: 10px;
   border: 2px solid #b17aa2;
   cursor: pointer;
   background-color: aliceblue;
- 
 }
 
+@media screen and (max-width: 2000px) {
+  .search-friends {
+    position: fixed;
+    top: 10%;
+    left: 30%;
+    right: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+  }
+
+  .main-structure-grid {
+    margin-top: 15%;
+  }
+
+  .search-input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #b17aa2;
+    cursor: pointer;
+    background-color: aliceblue;
+  }
+}
 
 @media screen and (max-width: 1100px) {
   .search-friends {
@@ -479,11 +501,11 @@ textarea {
     width: 70%;
     left: 15%;
     display: flex;
-    padding: 10px;  
+    padding: 10px;
   }
-  
+
   .main-structure-grid {
-    margin-top: 13.5%;  
+    margin-top: 20%;
   }
 }
 @media screen and (max-width: 980px) {
@@ -493,11 +515,11 @@ textarea {
     width: 70%;
     left: 15%;
     display: flex;
-    padding: 10px;  
+    padding: 10px;
   }
-  
+
   .main-structure-grid {
-    margin-top: 13.5%;  
+    margin-top: 20%;
   }
   @media screen and (max-width: 790px) {
     .search-friends {
@@ -506,11 +528,11 @@ textarea {
       width: 70%;
       left: 15%;
       display: flex;
-      padding: 10px;  
+      padding: 10px;
     }
-    
+
     .main-structure-grid {
-      margin-top: 15.5%;  
+      margin-top: 25%;
     }
   }
   @media screen and (max-width: 690px) {
@@ -520,11 +542,11 @@ textarea {
       width: 70%;
       left: 15%;
       display: flex;
-      padding: 10px;  
+      padding: 10px;
     }
-    
+
     .main-structure-grid {
-      margin-top: 25.5%;  
+      margin-top: 25.5%;
     }
   }
   @media screen and (max-width: 550px) {
@@ -534,11 +556,11 @@ textarea {
       width: 70%;
       left: 15%;
       display: flex;
-      padding: 10px;  
+      padding: 10px;
     }
-     
+
     .main-structure-grid {
-      margin-top: 39.5%;  
+      margin-top: 39.5%;
     }
   }
   .search-input {
@@ -548,12 +570,10 @@ textarea {
     cursor: pointer;
     background-color: aliceblue;
   }
-  
+
   .search-friends-input {
     margin: 0 7%;
   }
-  
-  
 }
 .filter-icon {
   position: absolute;
@@ -569,8 +589,7 @@ textarea {
 
 .friend-avatar {
   width: 50%;
-  margin: auto; 
- 
+  margin: auto;
 }
 
 .friend-box {
@@ -595,14 +614,14 @@ textarea {
   background-color: rgba(0, 0, 0, 0.8);
   text-decoration: none;
 }
-.friend-structure{
+.friend-structure {
   margin-top: 5%;
 }
 
 /* CREATE ACCOUNT FORM */
 
-.error-card{
-  margin:5%;
+.error-card {
+  margin: 5%;
 }
 
 .error {
@@ -611,13 +630,13 @@ textarea {
   font-weight: bold;
   text-align: center;
   border-color: rgb(196, 47, 47);
-  background-color: rgb(196, 47, 47); 
+  background-color: rgb(196, 47, 47);
   width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.success{
+.success {
   margin-top: 3%;
   color: black;
   font-weight: bold;
@@ -650,7 +669,7 @@ textarea {
   margin-left: 25%;
 }
 
-#register-form-buttons {
+.register-form-buttons {
   margin-top: 5%;
 }
 
@@ -669,7 +688,7 @@ footer {
 .main-logo {
   width: 40%;
   border-radius: 20%;
-  position: relative;  
+  position: relative;
 }
 .slogan-container {
   text-align: center;
@@ -683,8 +702,6 @@ footer {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-
 
 .slogan-container h2:hover {
   transform: scale(1.1);
@@ -751,7 +768,6 @@ footer {
   margin: 0 0 10px;
   background-color: rgba(0, 0, 0, 0.8);
   display: block !important;
-
 }
 .default-card-center {
   justify-content: center !important;

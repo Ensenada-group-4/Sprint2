@@ -70,6 +70,12 @@ Las vistas RegisterView y LoginView son de libre acceso, pero el resto están re
 - UsersView: esta vista nos trae a todos los usuarios de la base de datos, diferenciándolos entre si ya son seguidos por nosotros o no. Además, la barra de búsqueda nos permite encontrar usuarios por nombre o email.
 
 
+## Cambios para la reentrega
+
+- CSS: aplicación de media queries en la página users, corrigiendo que la barra de búsqueda se superponga con los resultados y haciéndola responsiva a diferentes resoluciones. También se ha corregido la barra de navegación: el título ya no se monta sobre los iconos. Además, se ha añadido a dichos iconos que cambien de color en la página activa para mejor experiencia de usuario.
+- Búsqueda de usuarios: se ha actualizado la funcionalidad de la barra de búsqueda de manera que no filtre únicamente por coincidencia exacta sino por string clave, y se han ampliado los filtros a nombre, apellido y email. Aprovechamos para limpiar una parte del código de esta vista, y se tomó la decisión de mantener la búsqueda con filtro a través de su propio endpoint.
+- Seguridad: creación de middleware authChecker (Backend/utils) a todas las rutas (menos login y registro) para mejorar la seguridad a través de jwt. En Frontend/utils se han añadido dos nuevas funciones reutilizables más específicas para cada caso, según la necesidad de jwt en los headers o no, y se han aplicado a todas las peticiones del proyecto.
+
 
 
 

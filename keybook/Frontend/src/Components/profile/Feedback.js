@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { url } from "../../utils/url";
 import { FeedBackCard } from "./FeedBackCard";
 import NewFeedBack from './NewFeedBack';
+import getRequest from '../../utils/getRequest';
 
 function Feedback({ user, userId }) {
     const [feedback, setFeedback] = useState([]);
@@ -9,10 +9,11 @@ function Feedback({ user, userId }) {
 
     useEffect(() => {
         const fetchFeedback = async () => {
-            try {
-                const response = await fetch(url + `feedback/feed/${userId}`);
-                const data = await response.json();
-                setFeedback(data);
+            try {                
+                const response = await getRequest({
+                    endpoint: `feedback/feed/${userId}`
+                  })                
+                setFeedback(response);
             } catch (error) {
                 alert("Error de servidor");
                 console.error(error);

@@ -3,11 +3,12 @@ const sequelize = require("../db/connection");
 var router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const authChecker = require('../utils/authChecker');
 
 const salt = 10;
 
 //GET user by id
-router.get("/user/:id", async (req, res) => {
+router.get("/user/:id", authChecker, async (req, res) => {
   const userId = req.params.id;
   const result = await sequelize.query(
     `SELECT * FROM user WHERE id = ${userId}`
@@ -20,7 +21,7 @@ router.get("/user/:id", async (req, res) => {
 });
 
 //GET user by name or email (based on input)
-router.get("/user", async function (req, res) {
+router.get("/user", authChecker, async function (req, res) {
   const { searchKey } = req.query;
 
   try {
@@ -142,7 +143,7 @@ router.post("/auth", async (req, res) => {
 });
 
 //PUT user by id
-router.put("/:id", async (req, res) => {
+router.put("/:id", authChecker, async (req, res) => {
   const userId = req.params.id;
   const {
     name,
@@ -150,8 +151,7 @@ router.put("/:id", async (req, res) => {
     dob,
     city,
     country,
-    phone,
-    password,
+    phone, 
     linkedin,
     education,
     tools,
@@ -159,14 +159,14 @@ router.put("/:id", async (req, res) => {
     hobbies,
   } = req.body;
   const email = "";
-  const hashPassword = await bcrypt.hash(password, salt);
+  
+  
   try {
     await sequelize.query(
       `UPDATE user SET 
       name =  IF('${name}' = "", name, '${name}'),
       last_name = IF('${lastName}' = "", last_name, '${lastName}'),       
-      email = IF('${email}' = "", email, '${email}'),
-      password = IF('${hashPassword}' = "", password, '${hashPassword}'),
+      email = IF('${email}' = "", email, '${email}'),      
       date_of_birth = IF('${dob}' = "", date_of_birth, '${dob}'),
       city = IF('${city}' = "", city, '${city}'),
       country= IF( '${country}' = "", country, '${country}'),
@@ -188,7 +188,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // DELETE user by ID
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id", authChecker, async (req, res) => {
   const userId = req.params.id;
   try {
     await sequelize.query(`DELETE FROM user WHERE id = ${userId}`);

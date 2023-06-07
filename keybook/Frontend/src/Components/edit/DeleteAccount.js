@@ -1,4 +1,4 @@
-import request from "../../utils/url";
+import request from "../../utils/request";
 import { ButtonDefault } from "../buttons/ButtonDefault";
 
 export default function DeleteAccount() {

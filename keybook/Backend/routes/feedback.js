@@ -1,9 +1,10 @@
 var express = require("express");
 const sequelize = require("../db/connection");
 var router = express.Router();
+const authChecker = require('../utils/authChecker');
 
 //GET feedback with user info
-router.get("/feed/:id", async function (req, res) {
+router.get("/feed/:id", authChecker, async function (req, res) {
   const profileId = req.params.id;
 
   try {
@@ -22,7 +23,7 @@ router.get("/feed/:id", async function (req, res) {
 });
 
 //POST feedback
-router.post("/", async function (req, res) {
+router.post("/", authChecker, async function (req, res) {
   try {
     const loggedId = req.body.user_id_from;
     const followId = req.body.user_id_to;
@@ -64,8 +65,8 @@ router.post("/", async function (req, res) {
   }
 });
 
-//PUT feedback (For future use)
-router.put("/:feedback_id", async function (req, res) {
+//PUT feedback (For future use only)
+router.put("/:feedback_id", authChecker, async function (req, res) {
   try {
     const feedbackId = req.params.feedback_id;
     const { content } = req.body;

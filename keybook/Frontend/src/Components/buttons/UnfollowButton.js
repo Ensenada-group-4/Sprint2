@@ -1,5 +1,5 @@
 import { ButtonDefault } from "./ButtonDefault";
-import request from "../../utils/url";
+import request from "../../utils/request";
 
 export default function Unfollow({ id }) {
     async function unfollowUser(unfollowId) {
