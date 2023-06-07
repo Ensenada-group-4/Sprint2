@@ -3,7 +3,7 @@ import diacriticless from "diacriticless";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import GetUsers from "./GetUsers";
-import { url } from "../../utils/url";
+import getRequest from '../../utils/getRequest';
 
 function SearchBarUsers({ onSearchResults }) {
   const [searchKey, setSearchKey] = useState("");
@@ -45,9 +45,11 @@ function SearchBarUsers({ onSearchResults }) {
       onSearchResults([]);
       return;
     }
-    const response = await fetch(url + `users/user?searchKey=${searchKey}`);
-    const data = await response.json();
-    setUsers(data);
+    
+    const response = await getRequest({
+      endpoint: `users/user?searchKey=${searchKey}`
+    })
+    setUsers(response)
     filterResults();
   };
 
@@ -55,7 +57,7 @@ function SearchBarUsers({ onSearchResults }) {
     <>
       <div className="container">
         <div className="search-friends default-card">
-          <form id="find-user-form" className="d-flex" onSubmit={handleSubmit}>
+          <form className="d-flex" onSubmit={handleSubmit}>
             <span className="input-group-text" id="basic-addon1">
               <input
                 className="form-control me-2 search-content-input"

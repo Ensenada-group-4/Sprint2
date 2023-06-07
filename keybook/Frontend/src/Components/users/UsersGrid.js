@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
 import UsersGridFollow from "./UsersGridFollow";
 import UsersGridUnfollow from "./UsersGridUnfollow";
 import SearchBarUsers from "./SearchBarUsers";
 
-function UserGrid() {
-  const [following, setFollowing] = useState([]);
+function UserGrid() { 
   const [users, setUsers] = useState([]);
 
   const handleSearchResults = (results) => {
@@ -17,12 +15,7 @@ function UserGrid() {
       <SearchBarUsers onSearchResults={handleSearchResults} />
       <div className="container friend-structure">
         <div className="row">
-          <UsersGridFollow
-          // users={users}
-          // following={following}
-          // setFollowing={setFollowing} 
-
-          />
+          <UsersGridFollow />
           <UsersGridUnfollow />
         </div>
       </div>

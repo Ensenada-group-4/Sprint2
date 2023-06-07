@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FollowButton from "../buttons/FollowButton";
-import { url } from "../../utils/url";
+import getRequest from '../../utils/getRequest';
 
 function UsersGridUnfollow() {
   const [users, setUsers] = useState([]);
   const loggedUserId = localStorage.getItem("userId");
-  // const [page] = useState(1);
 
   async function fetchRequests() {
-    try {
-      const response = await fetch(url + `follow/not-following/${loggedUserId}`);
-      const data = await response.json();
-      setUsers(data);
+    try {      
+      const response = await getRequest({
+        endpoint: `follow/not-following/${loggedUserId}`
+      })
+      setUsers(response);
     } catch (error) {
       console.error(error);
     }
