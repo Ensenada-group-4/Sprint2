@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Unfollow from "../buttons/UnfollowButton";
 import { ButtonDefault } from "../buttons/ButtonDefault";
-import getRequest from '../../utils/getRequest';
-
+import getRequest from "../../utils/getRequest";
 
 function LeftSidebar() {
   const [users, setUsers] = useState([]);
@@ -10,10 +9,10 @@ function LeftSidebar() {
   const [renderedUsers, setRenderedUsers] = useState(0);
 
   async function fetchUsers() {
-    try { 
+    try {
       const response = await getRequest({
-        endpoint: `follow/following/${userId}`
-      })            
+        endpoint: `follow/following/${userId}`,
+      });
       setUsers(response);
     } catch (error) {
       console.error(error);
@@ -23,7 +22,7 @@ function LeftSidebar() {
     fetchUsers();
   }, []);
 
-  //Set interval to check frequently for changes in DB 
+  //Set interval to check frequently for changes in DB
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchUsers();

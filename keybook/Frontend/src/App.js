@@ -17,7 +17,7 @@ import EditProfileView from "./views/EditProfileView";
 import ErrorView from "./views/ErrorView";
 
 function App() {
-  const isAuthenticated = !!localStorage.getItem("token"); 
+  const isAuthenticated = !!localStorage.getItem("token");
 
   return (
     <>

@@ -8,10 +8,12 @@ import {
   faCog,
   faInfinity,
   faUsers,
+  faTable,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 library.add(faSearch, faSignOutAlt);
-library.add(faAddressBook, faHome, faUser, faCog, faInfinity);
+library.add(faAddressBook, faHome, faUser, faCog, faInfinity, faTable, faTimes);
 
 const CogIcon = () => {
   return <FontAwesomeIcon icon={faCog} />;
@@ -28,4 +30,8 @@ const HomeIcon = () => {
 const Profile = () => {
   return <FontAwesomeIcon icon={faUsers} />;
 };
-export { CogIcon, UsersGrid, HomeIcon, Profile };
+const ListUser = () => {
+  return <FontAwesomeIcon icon={faTable} />;
+};
+
+export { CogIcon, UsersGrid, HomeIcon, Profile, ListUser };
