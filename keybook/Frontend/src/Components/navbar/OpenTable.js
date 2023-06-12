@@ -100,11 +100,14 @@ function FaTableButton() {
                         <td>{user.role}</td>
                       </tr>
                     ))}
+
                     <ButtonDefault
                       content="Cerrar"
                       onClick={handleCloseClick}
                     />
+                    <a> </a>
                     <PrintButton users={users} />
+
                     <ReactPaginate
                       pageCount={totalPages}
                       onPageChange={handlePageClick}
