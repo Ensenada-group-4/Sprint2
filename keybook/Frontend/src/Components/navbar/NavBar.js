@@ -21,10 +21,12 @@ export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const role = "admin";
   const toggle = () => setIsOpen(!isOpen);
+
+  console.log("role:", localStorage.getItem("role"));
   const [isAdmin, setIsAdmin] = useState(
     localStorage.getItem("role") === "admin"
   );
-  localStorage.setItem("role", role);
+
   const location = useLocation();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -153,9 +155,12 @@ export default function NavBar() {
                   </NavBarIcon>
                 ))}
                 {/* Muestra la tabla de usuarios solo si el usuario logeado es administrador */}
-                <li className="nav-item">
-                  <FaTableButton className="dropdown-item active" />
-                </li>
+
+                {isAdmin && (
+                  <li className="nav-item">
+                    <FaTableButton className="dropdown-item active" />
+                  </li>
+                )}
                 {/* Funcionalidad blanco y negro */}
                 <li className="nav-item">
                   <GrayScaleButton className="dropdown-item active"></GrayScaleButton>

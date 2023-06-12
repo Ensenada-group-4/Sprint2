@@ -28,6 +28,7 @@ export default function Login() {
       if (response.id) {
         localStorage.setItem("userId", response.id);
         localStorage.setItem("token", response.token);
+        localStorage.setItem("role", response.role);
         const isAdmin = response.role === "admin";
         window.location.href = isAdmin ? "/home" : "/home";
       } else {
