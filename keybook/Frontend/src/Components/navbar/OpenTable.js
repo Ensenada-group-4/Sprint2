@@ -78,8 +78,7 @@ function FaTableButton() {
                       <th>Fecha de nacimiento</th>
                       <th>Ciudad</th>
                       <th>País</th>
-                      <th>Teléfono</th>
-                      <th>Idioma</th>
+                      <th>Teléfono</th>                      
                       <th>LinkedIn</th>
                       <th>Role</th>
                     </tr>
@@ -94,8 +93,7 @@ function FaTableButton() {
                         <td>{user.date_of_birth}</td>
                         <td>{user.city}</td>
                         <td>{user.country}</td>
-                        <td>{user.phone}</td>
-                        <td>{user.language_Name}</td>
+                        <td>{user.phone}</td>                        
                         <td>{user.linkedin}</td>
                         <td>{user.role}</td>
                       </tr>
@@ -104,6 +102,7 @@ function FaTableButton() {
                       content="Cerrar"
                       onClick={handleCloseClick}
                     />
+                    <a> </a>
                     <PrintButton users={users} />
                     <ReactPaginate
                       pageCount={totalPages}

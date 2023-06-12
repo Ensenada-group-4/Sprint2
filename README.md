@@ -72,12 +72,39 @@ Las vistas RegisterView y LoginView son de libre acceso, pero el resto están re
 
 ## Cambios para la reentrega
 
-- CSS: aplicación de media queries en la página users, corrigiendo que la barra de búsqueda se superponga con los resultados y haciéndola responsiva a diferentes resoluciones. También se ha corregido la barra de navegación: el título ya no se monta sobre los iconos. Además, se ha añadido a dichos iconos que cambien de color en la página activa para mejor experiencia de usuario.
+- CSS: aplicación de media queries en la página users, corrigiendo que la barra de búsqueda se superponga con los resultados y haciéndola responsiva a diferentes resoluciones. También se ha corregido la barra de navegación: el título ya no se monta sobre los iconos. Además, se ha añadido a dichos iconos que cambien de color en la página activa para mejor experiencia de usuario (/Frontend/src/Components/navbar/UseIsActive.js).
 - Búsqueda de usuarios: se ha actualizado la funcionalidad de la barra de búsqueda de manera que no filtre únicamente por coincidencia exacta sino por string clave, y se han ampliado los filtros a nombre, apellido y email. Aprovechamos para limpiar una parte del código de esta vista, y se tomó la decisión de mantener la búsqueda con filtro a través de su propio endpoint.
-- Seguridad: creación de middleware authChecker (Backend/utils) a todas las rutas (menos login y registro) para mejorar la seguridad a través de jwt. En Frontend/utils se han añadido dos nuevas funciones reutilizables más específicas para cada caso, según la necesidad de jwt en los headers o no, y se han aplicado a todas las peticiones del proyecto.
+- Seguridad: creación de middleware authChecker (/Backend/utils), aplicado a todas las rutas (menos login y registro) para mejorar la seguridad a través de jwt. En /Frontend/utils se han añadido dos nuevas funciones reutilizables más específicas para cada caso, según la necesidad de jwt en los headers o no, y se han aplicado a todas las peticiones del proyecto.
+
+
+## Ticket: admin
+
+### Base de datos:
+
+En la tabla "user" se ha añadido una columna "role", que puede ser "admin" o "user". Al registrar un usuario nuevo por defecto recibirá el rol "user".
+
+Los usuarios con permisos de administrador son:
+ ID 1: Lucía lucia@gmail.com ,
+ ID 2: Adrián pagemaster92@gmail.com,
+ ID 3: Stella 	Stella@hotmail.com,
+ y la contraseña en todos los casos es 123
+
+### Frontend:
+
+Esta funcionalidad se encuentra en /Frontend/src/Components/navbar/OpenTable.js
+
+Al hacer el login guardamos en el localStorage el rol del usuario. Si éste es "admin", en la barra de navegación aparecerá un nuevo icono "Tabla usuarios", que nos mostrará un modal con una tabla paginada que trae los datos personales de todos los usuarios registrados de la base de datos. Los usuarios con el rol "user" no tienen acceso a esta funcionalidad.
+
+El botón "imprimir" descargará un archivo en formato .xlsx de dicho listado de usuarios.
+La generación del archivo viene a través de las librerías "xlsx" en el frontend y "exceljs" en el backend.
 
 
 
 
+
+
+
+
+ 
 
 

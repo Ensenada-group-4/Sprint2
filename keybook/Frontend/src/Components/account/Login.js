@@ -92,11 +92,7 @@ export default function Login() {
                 <div className="d-flex justify-content-center">
                   <p className="slogan-container">
                     Si no tienes cuenta <a href="/register">Registrate</a>
-                  </p>
-                  <p className="slogan-container">
-                    Olvidaste tu contraseña?{" "}
-                    <a href="/ressetpassword">Reiniciala</a>
-                  </p>
+                  </p>                 
                 </div>
               </form>
             </div>
