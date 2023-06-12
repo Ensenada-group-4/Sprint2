@@ -4,52 +4,54 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Modal, Table } from "react-bootstrap";
 import getRequest from "../../utils/getRequest";
 import { ButtonDefault } from "../buttons/ButtonDefault";
-import { Pagination } from "react-bootstrap";
-
+import ReactPaginate from "react-paginate";
+import PrintButton from "../buttons/PrintButton";
 function FaTableButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [users, setUsers] = useState([]);
-  const [totalItemsCount, setTotalItemsCount] = useState(0);
-  const [activePage, setActivePage] = useState(1);
-  const itemsCountPerPage = 10;
+  const [isActivePage, setIsActivePage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [currentPageItems, setCurrentPageItems] = useState([]);
 
   async function fetchUsers(pageNumber) {
+    console.log("Obtener datos de la página:", pageNumber);
     try {
       const response = await getRequest({
         endpoint: `users/user`,
         params: { page: pageNumber, limit: 10 },
       });
-      setUsers(response.slice(0, 10));
-      setTotalItemsCount(response.length);
-      console.log(response);
+      setUsers(response);
+      setTotalPages(Math.ceil(response.length / 10));
+      setCurrentPageItems(
+        response.slice((pageNumber - 1) * 10, pageNumber * 10)
+      );
     } catch (error) {
       console.error(error);
     }
   }
 
   useEffect(() => {
-    if (activePage > 0) {
-      fetchUsers(activePage);
+    if (isActivePage > 0) {
+      fetchUsers(isActivePage);
     }
-  }, [activePage]);
+  }, [isActivePage]);
 
+  function handlePageClick(data) {
+    setIsActivePage(data.selected + 1);
+  }
   function handleReplyClick() {
     setIsOpen(true);
-    fetchUsers(activePage);
+    fetchUsers(isActivePage);
   }
 
   function handleCloseClick() {
     setIsOpen(false);
   }
-  const handlePageChange = (pageNumber) => {
-    setActivePage(pageNumber);
+
+  const handlePageChange = (data) => {
+    console.log("Cambiando de página a:", data.selected);
+    setIsActivePage(data.selected);
   };
-
-  const startIndex = (activePage - 1) * itemsCountPerPage;
-  const endIndex = startIndex + itemsCountPerPage;
-
-  const currentItems = users.slice(startIndex, endIndex);
-
   return (
     <>
       <button className={`dropdown-item`} onClick={handleReplyClick}>
@@ -87,7 +89,7 @@ function FaTableButton() {
                     </tr>
                   </thead>
                   <tbody>
-                    {users.map((user = { currentItems }) => (
+                    {currentPageItems.map((user) => (
                       <tr key={user.id}>
                         <td>{user.id}</td>
                         <td>{user.name}</td>
@@ -108,20 +110,12 @@ function FaTableButton() {
                       onClick={handleCloseClick}
                       id="close-button"
                     />
-                    <ButtonDefault
-                      content="Imprimir"
-                      className="buttonLike btn btn-lg"
-                      onClick={handleCloseClick}
-                      id="close-button"
-                    />
-                    <Pagination
-                      activePage={activePage}
-                      itemsCountPerPage={itemsCountPerPage}
-                      totalItemsCount={totalItemsCount}
-                      pageRangeDisplayed={10}
-                      onChange={handlePageChange}
-                      itemClass="page-item"
-                      linkClass="page-link"
+                    <PrintButton users={users} />
+                    <ReactPaginate
+                      pageCount={totalPages}
+                      onPageChange={handlePageClick}
+                      containerClassName={"pagination"}
+                      activeClassName={"active"}
                     />
                   </tbody>
                 </Table>
@@ -133,4 +127,5 @@ function FaTableButton() {
     </>
   );
 }
+
 export default FaTableButton;
