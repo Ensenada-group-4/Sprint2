@@ -129,10 +129,6 @@ input {
 .nav-icon li:hover {
   background-color: rgb(62, 130, 197);
 }
-.nav-item active-link {
-  color: red;
-  text-decoration: underline;
-}
 .slogan-container-nav {
   text-align: center;
   margin-top: 3%;
@@ -779,6 +775,41 @@ footer {
   background-color: rgba(0, 0, 0, 0.8);
   display: block !important;
 }
+
+.centered-div {
+
+  border-radius: 10px;
+  background-color: rgba(204, 10, 10, 0.115);
+  width: 80%;  
+  height: 60%; 
+}
+.centered-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  position:fixed;
+  right: 85px;
+  padding: 15px;
+  background-color: lightskyblue;
+}
+
+.custom-table {
+ font-style:italic;
+ background-color:lightskyblue;
+ padding: 15px;
+ justify-content: center;
+ border-color: black;
+}
+thead{
+  color:black;
+
+}
+
+.custom-table:hover {
+  border-color: black;
+}
+
 .btn-post-btn {
   font: black;
   background-color: #ffc312;

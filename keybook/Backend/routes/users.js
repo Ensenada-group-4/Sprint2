@@ -3,8 +3,8 @@ const sequelize = require("../db/connection");
 var router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const authChecker = require('../utils/authChecker');
-
+const authChecker = require("../utils/authChecker");
+const ExcelJS = require("exceljs");
 const salt = 10;
 
 //GET user by id
@@ -70,6 +70,7 @@ router.post("/register", async function (req, res) {
     const tools = "Añada herramientas";
     const language = "Añada idiomas";
     const hobby = "Añada  hobbies";
+    const role = "user"
 
     const hashPassword = await bcrypt.hash(password, salt);
 
@@ -81,7 +82,7 @@ router.post("/register", async function (req, res) {
       return res.status(400).json({ error: "El email ya está registrado" });
     } else {
       const newUser = await sequelize.query(
-        `INSERT INTO user (name, last_name, email, password, date_of_birth, profile_picture, city, country, phone, studies_course, tools_name, language_name, hobby_name, linkedin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO user (name, last_name, email, password, date_of_birth, profile_picture, city, country, phone, studies_course, tools_name, language_name, hobby_name, linkedin, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         {
           type: sequelize.QueryTypes.INSERT,
           replacements: [
@@ -99,6 +100,7 @@ router.post("/register", async function (req, res) {
             language,
             hobby,
             linkedin,
+            role
           ],
         }
       );
@@ -118,7 +120,7 @@ router.post("/auth", async (req, res) => {
     const { email, password } = req.body;
 
     const result = await sequelize.query(
-      `SELECT * FROM user WHERE  email = '${email}'`
+      `SELECT * FROM user WHERE email = '${email}'`
     );
     if (result[0].length) {
       const validPassword = await bcrypt.compare(
@@ -126,10 +128,17 @@ router.post("/auth", async (req, res) => {
         result[0][0].password
       );
       if (validPassword) {
-        const token = jwt.sign({ id: result[0][0].id }, process.env.JWT_KEY, {
-          expiresIn: "2h",
+        const role = result[0][0].role;
+        const token = jwt.sign(
+          { id: result[0][0].id, role },
+          process.env.JWT_KEY,
+          { expiresIn: "2h" }
+        );
+        res.status(200).send({
+          id: result[0][0].id,
+          role,
+          token,
         });
-        res.status(200).send({ id: result[0][0].id, token: token });
       } else {
         res.status(400).send({ error: "Contraseña incorrecta" });
       }
@@ -151,7 +160,7 @@ router.put("/:id", authChecker, async (req, res) => {
     dob,
     city,
     country,
-    phone, 
+    phone,
     linkedin,
     education,
     tools,
@@ -159,8 +168,7 @@ router.put("/:id", authChecker, async (req, res) => {
     hobbies,
   } = req.body;
   const email = "";
-  
-  
+
   try {
     await sequelize.query(
       `UPDATE user SET 

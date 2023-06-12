@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import FollowButton from "../buttons/FollowButton";
 import { ButtonDefault } from "../buttons/ButtonDefault";
 import { useNavigate } from "react-router-dom";
-import getRequest from '../../utils/getRequest';
+import getRequest from "../../utils/getRequest";
 
 function RightSidebar() {
   const [requests, setRequests] = useState([]);
@@ -12,8 +12,8 @@ function RightSidebar() {
   async function fetchRequests() {
     try {
       const response = await getRequest({
-        endpoint: `follow/not-following/${loggedUserId}`
-      })
+        endpoint: `follow/not-following/${loggedUserId}`,
+      });
       setRequests(response);
     } catch (error) {
       console.error(error);
@@ -43,7 +43,7 @@ function RightSidebar() {
     }
   }
 
-  //Set interval to check frequently for changes in DB 
+  //Set interval to check frequently for changes in DB
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchRequests();
@@ -56,7 +56,7 @@ function RightSidebar() {
     sendFollowRequest(userId);
   }
 
-  //Button show more - redirect to /users 
+  //Button show more - redirect to /users
 
   function MyButton() {
     const navigate = useNavigate();

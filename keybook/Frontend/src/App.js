@@ -17,7 +17,7 @@ import EditProfileView from "./views/EditProfileView";
 import ErrorView from "./views/ErrorView";
 
 function App() {
-  const isAuthenticated = !!localStorage.getItem("token"); 
+  const isAuthenticated = !!localStorage.getItem("token");
 
   return (
     <>
@@ -26,6 +26,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LoginView />} />
             <Route path="/register" element={<RegisterView />} />
+
             <Route path="/error" element={<ErrorView />} />
             <Route path="*" element={<Navigate to="/error" />} />
             {isAuthenticated ? (

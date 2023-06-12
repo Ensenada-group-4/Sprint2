@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import NewPost from "./NewPost";
 import PostFeed from "./PostFeed";
 import Pagination from "react-js-pagination";
-import getRequest from '../../utils/getRequest';
-
+import getRequest from "../../utils/getRequest";
 
 //Post lists showing own posts and posts of users we follow
 
@@ -17,10 +16,10 @@ function PostList() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      try {      
+      try {
         const response = await getRequest({
-          endpoint: `posts/feed/${loggedId}`
-        })             
+          endpoint: `posts/feed/${loggedId}`,
+        });
         setPosts(response);
         setTotalItemsCount(response.length);
       } catch (error) {
@@ -32,7 +31,7 @@ function PostList() {
   }, [postAdded]);
 
   //Pagination and limits
-  const handlePageChange = (pageNumber) => {    
+  const handlePageChange = (pageNumber) => {
     setActivePage(pageNumber);
   };
 

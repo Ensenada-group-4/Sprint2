@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, useLocation } from "react-router-dom";
 import GrayScaleButton from "./GrayScaleButton";
 import SearchBar from "./SearchBar";
-import { CogIcon, UsersGrid, HomeIcon, Profile } from "./fontawesome";
+import { CogIcon, UsersGrid, HomeIcon, Profile, ListUser } from "./fontawesome";
 import Logout from "./Logout";
 import { Logo } from "../logo/Logo";
 import NavBarIcon from "./NavBarIcon";
-
+import FaTableButton from "./OpenTable";
 import {
   faAddressBook,
   faHome,
   faUser,
   faCog,
+  faTable,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+
+  const [isAdmin, setIsAdmin] = useState(
+    localStorage.getItem("role") === "admin"
+  );
+
   const location = useLocation();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -133,6 +141,7 @@ export default function NavBar() {
                     component={icon.component}
                     isActive={() => isActive(icon.link)}
                     activeColor={icon.activeColor}
+                    isAdmin={isAdmin}
                   >
                     <NavLink
                       exact
@@ -144,7 +153,13 @@ export default function NavBar() {
                     </NavLink>
                   </NavBarIcon>
                 ))}
+                {/* Muestra la tabla de usuarios solo si el usuario logeado es administrador */}
 
+                {isAdmin && (
+                  <li className="nav-item">
+                    <FaTableButton className="dropdown-item active" />
+                  </li>
+                )}
                 {/* Funcionalidad blanco y negro */}
                 <li className="nav-item">
                   <GrayScaleButton className="dropdown-item active"></GrayScaleButton>
