@@ -791,22 +791,23 @@ footer {
   position:fixed;
   right: 85px;
   padding: 15px;
+  background-color: lightskyblue;
 }
 
 .custom-table {
  font-style:italic;
- background-color: #5a9397f2;
+ background-color:lightskyblue;
  padding: 15px;
  justify-content: center;
- 
+ border-color: black;
 }
 thead{
-  color: white;
+  color:black;
 
 }
 
 .custom-table:hover {
-  border-color: white;
+  border-color: black;
 }
 
 .btn-post-btn {

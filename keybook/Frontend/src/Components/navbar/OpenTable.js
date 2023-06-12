@@ -69,6 +69,7 @@ function FaTableButton() {
                 >
                   <thead>
                     <Modal.Title>Lista de usuarios</Modal.Title>
+
                     <tr>
                       <th>ID</th>
                       <th>Nombre</th>
