@@ -29,8 +29,8 @@ export default function Login() {
         localStorage.setItem("userId", response.id);
         localStorage.setItem("token", response.token);
         localStorage.setItem("role", response.role);
-        const isAdmin = response.role === "admin";
-        window.location.href = isAdmin ? "/home" : "/home";
+
+        window.location.href = "/home";
       } else {
         setError(true);
       }
@@ -92,6 +92,10 @@ export default function Login() {
                 <div className="d-flex justify-content-center">
                   <p className="slogan-container">
                     Si no tienes cuenta <a href="/register">Registrate</a>
+                  </p>
+                  <p className="slogan-container">
+                    Olvidaste tu contraseña?{" "}
+                    <a href="/ressetpassword">Reiniciala</a>
                   </p>
                 </div>
               </form>

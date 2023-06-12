@@ -28,13 +28,7 @@ function PrintButton({ users }) {
     document.body.removeChild(a);
   }
 
-  return (
-    <ButtonDefault
-      className="buttonLike btn btn-lg"
-      onClick={handlePrintClick}
-      content="Imprimir"
-    ></ButtonDefault>
-  );
+  return <ButtonDefault onClick={handlePrintClick} content="Imprimir" />;
 }
 
 export default PrintButton;

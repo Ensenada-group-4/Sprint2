@@ -14,7 +14,6 @@ function FaTableButton() {
   const [currentPageItems, setCurrentPageItems] = useState([]);
 
   async function fetchUsers(pageNumber) {
-    console.log("Obtener datos de la página:", pageNumber);
     try {
       const response = await getRequest({
         endpoint: `users/user`,
@@ -48,10 +47,6 @@ function FaTableButton() {
     setIsOpen(false);
   }
 
-  const handlePageChange = (data) => {
-    console.log("Cambiando de página a:", data.selected);
-    setIsActivePage(data.selected);
-  };
   return (
     <>
       <button className={`dropdown-item`} onClick={handleReplyClick}>
@@ -106,9 +101,7 @@ function FaTableButton() {
                     ))}
                     <ButtonDefault
                       content="Cerrar"
-                      className="buttonLike btn btn-lg"
                       onClick={handleCloseClick}
-                      id="close-button"
                     />
                     <PrintButton users={users} />
                     <ReactPaginate

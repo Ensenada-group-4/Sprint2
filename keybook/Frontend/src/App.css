@@ -795,10 +795,10 @@ footer {
 
 .custom-table {
  font-style:italic;
- background-color: rgba(0, 0, 0, 0.95);
+ background-color: #5a9397f2;
  padding: 15px;
  justify-content: center;
- color:antiquewhite;
+ 
 }
 thead{
   color: white;

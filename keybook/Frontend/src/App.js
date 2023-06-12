@@ -26,6 +26,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LoginView />} />
             <Route path="/register" element={<RegisterView />} />
+
             <Route path="/error" element={<ErrorView />} />
             <Route path="*" element={<Navigate to="/error" />} />
             {isAuthenticated ? (

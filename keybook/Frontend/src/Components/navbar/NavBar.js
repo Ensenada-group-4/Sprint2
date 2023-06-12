@@ -19,10 +19,9 @@ export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const role = "admin";
+
   const toggle = () => setIsOpen(!isOpen);
 
-  console.log("role:", localStorage.getItem("role"));
   const [isAdmin, setIsAdmin] = useState(
     localStorage.getItem("role") === "admin"
   );
